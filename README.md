@@ -1,4 +1,4 @@
-# Moview4U
+# Movies4U
 
 A new Flutter application.
 
