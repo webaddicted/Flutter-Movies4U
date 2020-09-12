@@ -316,17 +316,19 @@ ClipRRect loadCircleCacheImg(String url, double radius) {
   );
 }
 Widget getCacheImage({String url, double height, double width}) {
+  var shimmer=Container(
+    width: width != null ? width : double.infinity,
+    height: height != null ? height : double.infinity,
+    color: Colors.grey[400],
+  );
+
   return CachedNetworkImage(
     fit: BoxFit.cover,
     width: width != null ? width : double.infinity,
     height: height != null ? height : double.infinity,
     imageUrl: url,
-    placeholder: (context, url) => Container(
-      width: width != null ? width : double.infinity,
-      height: height != null ? height : double.infinity,
-      color: Colors.grey[400],
-    ),
-    errorWidget: (context, url, error) => const Icon(Icons.error),
+    placeholder: (context, url) => shimmer,
+    errorWidget: (context, url, error) => shimmer//const Icon(Icons.error),
   );
 }
 

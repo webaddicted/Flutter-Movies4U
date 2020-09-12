@@ -5,7 +5,7 @@ class StringConst {
 
   static var HOME_TITLE = "Movies4U";
   static var TRANDING_MOVIE = 'Tranding Movie';
-
+  static var SETTING_TITLE = 'Setting';
   static var CATEGORY = 'Category';
 
   static var SIFI = 'Si-Fi';
@@ -36,6 +36,8 @@ class StringConst {
 
   static var DEEPAK_SHARMA = 'Deepak Sharma';
   static var WEBADDICTED = '@webaddicted';
+
+
 
 
 

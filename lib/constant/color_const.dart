@@ -9,7 +9,7 @@ class ColorConst {
   static Color GREEN_COLOR = Colors.green;
   static Color BLACK_COLOR = Colors.black;
   static Color WHITE_COLOR = Colors.white;
-
+  static Color GREY_800 = Colors.grey.shade800;
 //  static Color BLACK_COLOR = colorFromHex("#000000");
 //  static Color WHITE_COLOR = colorFromHex("#FFFFFF");
   static Color FCM_APP_COLOR = colorFromHex("#fbae44"); //fbae00//f98e14

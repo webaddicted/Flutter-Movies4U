@@ -1,6 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:Moviesfree4U/constant/api_constant.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
@@ -19,6 +16,9 @@ import 'package:Moviesfree4U/view/widget/carousel_view.dart';
 import 'package:Moviesfree4U/view/widget/movie_cast_crew.dart';
 import 'package:Moviesfree4U/view/widget/shimmer_view.dart';
 import 'package:Moviesfree4U/view/widget/tranding_movie_row.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieListScreen extends StatefulWidget {
@@ -56,9 +56,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
           Icons.arrow_back_ios,
           color: ColorConst.BLACK_COLOR,
         ),
-        onPressed: () {
-          Navigator.pop(context);
-        });
+        onPressed: () => Navigator.pop(context));
     return Scaffold(
         appBar: getAppBarWithBackBtn(
             ctx: context,

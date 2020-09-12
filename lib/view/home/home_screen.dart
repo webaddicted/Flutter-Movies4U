@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/view/home/nav_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/api_constant.dart';
@@ -7,7 +8,6 @@ import 'package:Moviesfree4U/model/movie_model.dart';
 import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/view/widget/carousel_view.dart';
 import 'package:Moviesfree4U/view/widget/movie_cate.dart';
-import 'package:Moviesfree4U/view/widget/nav_drawer.dart';
 import 'package:Moviesfree4U/view/widget/sifi_movie_row.dart';
 import 'package:Moviesfree4U/view/widget/tranding_movie_row.dart';
 import 'package:Moviesfree4U/view/widget/tranding_person.dart';
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var homeIcon = IconButton(
         icon: Icon(
-          Icons.storage,
+          Icons.sort,//menu,//dehaze,
           color: ColorConst.BLACK_COLOR,
         ),
         onPressed: () {
@@ -63,9 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: StringConst.HOME_TITLE,
             bgColor: Colors.white,
             icon: homeIcon),
-        drawer: Drawer(
-          child: NavDrawerView(),
-        ),
+        drawer:  NavDrawer(),
         body: ScopedModel(model: model, child: _createUi()));
   }
 

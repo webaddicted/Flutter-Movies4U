@@ -4,112 +4,147 @@ import 'package:Moviesfree4U/constant/string_const.dart';
 import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingScreen extends StatefulWidget {
+  @override
+  _SettingScreenState createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends State<SettingScreen> {
+  var pushNoti = false;
+  var emailNoti = true;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(32.0),
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 30.0),
-            Row(
-              children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(ApiConstant.DEMO_IMG),
-                      fit: BoxFit.cover,
-                    ),
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      getTxtWhiteColor(
-                          msg: StringConst.DEEPAK_SHARMA,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                      getTxtColor(
-                          msg: StringConst.WEBADDICTED, txtColor: ColorConst.GREY_SHADE)
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            ListTile(
-
-              title:getTxtWhiteColor(
-                  msg: "Language",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-              subtitle:getTxtColor(
-                  msg: "English US",
-                  fontSize: 15, txtColor: ColorConst.GREY_SHADE),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey.shade400,
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              title:getTxtWhiteColor(
-                  msg: "Profile Settings",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-              subtitle:getTxtColor(
-                  msg: StringConst.DEEPAK_SHARMA,
-                  fontSize: 15, txtColor: ColorConst.GREY_SHADE),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey.shade400,
-              ),
-              onTap: () {},
-            ),
-            SwitchListTile(
-              title: getTxtWhiteColor(
-                  msg: "Email Notifications",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-              subtitle: getTxtColor(
-                  msg: 'On',
-                  fontSize: 15, txtColor: ColorConst.GREY_SHADE),
-              value: true,
-              onChanged: (val) {},
-            ),
-            SwitchListTile(
-              title: Text(
-                "Push Notifications",
-                // style: whiteBoldText,
-              ),
-              subtitle: getTxtColor(
-                  msg: 'Off',
-                  fontSize: 15, txtColor: ColorConst.GREY_SHADE),
-              value: false,
-              onChanged: (val) {},
-            ),
-            ListTile(
-              title:getTxtWhiteColor(
-                  msg: "Logout",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-              onTap: () {},
-            ),
-          ],
+    var homeIcon = IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: ColorConst.BLACK_COLOR,
         ),
+        onPressed: () => Navigator.pop(context));
+    return Scaffold(
+        appBar: getAppBarWithBackBtn(
+            ctx: context,
+            title: StringConst.SETTING_TITLE,
+            bgColor: Colors.white,
+            icon: homeIcon),
+        body: _createUi());
+  }
+
+  Widget _createUi() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(ApiConstant.DEMO_IMG),
+                    fit: BoxFit.cover,
+                  ),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10.0),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    getTxtBlackColor(
+                        msg: StringConst.DEEPAK_SHARMA,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    getTxtColor(
+                        fontSize: 17,
+                        msg: StringConst.WEBADDICTED,
+                        txtColor: ColorConst.GREY_COLOR)
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20.0),
+          getDivider(),
+          ListTile(
+            title: getTxtBlackColor(
+                msg: "Language", fontSize: 16, fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: "English US",
+                fontSize: 15,
+                txtColor: ColorConst.GREY_COLOR),
+            trailing: Icon(
+              Icons.keyboard_arrow_right,
+              color: Colors.grey.shade400,
+            ),
+            onTap: () {},
+          ),
+          getDivider(),
+          ListTile(
+            title: getTxtBlackColor(
+                msg: "Profile Settings",
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: StringConst.DEEPAK_SHARMA,
+                fontSize: 15,
+                txtColor: ColorConst.GREY_COLOR),
+            trailing: Icon(
+              Icons.keyboard_arrow_right,
+              color: Colors.grey.shade400,
+            ),
+            onTap: () {},
+          ),
+          getDivider(),
+          SwitchListTile(
+            title: getTxtBlackColor(
+                msg: "Email Notifications",
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: 'On', fontSize: 15, txtColor: ColorConst.GREY_COLOR),
+            value: emailNoti,
+            onChanged: (val) {
+              emailNoti = !emailNoti;
+              changeData();
+            },
+          ),
+          getDivider(),
+          SwitchListTile(
+            title: getTxtBlackColor(
+                msg: "Push Notifications",
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: 'Off', fontSize: 15, txtColor: ColorConst.GREY_COLOR),
+            value: pushNoti,
+            onChanged: (val) {
+              pushNoti = !pushNoti;
+              changeData();
+            },
+          ),
+          getDivider(),
+          ListTile(
+            title: getTxtBlackColor(
+                msg: "Logout", fontSize: 16, fontWeight: FontWeight.bold),
+            onTap: () => SystemNavigator.pop(),
+          ),
+          getDivider()
+        ],
       ),
     );
+  }
+
+  void changeData() {
+    setState(() {});
   }
 }
