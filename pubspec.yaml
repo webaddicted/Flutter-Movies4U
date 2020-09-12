@@ -27,6 +27,7 @@ dependencies:
   youtube_player_flutter: ^7.0.0+7
   photo_view: ^0.9.2
   shared_preferences: ^0.5.8
+#  font_awesome_flutter: ^8.8.1
 
 dev_dependencies:
   flutter_test:
