@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/constant/string_const.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/constant/string_const.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerView extends StatelessWidget {

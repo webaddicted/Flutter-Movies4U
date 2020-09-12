@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/data/bean/movie_respo.dart';
+import 'package:Moviesfree4U/data/bean/movie_respo.dart';
 
 class MovieList extends StatelessWidget {
   final List<Movie> movieList;

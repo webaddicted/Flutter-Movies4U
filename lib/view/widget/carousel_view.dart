@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/data/home/now_playing_respo.dart';
-import 'package:flutter_movie_app/model/movie_model.dart';
-import 'package:flutter_movie_app/utils/apiutils/api_response.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
-import 'package:flutter_movie_app/view/details/detail_movie.dart';
-import 'package:flutter_movie_app/view/widget/shimmer_view.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/data/home/now_playing_respo.dart';
+import 'package:Moviesfree4U/model/movie_model.dart';
+import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/details/detail_movie.dart';
+import 'package:Moviesfree4U/view/widget/shimmer_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CarouselView extends StatelessWidget {

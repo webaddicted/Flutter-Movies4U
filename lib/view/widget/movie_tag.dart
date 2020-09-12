@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:flutter_movie_app/constant/color_const.dart';
-import 'package:flutter_movie_app/constant/string_const.dart';
-import 'package:flutter_movie_app/data/details/movie_details_respo.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
-import 'package:flutter_movie_app/view/details/movie_list_screen.dart';
-import 'package:flutter_movie_app/view/widget/shimmer_view.dart';
+import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/data/details/movie_details_respo.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/details/movie_list_screen.dart';
+import 'package:Moviesfree4U/view/widget/shimmer_view.dart';
 
 class MovieTag extends StatelessWidget {
   const MovieTag({

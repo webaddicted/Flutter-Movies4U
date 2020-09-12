@@ -34,6 +34,10 @@ class StringConst {
 
   static String IS_ON_BOARDING_SHOW = 'is_on_boarding_show';
 
+  static var DEEPAK_SHARMA = 'Deepak Sharma';
+  static var WEBADDICTED = '@webaddicted';
+
+
 
 //  {END TITLE}
 }

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/data/details/movie_img_respo.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/data/details/movie_img_respo.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 

@@ -1,5 +1,5 @@
-import 'package:flutter_movie_app/constant/string_const.dart';
-import 'package:flutter_movie_app/utils/sp/sp_helper.dart';
+import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/utils/sp/sp_helper.dart';
 
 class SPManager {
   static void setOnboarding<T>(String isOnBoardingShow) {
@@ -7,7 +7,7 @@ class SPManager {
   }
 
   static Future<T> getOnboarding<T>() async {
-    var spValue = await SPHelper.getPreference(StringConst.IS_ON_BOARDING_SHOW, '');
+    var spValue =  SPHelper.getPreference(StringConst.IS_ON_BOARDING_SHOW, '');
     return spValue as T;
   }
 

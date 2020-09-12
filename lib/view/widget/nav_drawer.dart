@@ -1,9 +1,10 @@
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/details/movie_list_screen.dart';
+import 'package:Moviesfree4U/view/setting/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/constant/color_const.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
-import 'package:flutter_movie_app/view/details/movie_list_screen.dart';
 
 class NavDrawerView extends StatelessWidget {
   BuildContext _context;
@@ -46,6 +47,8 @@ class NavDrawerView extends StatelessWidget {
                 _getDrawerItem("Popular Movie"),
                 getDivider(),
                 _getDrawerItem("Upcoming Movie"),
+                getDivider(),
+                _getDrawerItem("Setting"),
                 getDivider(),
                 _getDrawerItem("Contact us"),
                 getDivider(),
@@ -94,8 +97,8 @@ class NavDrawerView extends StatelessWidget {
             _context, MovieListScreen(apiName: ApiConstant.GENRES_LIST));
         break;
       case "Tranding Movie":
-        navigationPush(
-            _context, MovieListScreen(apiName: ApiConstant.TRENDING_MOVIE_LIST));
+        navigationPush(_context,
+            MovieListScreen(apiName: ApiConstant.TRENDING_MOVIE_LIST));
         break;
       case "Popular Movie":
         navigationPush(
@@ -105,6 +108,9 @@ class NavDrawerView extends StatelessWidget {
         navigationPush(
             _context, MovieListScreen(apiName: ApiConstant.UPCOMING_MOVIE));
         break;
+      case "Setting":
+        navigationStateLessPush(_context, SettingsScreen());
+        break;
       case "Contact us":
         break;
       case "About us":
@@ -112,7 +118,6 @@ class NavDrawerView extends StatelessWidget {
       case "Exit":
         SystemNavigator.pop();
         break;
-
     }
   }
 }

@@ -1,10 +1,8 @@
+import 'package:Moviesfree4U/constant/string_const.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/assets_const.dart';
-import 'package:flutter_movie_app/constant/color_const.dart';
-import 'package:flutter_movie_app/constant/string_const.dart';
-import 'package:flutter_movie_app/utils/sp/sp_manager.dart';
-import 'package:flutter_movie_app/view/home/home_screen.dart';
-import 'package:flutter_movie_app/view/intro/intro_screen.dart';
+import 'package:Moviesfree4U/constant/assets_const.dart';
+import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/view/intro/intro_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +12,7 @@ class MyApp extends StatelessWidget {
     return getView();
   }
 
-  Widget getView() {
+  Widget getView()  {
     return MaterialApp(
       title: StringConst.APP_NAME,
       debugShowCheckedModeBanner: false,
@@ -25,10 +23,7 @@ class MyApp extends StatelessWidget {
         accentColorBrightness: Brightness.light,
         primarySwatch: ColorConst.APP_COLOR,
       ),
-      home: SPManager.getOnboarding() != null &&
-          SPManager.getOnboarding().toString().length > 0
-          ? HomeScreen()
-          : IntroScreen(),
+      home:IntroScreen(),
     );
   }
 }

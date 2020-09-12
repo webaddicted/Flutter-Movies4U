@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/assets_const.dart';
+import 'package:Moviesfree4U/constant/assets_const.dart';
 
 class Slide {
   final String imageUrl;

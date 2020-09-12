@@ -1,4 +1,4 @@
-import 'package:flutter_movie_app/constant/api_constant.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
 
 class CategoryMovieReq {
   String apiKey = ApiConstant.API_KEY;

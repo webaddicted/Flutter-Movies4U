@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/constant/string_const.dart';
-import 'package:flutter_movie_app/data/home/movie_cat_respo.dart';
-import 'package:flutter_movie_app/model/movie_model.dart';
-import 'package:flutter_movie_app/utils/apiutils/api_response.dart';
-import 'package:flutter_movie_app/utils/global_utility.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
-import 'package:flutter_movie_app/view/details/movie_list_screen.dart';
-import 'package:flutter_movie_app/view/widget/shimmer_view.dart';
-import 'package:flutter_movie_app/view/widget/tranding_movie_row.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/data/home/movie_cat_respo.dart';
+import 'package:Moviesfree4U/model/movie_model.dart';
+import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
+import 'package:Moviesfree4U/utils/global_utility.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/details/movie_list_screen.dart';
+import 'package:Moviesfree4U/view/widget/shimmer_view.dart';
+import 'package:Moviesfree4U/view/widget/tranding_movie_row.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieCate extends StatelessWidget {

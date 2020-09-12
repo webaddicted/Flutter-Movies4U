@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/string_const.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 
 class CategoryMovie extends StatefulWidget {
   @override

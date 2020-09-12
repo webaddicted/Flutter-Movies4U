@@ -1,17 +1,17 @@
-import 'package:flutter_movie_app/constant/api_constant.dart';
-import 'package:flutter_movie_app/data/bean/movie_respo.dart';
-import 'package:flutter_movie_app/data/details/credits_crew_respo.dart';
-import 'package:flutter_movie_app/data/details/keyword_respo.dart';
-import 'package:flutter_movie_app/data/details/movie_details_respo.dart';
-import 'package:flutter_movie_app/data/details/movie_img_respo.dart';
-import 'package:flutter_movie_app/data/details/video_respo.dart';
-import 'package:flutter_movie_app/data/home/movie_cat_respo.dart';
-import 'package:flutter_movie_app/data/home/now_playing_respo.dart';
-import 'package:flutter_movie_app/data/person/person_detail_respo.dart';
-import 'package:flutter_movie_app/data/person/person_movie_respo.dart';
-import 'package:flutter_movie_app/data/person/tranding_person_respo.dart';
-import 'package:flutter_movie_app/data/repo/movie_repository.dart';
-import 'package:flutter_movie_app/utils/apiutils/api_response.dart';
+import 'package:Moviesfree4U/constant/api_constant.dart';
+import 'package:Moviesfree4U/data/bean/movie_respo.dart';
+import 'package:Moviesfree4U/data/details/credits_crew_respo.dart';
+import 'package:Moviesfree4U/data/details/keyword_respo.dart';
+import 'package:Moviesfree4U/data/details/movie_details_respo.dart';
+import 'package:Moviesfree4U/data/details/movie_img_respo.dart';
+import 'package:Moviesfree4U/data/details/video_respo.dart';
+import 'package:Moviesfree4U/data/home/movie_cat_respo.dart';
+import 'package:Moviesfree4U/data/home/now_playing_respo.dart';
+import 'package:Moviesfree4U/data/person/person_detail_respo.dart';
+import 'package:Moviesfree4U/data/person/person_movie_respo.dart';
+import 'package:Moviesfree4U/data/person/tranding_person_respo.dart';
+import 'package:Moviesfree4U/data/repo/movie_repository.dart';
+import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieModel extends Model {

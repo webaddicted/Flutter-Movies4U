@@ -1,10 +1,10 @@
+import 'package:Moviesfree4U/constant/assets_const.dart';
+import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/utils/SlideRoute.dart';
+import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/assets_const.dart';
-import 'package:flutter_movie_app/constant/color_const.dart';
-import 'package:flutter_movie_app/utils/SlideRoute.dart';
-import 'package:flutter_movie_app/utils/apiutils/api_response.dart';
 
 //  {START PAGE NAVIGATION}
 // void navigationPush(BuildContext context, StatefulWidget route) {

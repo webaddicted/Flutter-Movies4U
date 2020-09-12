@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/utils/global_utility.dart';
+import 'package:Moviesfree4U/utils/global_utility.dart';
 
 class ColorConst {
   static Color APP_COLOR = Colors.green;
@@ -20,6 +20,7 @@ class ColorConst {
   static Color SLIDER2_COLOR = colorFromHex("#20d2bb");
   static Color SLIDER3_COLOR = colorFromHex("#3395ff");
   static Color SLIDER4_COLOR = colorFromHex("#c873f4");
+  static Color GREY_SHADE = Colors.grey.shade400;
 
 
   static Color CIRCLE_FADE1 = colorFromHex('#9BCCFFFF');

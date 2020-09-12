@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_app/constant/color_const.dart';
-import 'package:flutter_movie_app/utils/sp/sp_manager.dart';
-import 'package:flutter_movie_app/utils/widgethelper/widget_helper.dart';
-import 'package:flutter_movie_app/view/home/home_screen.dart';
-import 'package:flutter_movie_app/view/intro/slide.dart';
-import 'package:flutter_movie_app/view/intro/slide_dots.dart';
-import 'package:flutter_movie_app/view/intro/slide_item.dart';
+import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/utils/sp/sp_manager.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/home/home_screen.dart';
+import 'package:Moviesfree4U/view/intro/slide.dart';
+import 'package:Moviesfree4U/view/intro/slide_dots.dart';
+import 'package:Moviesfree4U/view/intro/slide_item.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
