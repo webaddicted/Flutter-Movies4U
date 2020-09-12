@@ -336,3 +336,21 @@ Divider getDivider() {
     height: 1,
   );
 }
+void showSnackBar(BuildContext context, String message) async {
+  try {
+    var snackbar = SnackBar(
+      content: getTxtWhiteColor(msg: message),
+      backgroundColor: ColorConst.GREEN_COLOR,
+      duration: Duration(seconds: 3),
+//    action: SnackBarAction(
+//        label: "Undo",
+//        onPressed: () {
+//          logDubug(message + " undo");
+//        }),
+    );
+    await Scaffold.of(context).hideCurrentSnackBar();
+    await Scaffold.of(context).showSnackBar(snackbar);
+  } catch (e) {
+    print('object ' + e.toString());
+  }
+}

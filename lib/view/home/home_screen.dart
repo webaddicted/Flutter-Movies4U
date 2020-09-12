@@ -11,6 +11,7 @@ import 'package:Moviesfree4U/view/widget/movie_cate.dart';
 import 'package:Moviesfree4U/view/widget/sifi_movie_row.dart';
 import 'package:Moviesfree4U/view/widget/tranding_movie_row.dart';
 import 'package:Moviesfree4U/view/widget/tranding_person.dart';
+import 'package:flutter/services.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,6 +22,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MovieModel model;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  BuildContext _context;
 
   @override
   void initState() {
@@ -39,9 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _context = context;
     var homeIcon = IconButton(
         icon: Icon(
-          Icons.sort,//menu,//dehaze,
+          Icons.sort, //menu,//dehaze,
           color: ColorConst.BLACK_COLOR,
         ),
         onPressed: () {
@@ -56,15 +60,20 @@ class _HomeScreenState extends State<HomeScreen> {
           // model.fetchTrandingPerson();
           // callMovieApi(ApiConstant.TOP_RATED, model);
         });
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: getAppBarWithBackBtn(
-            ctx: context,
-            title: StringConst.HOME_TITLE,
-            bgColor: Colors.white,
-            icon: homeIcon),
-        drawer:  NavDrawer(),
-        body: ScopedModel(model: model, child: _createUi()));
+    return WillPopScope(
+      onWillPop: () {
+        return onWillPop(context);
+      },
+      child: Scaffold(
+          key: _scaffoldKey,
+          appBar: getAppBarWithBackBtn(
+              ctx: context,
+              title: StringConst.HOME_TITLE,
+              bgColor: Colors.white,
+              icon: homeIcon),
+          drawer: NavDrawer(),
+          body: ScopedModel(model: model, child: _createUi())),
+    );
   }
 
   Widget _createUi() {
@@ -90,8 +99,28 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
 
+}
+Future<bool> onWillPop(BuildContext context) async {
+  return showDialog<bool>(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          content: getTxtColor(
+              msg: "Are you sure you want to exit this app?", fontSize: 17, txtColor: ColorConst.GREY_800),
+          title: getTxtBlackColor(
+              msg: "Warning!", fontSize: 18, fontWeight: FontWeight.bold),
+          actions: <Widget>[
+            FlatButton(
+                child: getTxtColor(msg: "Yes",fontSize: 17,),
+                onPressed: () => SystemNavigator.pop()),
+            FlatButton(
+                child: getTxtColor(msg: "No",fontSize: 17,),
+                onPressed: () => Navigator.pop(context)),
+          ],
+        );
+      });
+}
 String getTitle(String apiName) {
   switch (apiName) {
     case ApiConstant.POPULAR_MOVIES:

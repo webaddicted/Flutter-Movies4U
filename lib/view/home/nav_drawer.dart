@@ -4,9 +4,10 @@ import 'package:Moviesfree4U/constant/string_const.dart';
 import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/utils/widgethelper/oval-right-clipper.dart';
 import 'package:Moviesfree4U/view/details/movie_list_screen.dart';
+import 'package:Moviesfree4U/view/home/home_screen.dart';
+import 'package:Moviesfree4U/view/profile_screen.dart';
 import 'package:Moviesfree4U/view/setting/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class NavDrawer extends StatelessWidget {
   BuildContext _context;
@@ -39,18 +40,21 @@ class NavDrawer extends StatelessWidget {
                         ),
                         onPressed: () => Navigator.of(_context).pop()),
                   ),
-                  Container(
-                    height: 128,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(colors: [
-                          ColorConst.GREEN_COLOR,
-                          ColorConst.APP_COLOR
-                        ])),
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundImage: NetworkImage(ApiConstant.DEMO_IMG),
+                  InkWell(
+                    onTap: ()=>_navigateOnNextScreen('Profile'),
+                    child: Container(
+                      height: 128,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(colors: [
+                            ColorConst.GREEN_COLOR,
+                            ColorConst.APP_COLOR
+                          ])),
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundImage: NetworkImage(ApiConstant.DEMO_IMG),
+                      ),
                     ),
                   ),
                   SizedBox(height: 5.0),
@@ -75,6 +79,8 @@ class NavDrawer extends StatelessWidget {
                       showBadge: false),
                   _buildDivider(),
                   _buildRow(Icons.movie, "Upcoming Movie", showBadge: true),
+                  _buildDivider(),
+                  _buildRow(Icons.person_pin, "Profile"),
                   _buildDivider(),
                   _buildRow(Icons.settings, "Settings"),
                   _buildDivider(),
@@ -115,6 +121,7 @@ class NavDrawer extends StatelessWidget {
             msg: title,
             txtColor: ColorConst.GREY_800,
             fontSize: 16,
+            fontWeight: FontWeight.w600
           ),
           Spacer(),
           if (showBadge)
@@ -167,6 +174,9 @@ class NavDrawer extends StatelessWidget {
         navigationPush(
             _context, MovieListScreen(apiName: ApiConstant.UPCOMING_MOVIE));
         break;
+      case "Profile":
+        navigationStateLessPush(_context, ProfileScreen());
+        break;
       case "Settings":
         navigationPush(_context, SettingScreen());
         break;
@@ -175,7 +185,7 @@ class NavDrawer extends StatelessWidget {
       case "About us":
         break;
       case "Exit":
-        SystemNavigator.pop();
+        onWillPop(_context);
         break;
     }
   }

@@ -2,6 +2,8 @@ import 'package:Moviesfree4U/constant/api_constant.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
 import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/view/home/home_screen.dart';
+import 'package:Moviesfree4U/view/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,41 +39,44 @@ class _SettingScreenState extends State<SettingScreen> {
       padding: const EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(ApiConstant.DEMO_IMG),
-                    fit: BoxFit.cover,
-                  ),
-                  border: Border.all(
+          InkWell(
+            onTap: ()=>navigationStateLessPush(context, ProfileScreen()),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    width: 2.0,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(ApiConstant.DEMO_IMG),
+                      fit: BoxFit.cover,
+                    ),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 10.0),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    getTxtBlackColor(
-                        msg: StringConst.DEEPAK_SHARMA,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                    getTxtColor(
-                        fontSize: 17,
-                        msg: StringConst.WEBADDICTED,
-                        txtColor: ColorConst.GREY_COLOR)
-                  ],
+                const SizedBox(width: 10.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      getTxtBlackColor(
+                          msg: StringConst.DEEPAK_SHARMA,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      getTxtColor(
+                          fontSize: 17,
+                          msg: StringConst.WEBADDICTED,
+                          txtColor: ColorConst.GREY_COLOR)
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 20.0),
           getDivider(),
@@ -135,8 +140,8 @@ class _SettingScreenState extends State<SettingScreen> {
           getDivider(),
           ListTile(
             title: getTxtBlackColor(
-                msg: "Logout", fontSize: 16, fontWeight: FontWeight.bold),
-            onTap: () => SystemNavigator.pop(),
+                msg: "Exit", fontSize: 16, fontWeight: FontWeight.bold),
+            onTap: () => onWillPop(context),
           ),
           getDivider()
         ],
