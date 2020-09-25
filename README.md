@@ -19,7 +19,27 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ## Cover Feature
 
-
-    * Text
-    * Rich Text
+   * Splash Screen
+   * Onboarding Screens
+   * Select favourite movies 
+   * Home Screen
+   * Tranding movies
+   * Movies different category
+   * Popular movies
+   * Upcomming movies
+   * Tranding person of week
+   * Top rated movies
+   * Movies details
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   
 
