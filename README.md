@@ -28,20 +28,20 @@ This is simple repository, that help in fetch latest, upcomming movies.
 ## Cover Feature
 * Splash Screen
 * Onboarding Screen
-* Select favourite movies 
+* Select favourite movie
 * Home Screen
-* Tranding movies
+* Tranding movie
 * Movies different category
-* Popular movies
-* Upcomming movies
+* Popular movie
+* Upcomming movie
 * Tranding person of week
-* Top rated movies
-* Movies details
-* Movies trailer and posters
+* Top rated movie
+* Movies detail
+* Movies trailer and poster
 * Movie cast and crew member
-* Crew member details
-* Movies on bases of keywords
-* Recommendation and similar movies
+* Crew member detail
+* Movies on bases of keyword
+* Recommendation and similar movie
 * User Profile
 * IMDB Rating ⭐
 * Setting
