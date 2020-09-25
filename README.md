@@ -21,8 +21,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 ## GIF
 
 ![Demo screenshot](screenshot/video/webaddicted_home.gif "gif demo")
-
-![Demo screenshot](screenshot/video/web addicted profile.gif "gif profile demo")
+![Demo screenshot](screenshot/video/webaddicted_profile.gif "gif profile demo")
 
 
 ## Movie Cast and Crew
