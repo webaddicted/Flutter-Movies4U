@@ -18,6 +18,12 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 [![MoviesFree4U](https://img.shields.io/badge/Moviesfree4U-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Movies4U/tree/master/apk/Moviesfree4U.apk)
 
+## APK
+
+![Demo screenshot](screenshot/video/web addicted home.gif "gif demo")
+![Demo screenshot](screenshot/video/web addicted profile.gif "gif profile demo")
+
+
 ## Movie Cast and Crew
 
 <img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
