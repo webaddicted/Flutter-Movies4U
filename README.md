@@ -100,6 +100,34 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
 
+## User Profile
+
+
+<img src="screenshot/profile/web addicted nav.jpg" width="205">    <img src="screenshot/profile/web addicted profile.jpg" width="205"><img src="screenshot/profile/web addicted setting.jpg" width="205"><img src="screenshot/profile/web addicted exit.jpg" width="205">
+
+
+
+
+## Movie Cast and Crew
+
+
+<img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
+
+<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
+
+
+
+## Movie Poster
+
+
+<img src="screenshot/poster/web addicted poster.jpg" width="205">    <img src="screenshot/poster/web addicted poster1.jpg" width="205"><img src="screenshot/poster/web addicted poster3.jpg" width="205"><img src="screenshot/poster/web addicted poster4.jpg" width="205">
+
+
+
+
+
+
+
 
 
 
