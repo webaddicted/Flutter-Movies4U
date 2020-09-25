@@ -30,14 +30,18 @@ This is simple repository, that help in fetch latest, upcomming movies.
    * Tranding person of week
    * Top rated movies
    * Movies details
-   * 
-   * 
-   * 
-   * 
-   * 
-   * 
-   * 
-   * 
+   * Movies trailer and posters
+   * Movie cast and crew member
+   * Crew member details
+   * Movies on bases of keywords
+   * Recommendation and similar movies
+   * User Profile
+   * IMDB Rating ⭐
+   * Setting
+
+
+
+* 
    * 
    * 
    * 
