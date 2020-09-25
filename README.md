@@ -23,14 +23,9 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
 
-
-
-
 ## Movie Category
 
-
 <img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
-
 ## Cover Feature
 * Splash Screen
 * Onboarding Screens
@@ -52,24 +47,16 @@ This is simple repository, that help in fetch latest, upcomming movies.
 * IMDB Rating ⭐
 * Setting
 
-
 ## Home
-
 
 <img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
 
-
 ## Movie Detail
-
 
 <img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
 
-
-
 ## Cover Feature
-
-
-   * [Material design]()
+*[Material design]()
    * [DIO]()
    * [Provider]()
    * [Shimmer effect]()
