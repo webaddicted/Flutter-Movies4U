@@ -14,74 +14,108 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ## APK
 
-***You can Install and test latest Flutter movies Demo app from below 👇***
+***You can Install and test latest Flutter Movies app from below 👇***
 
-[![Kotlin Demo](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
+[![MoviesFree4U](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
 
+## Movie Cast and Crew
+
+<img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
+
+## Movie Category
+
+<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
+## Cover Feature
+* Splash Screen
+*   Onboarding Screen  
+* Select favourite movie
+* Home Screen
+* Tranding movie
+* Movies different category
+* Popular movie
+* Upcomming movie
+* Tranding person of week
+* Top rated movie
+* Movies detail
+* Movies trailer and poster
+* Movie cast and crew member
+* Crew member detail
+* Movies on bases of keyword
+* Recommendation and similar movie
+* User Profile
+* IMDB Rating ⭐
+* Setting
+
+## Home
+
+<img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
+
+## Movie Detail
+
+<img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
 
 ## Cover Feature
-
-
-   * Splash Screen
-   * Onboarding Screens
-   * Select favourite movies 
-   * Home Screen
-   * Tranding movies
-   * Movies different category
-   * Popular movies
-   * Upcomming movies
-   * Tranding person of week
-   * Top rated movies
-   * Movies details
-   * Movies trailer and posters
-   * Movie cast and crew member
-   * Crew member details
-   * Movies on bases of keywords
-   * Recommendation and similar movies
-   * User Profile
-   * IMDB Rating ⭐
-   * Setting
-
-## Cover Feature
-
-
-   * [Material design]()
-   * [DIO]()
-   * [Provider]()
-   * [Shimmer effect]()
-   * [Scope model]()
-   * [Carousel slider]()
-   * [Cached network image]()
-   * [Flutter rating bar]()
-   * [Staggered grid view]()
-   * [Flutter tags]()
-   * [Youtube player]()
-   * [Photo view]()
-   * [Shared preferences]()
-   * [Custom fonts]()
-   
-   
+* [Material design]()
+* [DIO]()
+* [Provider]()
+* [Shimmer effect]()
+* [Scope model]()
+* [Carousel slider]()
+* [Cached network image]()
+* [Flutter rating bar]()
+* [Staggered grid view]()
+* [Flutter tags]()
+* [Youtube player]()
+* [Photo view]()
+* [Shared preferences]()
+* [Custom fonts]()
+      
 # Screenshots
-
-## Splash 
-   
-   
-<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
-
 
 ## Onboarding
 
 <img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
 
+## User Profile
 
+<img src="screenshot/profile/web addicted nav.jpg" width="205">    <img src="screenshot/profile/web addicted profile.jpg" width="205"><img src="screenshot/profile/web addicted setting.jpg" width="205"><img src="screenshot/profile/web addicted exit.jpg" width="205">
 
-<img src="screenshot/widget/widget_image.png" width="205"><img src="screenshot/widget/widget_stepper.png" width="205">
+<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
 
+## Splash   
+<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
 
+## Select Favourite Movie and TV category
 
+<img src="screenshot/fav movie/web addicted fav movie1.jpg" width="205">    <img src="screenshot/fav movie/web addicted fav movie2.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv1.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv2.jpg" width="205">
 
+## Movie Poster
+<img src="screenshot/poster/web addicted poster.jpg" width="205">    <img src="screenshot/poster/web addicted poster1.jpg" width="205"><img src="screenshot/poster/web addicted poster3.jpg" width="205"><img src="screenshot/poster/web addicted poster4.jpg" width="205">
 
+## LICENSE
+```
+MIT License
 
+Copyright (c) 2020 Deepak Sharma (webaddicted)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 
 
