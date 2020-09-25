@@ -74,8 +74,10 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
 
 
+## Select Favourite Movie category
 
-<img src="screenshot/widget/widget_image.png" width="205"><img src="screenshot/widget/widget_stepper.png" width="205">
+
+<img src="screenshot/fav movie/web addicted fav movie1.jpg" width="205">    <img src="screenshot/fav movie/web addicted fav movie2.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv1.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv2.jpg" width="205">
 
 
 
