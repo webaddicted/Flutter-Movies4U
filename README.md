@@ -19,9 +19,9 @@ This is simple repository, that help in fetch latest, upcomming movies.
 [![MoviesFree4U](https://img.shields.io/badge/Moviesfree4U-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Movies4U/tree/master/apk/Moviesfree4U.apk)
 
 ## GIF
+<img src="screenshot/video/webaddicted_home.gif" width="405"> 
+<img src="screenshot/video/webaddicted_profile.gif" width="405"> 
 
-![Demo screenshot](screenshot/video/webaddicted_home.gif "gif demo")
-![Demo screenshot](screenshot/video/webaddicted_profile.gif "gif profile demo")
 
 
 ## Movie Cast and Crew
