@@ -95,6 +95,11 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 
 
+## Movie Detail
+
+
+<img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
+
 
 
 
