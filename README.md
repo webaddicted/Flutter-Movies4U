@@ -8,9 +8,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/webaddicted/Flutter-Movies4U?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/webaddicted/Flutter-Movies4U?style=social)
 
-This repository help in learning flutter. it is very help for those who want to start flutter.
-
-In this repo we cover all the basic topic which are require to work on flutter.
+This is simple repository, that help in fetch latest, upcomming movies.
 
 ## APK
 
