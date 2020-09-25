@@ -39,7 +39,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 
    * Splash Screen
-   * Onboarding Screens
+* Onboarding Screens
    * Select favourite movies 
    * Home Screen
    * Tranding movies
