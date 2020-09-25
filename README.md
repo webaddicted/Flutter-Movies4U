@@ -31,32 +31,27 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
 
-
-
-
-
 ## Cover Feature
 
-
-   * Splash Screen
+* Splash Screen
 * Onboarding Screens
-   * Select favourite movies 
-   * Home Screen
-   * Tranding movies
-   * Movies different category
-   * Popular movies
-   * Upcomming movies
-   * Tranding person of week
-   * Top rated movies
-   * Movies details
-   * Movies trailer and posters
-   * Movie cast and crew member
-   * Crew member details
-   * Movies on bases of keywords
-   * Recommendation and similar movies
-   * User Profile
-   * IMDB Rating ⭐
-   * Setting
+* Select favourite movies 
+* Home Screen
+* Tranding movies
+* Movies different category
+* Popular movies
+* Upcomming movies
+* Tranding person of week
+* Top rated movies
+* Movies details
+* Movies trailer and posters
+* Movie cast and crew member
+* Crew member details
+* Movies on bases of keywords
+* Recommendation and similar movies
+* User Profile
+* IMDB Rating ⭐
+* Setting
 
 
 ## Home
