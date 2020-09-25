@@ -20,7 +20,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ## GIF
 
-![Demo screenshot](screenshot/video/web addicted home.gif "gif demo")
+![Demo screenshot](screenshot/video/webaddicted_home.gif "gif demo")
 
 ![Demo screenshot](screenshot/video/web addicted profile.gif "gif profile demo")
 
