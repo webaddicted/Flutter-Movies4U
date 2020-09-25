@@ -16,3 +16,10 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 [![Kotlin Demo](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
 
+
+## Cover Feature
+
+
+    * Text
+    * Rich Text
+
