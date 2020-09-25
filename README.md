@@ -23,7 +23,14 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
 
-<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
+
+
+
+## Movie Category
+
+
+<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
+
 
 
 
@@ -88,20 +95,6 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 
 
-
-
-## Movie Category
-
-
-<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
-
-
-## Splash 
-   
-   
-<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
-
-
 ## Onboarding
 
 <img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
@@ -110,6 +103,18 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 
 <img src="screenshot/profile/web addicted nav.jpg" width="205">    <img src="screenshot/profile/web addicted profile.jpg" width="205"><img src="screenshot/profile/web addicted setting.jpg" width="205"><img src="screenshot/profile/web addicted exit.jpg" width="205">
+
+
+<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
+
+
+
+## Splash 
+   
+   
+<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
+
+
 
 
 ## Select Favourite Movie and TV category
