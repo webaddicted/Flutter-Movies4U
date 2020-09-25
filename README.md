@@ -59,6 +59,11 @@ This is simple repository, that help in fetch latest, upcomming movies.
    * [Photo view]()
    * [Shared preferences]()
    * [Custom fonts]()
+   
+   
+# Screeshots
+
+   * Splash and Onboarding
 
 
 
