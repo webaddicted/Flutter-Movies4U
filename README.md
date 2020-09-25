@@ -18,6 +18,15 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 [![Kotlin Demo](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
 
+## Movie Cast and Crew
+
+
+<img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
+
+<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
+
+
+
 
 ## Cover Feature
 
@@ -77,6 +86,16 @@ This is simple repository, that help in fetch latest, upcomming movies.
    
 # Screenshots
 
+
+
+
+
+## Movie Category
+
+
+<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
+
+
 ## Splash 
    
    
@@ -87,37 +106,16 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
 
-
-## Select Favourite Movie and TV category
-
-
-<img src="screenshot/fav movie/web addicted fav movie1.jpg" width="205">    <img src="screenshot/fav movie/web addicted fav movie2.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv1.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv2.jpg" width="205">
-
-
-
-## Movie Category
-
-
-<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
-
-
-
-
-
 ## User Profile
 
 
 <img src="screenshot/profile/web addicted nav.jpg" width="205">    <img src="screenshot/profile/web addicted profile.jpg" width="205"><img src="screenshot/profile/web addicted setting.jpg" width="205"><img src="screenshot/profile/web addicted exit.jpg" width="205">
 
 
+## Select Favourite Movie and TV category
 
 
-## Movie Cast and Crew
-
-
-<img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
-
-<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
+<img src="screenshot/fav movie/web addicted fav movie1.jpg" width="205">    <img src="screenshot/fav movie/web addicted fav movie2.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv1.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv2.jpg" width="205">
 
 
 
