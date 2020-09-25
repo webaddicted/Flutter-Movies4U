@@ -63,9 +63,18 @@ This is simple repository, that help in fetch latest, upcomming movies.
    
 # Screenshots
 
-   * Splash and Onboarding
+## Splash 
    
-<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    <img src="screenshot/widget/widget_text_field.png" width="205">    <img src="screenshot/widget/widget_button.png" width="205"><img src="screenshot/widget/widget_pb.png" width="205"><img src="screenshot/widget/widget_misc.png" width="205">
+   
+<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
+
+
+## Onboarding
+
+<img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
+
+
+
 <img src="screenshot/widget/widget_image.png" width="205"><img src="screenshot/widget/widget_stepper.png" width="205">
 
 
