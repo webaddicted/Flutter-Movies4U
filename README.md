@@ -7,6 +7,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/webaddicted/Flutter-Movies4U?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/webaddicted/Flutter-Movies4U?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/webaddicted/Flutter-Movies4U?style=social)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d71713560374c938dba8a476ce8debf)](https://www.codacy.com/app/webaddicted/Flutter-Movies4U)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/9d71713560374c938dba8a476ce8debf)](https://www.codacy.com/app/webaddicted/Flutter-Movies4U)
 
 This is simple repository, that help in fetch latest, upcomming movies.
 
