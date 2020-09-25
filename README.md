@@ -16,7 +16,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ***You can Install and test latest Flutter Movies app from below 👇***
 
-[![MoviesFree4U](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
+[![MoviesFree4U](https://img.shields.io/badge/Moviesfree4U-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Movies4U/tree/master/apk/Moviesfree4U.apk)
 
 ## Movie Cast and Crew
 
@@ -27,7 +27,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
 ## Cover Feature
 * Splash Screen
-*   Onboarding Screen  
+* Onboarding Screen  
 * Select favourite movie
 * Home Screen
 * Tranding movie
@@ -55,20 +55,20 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
 
 ## Cover Feature
-* [Material design]()
-* [DIO]()
-* [Provider]()
-* [Shimmer effect]()
-* [Scope model]()
-* [Carousel slider]()
-* [Cached network image]()
-* [Flutter rating bar]()
-* [Staggered grid view]()
-* [Flutter tags]()
-* [Youtube player]()
-* [Photo view]()
-* [Shared preferences]()
-* [Custom fonts]()
+* [Material design](https://flutter.dev/docs/development/ui/widgets/material)
+* [DIO](https://pub.dev/packages/dio)
+* [Provider](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple)
+* [Shimmer effect](https://pub.dev/packages/flutter_shimmer)
+* [Scope model](https://pub.dev/packages/scoped_model)
+* [Carousel slider](https://pub.dev/packages/carousel_slider)
+* [Cached network image](https://flutter.dev/docs/cookbook/images/cached-images)
+* [Flutter rating bar](https://pub.dev/packages/flutter_rating_bar)
+* [Staggered grid view](https://pub.dev/packages/flutter_staggered_grid_view)
+* [Flutter tags](https://pub.dev/packages/flutter_tags)
+* [Youtube player](https://pub.dev/packages/youtube_player_flutter)
+* [Photo view](https://pub.dev/packages/photo_view)
+* [Shared preferences](https://flutter.dev/docs/cookbook/persistence/key-value)
+* [Custom fonts](https://flutter.dev/docs/cookbook/design/fonts)
       
 # Screenshots
 
