@@ -84,7 +84,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 ## Home
 
 
-<img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
+<img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
 
 
 
