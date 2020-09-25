@@ -27,7 +27,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
 ## Cover Feature
 * Splash Screen
-* Onboarding Screens
+* Onboarding Screen
 * Select favourite movies 
 * Home Screen
 * Tranding movies
