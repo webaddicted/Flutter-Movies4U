@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/utils/global_utility.dart';
 
 class ColorConst {
+  // "63FF90"
   static Color APP_COLOR = Colors.green;
   static Color GREY_COLOR = Colors.grey;
   static Color RED_COLOR = Colors.red;

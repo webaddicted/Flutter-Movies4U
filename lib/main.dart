@@ -1,4 +1,5 @@
 import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/view/likemovie/adapt.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/assets_const.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
@@ -9,6 +10,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return getView();
   }
 

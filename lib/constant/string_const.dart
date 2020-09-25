@@ -37,6 +37,10 @@ class StringConst {
   static var DEEPAK_SHARMA = 'Deepak Sharma';
   static var WEBADDICTED = '@webaddicted';
 
+  static var MOVIE_DO_YOU_LIKE = 'What kind of movie do you like?';
+
+  static var TV_DO_YOU_LIKE = 'What kind of tv show do you like?';
+
 
 
 

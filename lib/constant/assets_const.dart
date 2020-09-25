@@ -12,6 +12,7 @@ class AssetsConst {
   static String SLIDER2_IMG = 'images/slide2.png';
   static String SLIDER3_IMG = 'images/slide3.png';
   static String SLIDER4_IMG = 'images/slide4.png';
+  static String MOVIE_ICON = 'images/movie.png';
 
   //  {END IMAGES}
 }

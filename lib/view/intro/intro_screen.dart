@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/view/likemovie/movie_like.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/utils/sp/sp_manager.dart';
@@ -114,7 +115,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     msg: 'SKIP', fontSize: 16, fontWeight: FontWeight.bold),
                 onPressed: () {
                   SPManager.setOnboarding('true');
-                  navigationPush(context, HomeScreen());
+                  navigationPush(context, MovieLikeScreen());
                 },
               ),
               FlatButton(
@@ -143,7 +144,7 @@ class _IntroScreenState extends State<IntroScreen> {
       );
     } else {
       SPManager.setOnboarding('true');
-      navigationPush(context, HomeScreen());
+      navigationPush(context, MovieLikeScreen());
     }
   }
 }
