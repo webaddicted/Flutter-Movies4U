@@ -16,7 +16,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ***You can Install and test latest Flutter Movies app from below 👇***
 
-[![MoviesFree4U](https://img.shields.io/badge/Flutter%20Demo-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Demo/tree/master/apk/FlutterDemo.apk)
+[![MoviesFree4U](https://img.shields.io/badge/Moviesfree4U-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Movies4U/tree/master/apk/Moviesfree4U.apk)
 
 ## Movie Cast and Crew
 
