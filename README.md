@@ -19,6 +19,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ## Cover Feature
 
+
    * Splash Screen
    * Onboarding Screens
    * Select favourite movies 
@@ -39,11 +40,31 @@ This is simple repository, that help in fetch latest, upcomming movies.
    * IMDB Rating ⭐
    * Setting
 
+## Cover Feature
 
 
-* 
-   * 
-   * 
-   * 
-   
+   * [Material design]()
+   * [DIO]()
+   * [Provider]()
+   * [Shimmer effect]()
+   * [Scope model]()
+   * [Carousel slider]()
+   * [Cached network image]()
+   * [Flutter rating bar]()
+   * [Staggered grid view]()
+   * [Flutter tags]()
+   * [Youtube player]()
+   * [Photo view]()
+   * [Shared preferences]()
+   * [Custom fonts]()
+
+
+
+
+
+
+
+
+
+
 
