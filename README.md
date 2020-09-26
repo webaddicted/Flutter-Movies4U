@@ -22,8 +22,8 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/video/webaddicted_home.gif" width="205"> <img src="screenshot/video/webaddicted_profile.gif" width="205">  <img src="screenshot/video/webaddicted_movie_detail.gif" width="205"> <img src="screenshot/video/webaddicted_onboarding.gif" width="205">
 
 ## Cover Feature
-* Splash Screen
-* Onboarding Screen  
+*   Splash Screen
+*   Onboarding Screen  
 *   Select favourite movie
 * Home Screen
 * Tranding movie
