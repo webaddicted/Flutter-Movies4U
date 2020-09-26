@@ -23,7 +23,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 ## Cover Feature
 *   Splash Screen
-*   Onboarding Screen  
+*   Onboarding-Screen  
 *   Select favourite movie
 * Home Screen
 * Tranding movie
