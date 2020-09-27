@@ -1,7 +1,7 @@
 import 'package:Moviesfree4U/constant/api_constant.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
-import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/view/home/home_screen.dart';
 import 'package:Moviesfree4U/view/profile_screen.dart';
 import 'package:flutter/cupertino.dart';

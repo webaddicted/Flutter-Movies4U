@@ -2,7 +2,7 @@ import 'file:///D:/AndroidStudioProjects/testing/flutter_movie_app/lib/view/like
 import 'package:Moviesfree4U/constant/assets_const.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
-import 'package:Moviesfree4U/constant/utils/widgethelper/widget_helper.dart';
+import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/view/home/home_screen.dart';
 import 'package:Moviesfree4U/view/likemovie/adapt.dart';
 import 'package:Moviesfree4U/view/likemovie/item_like.dart';
