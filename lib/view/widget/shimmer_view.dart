@@ -39,11 +39,13 @@ class ShimmerView extends StatelessWidget {
     //     break;
     // }
     if (apiName == ApiConstant.GENRES_LIST) {
-      parentHeight = 380;
+      parentHeight = MediaQuery.of(context).size.height;
       viewType = VIEW_CATEGORY;
+      // height = 150;
     } else if (apiName == StringConst.MOVIE_CAST ||
         apiName == StringConst.MOVIE_CREW ||
         apiName == StringConst.TRANDING_PERSON_OF_WEEK) {
+      parentHeight = MediaQuery.of(context).size.height;
       viewType = VIEW_GRID_PERSON;
     } else if (apiName.length > 0) {
       parentHeight = MediaQuery.of(context).size.height;
@@ -55,19 +57,17 @@ class ShimmerView extends StatelessWidget {
     // viewType = VIEW_PERSON;
     return SizedBox(
       height: parentHeight,
-      child: Expanded(
-        child: Shimmer.fromColors(
-            baseColor: Colors.grey[300],
-            highlightColor: Colors.grey[100],
-            enabled: true,
-            child: getShimmerView()),
-      ),
+      child: Shimmer.fromColors(
+          baseColor: Colors.grey[300],
+          highlightColor: Colors.grey[100],
+          enabled: true,
+          child: getShimmerView()),
     );
   }
 
   Widget getShimmerView() {
-    print("VIEW TYPE  :============================================= " +
-        viewType);
+    // print("VIEW TYPE  :============================================= " +
+    //     viewType);
     if (viewType == VIEW_CASOSAL) {
       return getCarosalShimmer(false);
     } else if (viewType == VIEW_HORIZONTAL_MOVIE_LIST) {
@@ -87,30 +87,28 @@ class ShimmerView extends StatelessWidget {
     return Container(
         margin: EdgeInsets.all(5.0),
         child: Container(
-          child: Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  child: Container(
-                    width: double.infinity,
-                    height: 180,
-                    color: Colors.white,
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                child: Container(
+                  width: double.infinity,
+                  height: 170,
+                  color: Colors.white,
                 ),
-                if (isShowTitle)
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0),
-                  ),
-                if (isShowTitle)
-                  Container(
-                    width: 150,
-                    height: 10,
-                    color: Colors.white,
-                  ),
-              ],
-            ),
+              ),
+              if (isShowTitle)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2.0),
+                ),
+              if (isShowTitle)
+                Container(
+                  width: 150,
+                  height: 10,
+                  color: Colors.white,
+                ),
+            ],
           ),
         ));
   }
@@ -118,13 +116,12 @@ class ShimmerView extends StatelessWidget {
   Widget getHorizMovieShimmer() {
     return Container(
       padding: EdgeInsets.all(5),
-      child: Expanded(
-          child: Row(
+      child: Row(
         children: [
           movieRow(height, width),
           movieRow(height, width),
         ],
-      )),
+      ),
     );
   }
 
@@ -170,14 +167,13 @@ class ShimmerView extends StatelessWidget {
   Widget getPersonHori() {
     return Container(
       padding: EdgeInsets.all(5),
-      child: Expanded(
-          child: Row(
+      child: Row(
         children: [
           getPersonRow(),
           getPersonRow(),
           getPersonRow(),
         ],
-      )),
+      ),
     );
   }
 
@@ -210,41 +206,40 @@ class ShimmerView extends StatelessWidget {
 
   Widget getPersonGrid() {
     return Container(
-      padding: EdgeInsets.all(5),
-      child: Expanded(
-          child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              getPersonRow(),
-              getPersonRow(),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              getPersonRow(),
-              getPersonRow(),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              getPersonRow(),
-              getPersonRow(),
-            ],
-          ),
-        ],
-      )),
-    );
+        padding: EdgeInsets.all(5),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                getPersonRow(),
+                getPersonRow(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                getPersonRow(),
+                getPersonRow(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                getPersonRow(),
+                getPersonRow(),
+              ],
+            ),
+          ],
+        ));
   }
 
   Widget getCategoryView() {
+    // print(
+    //     "height : " + height.toString() + "  0  : " + parentHeight.toString());
     return Container(
       padding: EdgeInsets.all(5),
-      child: Expanded(
-          child: Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
@@ -305,15 +300,14 @@ class ShimmerView extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 10.0),
           ),
         ],
-      )),
+      ),
     );
   }
 
   Widget getMovieGrid() {
     return Container(
       padding: EdgeInsets.all(5),
-      child: Expanded(
-          child: Column(
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -330,7 +324,7 @@ class ShimmerView extends StatelessWidget {
             ],
           ),
         ],
-      )),
+      ),
     );
   }
 
@@ -340,33 +334,31 @@ class ShimmerView extends StatelessWidget {
         highlightColor: Colors.grey[100],
         enabled: true,
         child: Container(
-          padding: EdgeInsets.all(5),
-          child: Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  tagRow(),
-                  SizedBox(width: 5),
-                  tagRow(),
-                  SizedBox(width: 5),
-                  tagRow(),
-                  // SizedBox(width: 5),
-                  // tagRow()
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 3.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [tagRow(), tagRow(), tagRow()],
-              ),
-            ],
-          )),
-        ));
+            padding: EdgeInsets.all(5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    tagRow(),
+                    SizedBox(width: 5),
+                    tagRow(),
+                    SizedBox(width: 5),
+                    tagRow(),
+                    // SizedBox(width: 5),
+                    // tagRow()
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [tagRow(), tagRow(), tagRow()],
+                ),
+              ],
+            )));
   }
 
   static Widget tagRow() {
@@ -398,7 +390,7 @@ class ShimmerView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 2.0),
             ),
             Container(
-              width: (size.width-50),
+              width: (size.width - 50),
               height: 10,
               color: Colors.white,
             ),
@@ -406,7 +398,7 @@ class ShimmerView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 2.0),
             ),
             Container(
-              width: (size.width-80),
+              width: (size.width - 80),
               height: 10,
               color: Colors.white,
             ),
@@ -414,7 +406,7 @@ class ShimmerView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 2.0),
             ),
             Container(
-              width: (size.width-120),
+              width: (size.width - 120),
               height: 10,
               color: Colors.white,
             ),

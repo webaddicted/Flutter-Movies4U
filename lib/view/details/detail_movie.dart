@@ -97,7 +97,6 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   }
 
   Widget _helperImage(MovieDetailsRespo data) {
-    print("==========================Image===============" + image);
     return Container(
       height: expandedHeight + 50,
       width: double.infinity,

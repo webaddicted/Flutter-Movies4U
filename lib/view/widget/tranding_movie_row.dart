@@ -157,9 +157,7 @@ Widget getMovieItemRow(
     var vote,
     Function onTap}) {
   String tag = getTitle(apiName) + img + index.toString();
-  return Container(
-    child: Expanded(
-      child: Hero(
+  return  Hero(
         tag: tag,
         child: Container(
           width: width,
@@ -229,9 +227,7 @@ Widget getMovieItemRow(
             ],
           ),
         ),
-      ),
-    ),
-  );
+      );
 }
 
 Color _getBackgrountRate(double rate) {

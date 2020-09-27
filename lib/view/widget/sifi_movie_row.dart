@@ -164,14 +164,12 @@ Widget getLargeItem(
   final size = MediaQuery.of(context).size;
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-    child: Expanded(
-        child: Column(
+    child:  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Hero(
           tag: tag,
-          child: Expanded(
-            child: Stack(
+          child: Stack(
               children: [
                 Container(
                   height: 150,
@@ -193,7 +191,6 @@ Widget getLargeItem(
                         ))),
               ],
             ),
-          ),
         ),
         SizedBox(height: 5),
         if (name != null)
@@ -202,6 +199,5 @@ Widget getLargeItem(
               child: getTxtBlackColor(
                   msg: name, fontSize: 15, fontWeight: FontWeight.w700)),
       ],
-    )),
-  );
+    ));
 }

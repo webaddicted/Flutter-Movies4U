@@ -26,7 +26,7 @@ class MovieKeyword extends StatelessWidget {
         var jsonResult = model.getMovieKeyword;
         if (jsonResult.status == ApiStatus.COMPLETED)
           return jsonResult.data.keywords.length > 0
-              ? trandingPerson(context, jsonResult.data)
+              ? movieKeyword(context, jsonResult.data)
               : Container();
         else
           return apiHandler(loading: ShimmerView.movieDetailsTag(),response: jsonResult);
@@ -34,24 +34,22 @@ class MovieKeyword extends StatelessWidget {
     );
   }
 
-  Widget trandingPerson(BuildContext context, KeywordRespo data) {
+  Widget movieKeyword(BuildContext context, KeywordRespo data) {
     return Column(
       children: <Widget>[
         SizedBox(height: 10),
         getHeading(context: context, apiName: castCrew, isShowViewAll: false),
         SizedBox(height: 8),
-        getPersonItem(context, data)
+        getKeywordItem(context, data)
       ],
     );
   }
 
-  Widget getPersonItem(BuildContext context, KeywordRespo data) {
+  Widget getKeywordItem(BuildContext context, KeywordRespo data) {
     return SizedBox(
-      child: Expanded(
-        child: Wrap(
+      child:  Wrap(
           direction: Axis.horizontal,
           children: getKeywordListings(context, data.keywords),
-        ),
       ),
     );
   }

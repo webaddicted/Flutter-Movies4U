@@ -50,11 +50,9 @@ void delay(BuildContext context, int duration, StatefulWidget route) {
 Widget apiHandler<T>({ApiResponse<T> response, Widget loading, Widget error}) {
   switch (response.status) {
     case ApiStatus.LOADING:
-      debugPrint("LOADING");
       return loading != null ? loading : Loading();
       break;
     case ApiStatus.ERROR:
-      debugPrint("ERROR");
       return error != null
           ? error
           : Error(

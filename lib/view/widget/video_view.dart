@@ -28,7 +28,7 @@ class VideoView extends StatelessWidget {
         var jsonResult = model.getMovieVideo;
         if (jsonResult.status == ApiStatus.COMPLETED)
           return jsonResult.data.results.length > 0
-              ? getTradingList(context, jsonResult.data.results)
+              ? getVideoTrailor(context, jsonResult.data.results)
               : Container();
         else
           return apiHandler(loading: ShimmerView(viewType: ShimmerView.VIEW_CASOSAL),response: jsonResult);
@@ -36,7 +36,7 @@ class VideoView extends StatelessWidget {
     );
   }
 
-  Widget getTradingList(BuildContext context, List<Results> results) {
+  Widget getVideoTrailor(BuildContext context, List<Results> results) {
     final size = MediaQuery.of(context).size;
     return Column(
       children: <Widget>[
@@ -56,14 +56,12 @@ class VideoView extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 4.0, vertical: 4.0),
-                  child: Expanded(
-                      child: Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Hero(
                         tag: getTitle(apiName) + index.toString(),
-                        child: Expanded(
-                          child: Stack(
+                        child: Stack(
                             children: [
                               Container(
                                 height: 150,
@@ -104,7 +102,6 @@ class VideoView extends StatelessWidget {
                                           }))),
                             ],
                           ),
-                        ),
                       ),
                       SizedBox(height: 5),
                       Padding(
@@ -116,7 +113,7 @@ class VideoView extends StatelessWidget {
                               fontWeight: FontWeight.w700)),
                     ],
                   )),
-                ),
+
               );
             },
           ),

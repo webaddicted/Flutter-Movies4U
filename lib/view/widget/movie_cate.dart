@@ -25,7 +25,7 @@ class MovieCate extends StatelessWidget {
         if (jsonResult.status == ApiStatus.COMPLETED)
           return getCate(context, jsonResult.data.genres);
         else
-          return apiHandler(loading: ShimmerView(viewType: ShimmerView.VIEW_CATEGORY, parentHeight:150,height: 100,width: 110 ,),response: jsonResult);
+          return apiHandler(loading: ShimmerView(viewType: ShimmerView.VIEW_HORI_PERSON, parentHeight:150,height: 100,width: 110 ,),response: jsonResult);
       },
     );
   }
