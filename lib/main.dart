@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         accentColorBrightness: Brightness.light,
         primarySwatch: ColorConst.APP_COLOR,
       ),
-      home:HomeScreen()//IntroScreen(),
+      home:IntroScreen(),
     );
   }
 }
