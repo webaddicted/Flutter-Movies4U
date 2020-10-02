@@ -1,12 +1,13 @@
 import 'package:Moviesfree4U/constant/api_constant.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
+import 'package:Moviesfree4U/model/theme_model.dart';
 import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/view/home/home_screen.dart';
 import 'package:Moviesfree4U/view/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -16,9 +17,10 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   var pushNoti = false;
   var emailNoti = true;
-
+  var darkMode = false;
   @override
   Widget build(BuildContext context) {
+  getThemeData();
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -138,6 +140,21 @@ class _SettingScreenState extends State<SettingScreen> {
             },
           ),
           getDivider(),
+          SwitchListTile(
+            title: getTxtBlackColor(
+                msg: "Dark Mode",
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: 'Turn dark mode on/off', fontSize: 15, txtColor: ColorConst.GREY_COLOR),
+            value: darkMode,
+            onChanged: (val) {
+              darkMode = !darkMode;
+              ScopedModel.of<ThemeModel>(context).setTheme(darkMode);
+              changeData();
+            },
+          ),
+          getDivider(),
           ListTile(
             title: getTxtBlackColor(
                 msg: "Exit", fontSize: 16, fontWeight: FontWeight.bold),
@@ -151,5 +168,10 @@ class _SettingScreenState extends State<SettingScreen> {
 
   void changeData() {
     setState(() {});
+  }
+
+  void getThemeData()async {
+    darkMode = ScopedModel.of<ThemeModel>(context).getTheme;
+    changeData();
   }
 }

@@ -16,7 +16,7 @@ class SPHelper {
         return sp.getDouble(key) as T;
       }
     } catch (e) {
-      print(e.toString());
+      print("SP helper : "+e.toString());
     }
     return null;
   }
@@ -25,20 +25,20 @@ class SPHelper {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       if (value is String) {
-        return sp.setString(key, value) as bool;
+        return sp.setString(key, value);
       } else if (value is bool) {
-        return sp.setBool(key, value) as bool;
+        return sp.setBool(key, value);
       } else if (value is int) {
-        return sp.setInt(key, value) as bool;
+        return sp.setInt(key, value);
       } else if (value is double) {
-        return sp.setDouble(key, value) as bool;
+        return sp.setDouble(key, value);
       } else if (value is double) {
-        return sp.setDouble(key, value) as bool;
+        return sp.setDouble(key, value);
       } else if (value is List<String>) {
-        return sp.setStringList(key, value) as bool;
+        return sp.setStringList(key, value);
       }
     } catch (e) {
-      print(e.toString());
+      print("SP helper : "+e.toString());
     }
     return null;
   }

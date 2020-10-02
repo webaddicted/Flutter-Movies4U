@@ -41,6 +41,8 @@ class StringConst {
 
   static var TV_DO_YOU_LIKE = 'What kind of tv show do you like?';
 
+  static String IS_THEME_DARK = "IS_THEME_DARK";
+
 
 
 

@@ -22,7 +22,9 @@ import 'package:flutter/material.dart';
 void navigationPush(BuildContext context, StatefulWidget route) {
   Navigator.push(context, RouteTransition(widget: route));
 }
-
+void navigationPushReplacement(BuildContext context, StatefulWidget route) {
+  Navigator.pushReplacement(context, RouteTransition(widget: route));
+}
 void navigationPop(BuildContext context, StatefulWidget route) {
   Navigator.pop(context, RouteTransition(widget: route));
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:Moviesfree4U/utils/sp/sp_manager.dart';
 import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
-import 'package:Moviesfree4U/view/home/home_screen.dart';
 import 'package:Moviesfree4U/view/intro/slide.dart';
 import 'package:Moviesfree4U/view/intro/slide_dots.dart';
 import 'package:Moviesfree4U/view/intro/slide_item.dart';
@@ -20,19 +19,6 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     super.initState();
-    //used for auto scroll
-//    Timer.periodic(Duration(seconds: 5), (Timer timer) {
-//      if (_currentPage < 2) {
-//        _currentPage++;
-//      } else {
-//        _currentPage = 0;
-//      }
-//      _pageController.animateToPage(
-//        _currentPage,
-//        duration: Duration(milliseconds: 300),
-//        curve: Curves.easeIn,
-//      );
-//    });
   }
 
   @override
@@ -48,10 +34,25 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext ctx) {
     return Scaffold(
-        body: Builder(
-      builder: (context) => _crateUi(context),
+        body: FutureBuilder(
+      future: SPManager.getOnboarding(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        // On when user first time watch screen
+        // if (!snapshot.hasData)
+          return _crateUi(context);
+        // else {
+        //   if (snapshot.data) {
+        //     SchedulerBinding.instance.addPostFrameCallback((_) {
+        //       navigationPushReplacement(ctx, MovieLikeScreen());});
+        //     return Container();
+        //   } else
+        //     return _crateUi(context);
+        // }
+      },
+
+      // builder: (context) => _crateUi(context),
     ));
   }
 
@@ -114,7 +115,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 child: getTxtBlackColor(
                     msg: 'SKIP', fontSize: 16, fontWeight: FontWeight.bold),
                 onPressed: () {
-                  SPManager.setOnboarding('true');
+                  // _setPrefValue();
                   navigationPush(context, MovieLikeScreen());
                 },
               ),
@@ -143,7 +144,7 @@ class _IntroScreenState extends State<IntroScreen> {
         curve: Curves.easeIn,
       );
     } else {
-      SPManager.setOnboarding('true');
+      SPManager.setOnboarding(true);
       navigationPush(context, MovieLikeScreen());
     }
   }

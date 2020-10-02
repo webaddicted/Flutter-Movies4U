@@ -38,7 +38,7 @@ class Results {
     int gender;
     String name;
     int id;
-    List<NowPlayResult> knownFor;
+    // List<NowPlayResult> knownFor;
     String knownForDepartment;
     String profilePath;
     double popularity;
@@ -49,7 +49,7 @@ class Results {
             this.gender,
             this.name,
             this.id,
-            this.knownFor,
+            // this.knownFor,
             this.knownForDepartment,
             this.profilePath,
             this.popularity,
@@ -60,12 +60,12 @@ class Results {
         gender = json['gender'];
         name = json['name'];
         id = json['id'];
-        if (json['known_for'] != null) {
-            knownFor = new List<NowPlayResult>();
-            json['known_for'].forEach((v) {
-                knownFor.add(new NowPlayResult.fromJson(v));
-            });
-        }
+        // if (json['known_for'] != null) {
+        //     knownFor = new List<NowPlayResult>();
+        //     json['known_for'].forEach((v) {
+        //         knownFor.add(new NowPlayResult.fromJson(v));
+        //     });
+        // }
         knownForDepartment = json['known_for_department'];
         profilePath = json['profile_path'];
         popularity = json['popularity'];
@@ -78,9 +78,9 @@ class Results {
         data['gender'] = this.gender;
         data['name'] = this.name;
         data['id'] = this.id;
-        if (this.knownFor != null) {
-            data['known_for'] = this.knownFor.map((v) => v.toJson()).toList();
-        }
+        // if (this.knownFor != null) {
+        //     data['known_for'] = this.knownFor.map((v) => v.toJson()).toList();
+        // }
         data['known_for_department'] = this.knownForDepartment;
         data['profile_path'] = this.profilePath;
         data['popularity'] = this.popularity;

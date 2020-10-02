@@ -46,7 +46,7 @@ class NowPlayResult {
     String title;
     bool video;
     dynamic vote_average;
-    int vote_count;
+    double vote_count;
 
     NowPlayResult({this.adult, this.backdrop_path, this.genre_ids, this.id, this.original_language, this.original_title, this.overview, this.popularity, this.poster_path, this.release_date, this.title, this.video, this.vote_average, this.vote_count});
 
@@ -64,8 +64,8 @@ class NowPlayResult {
             release_date: json['release_date'],
             title: json['title'],
             video: json['video'],
-            vote_average: json['vote_average'].toDouble(),
-            vote_count: json['vote_count'].toInt(),
+            vote_average: double.parse(json['vote_average'].toString()),
+            vote_count: double.parse(json['vote_count'].toString())
         );
     }
 
