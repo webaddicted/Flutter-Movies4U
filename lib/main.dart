@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               title: StringConst.APP_NAME,
               debugShowCheckedModeBanner: false,
               // darkTheme: ThemeData.light(),
-              darkTheme: !model.getTheme ? ThemeData.dark():ThemeData.light(),
+              darkTheme: model.getTheme ? ThemeData.dark():ThemeData.light(),
               theme: ThemeData(
                 fontFamily: AssetsConst.ZILLASLAB_FONT,
                 accentColor: ColorConst.APP_COLOR,
