@@ -1,7 +1,7 @@
 class NowPlayingRespo {
     Dates dates;
     int page;
-    List<Result> results;
+    List<NowPlayResult> results;
     int total_pages;
     int total_results;
 
@@ -11,7 +11,7 @@ class NowPlayingRespo {
         return NowPlayingRespo(
             dates: json['dates'] != null ? Dates.fromJson(json['dates']) : null,
             page: json['page'],
-            results: json['results'] != null ? (json['results'] as List).map((i) => Result.fromJson(i)).toList() : null,
+            results: json['results'] != null ? (json['results'] as List).map((i) => NowPlayResult.fromJson(i)).toList() : null,
             total_pages: json['total_pages'],
             total_results: json['total_results'],
         );
@@ -32,7 +32,7 @@ class NowPlayingRespo {
     }
 
 }
-class Result {
+class NowPlayResult {
     bool adult;
     String backdrop_path;
     List<int> genre_ids;
@@ -48,10 +48,10 @@ class Result {
     dynamic vote_average;
     int vote_count;
 
-    Result({this.adult, this.backdrop_path, this.genre_ids, this.id, this.original_language, this.original_title, this.overview, this.popularity, this.poster_path, this.release_date, this.title, this.video, this.vote_average, this.vote_count});
+    NowPlayResult({this.adult, this.backdrop_path, this.genre_ids, this.id, this.original_language, this.original_title, this.overview, this.popularity, this.poster_path, this.release_date, this.title, this.video, this.vote_average, this.vote_count});
 
-    factory Result.fromJson(Map<String, dynamic> json) {
-        return Result(
+    factory NowPlayResult.fromJson(Map<String, dynamic> json) {
+        return NowPlayResult(
             adult: json['adult'],
             backdrop_path: json['backdrop_path'],
             genre_ids: json['genre_ids'] != null ? new List<int>.from(json['genre_ids']) : null,

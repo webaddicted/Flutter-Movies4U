@@ -154,7 +154,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
                   imgPath: ApiConstant.IMAGE_POSTER + result.profilePath,
                   tag: tag)));
     } else if (data is NowPlayingRespo) {
-      Result item = data.results[index];
+      NowPlayResult item = data.results[index];
       return getMovieItemRow(
           context: context,
           apiName: apiName,

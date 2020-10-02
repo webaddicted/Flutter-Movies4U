@@ -110,7 +110,7 @@ class SifiMovieRow extends StatelessWidget {
                   index,
                   tag)));
     } else if (jsonResult is NowPlayingRespo) {
-      Result item = jsonResult.results[index];
+      NowPlayResult item = jsonResult.results[index];
       String tag = getTitle(apiName) + item.poster_path + index.toString();
       String img = ApiConstant.IMAGE_POSTER + item.poster_path;
       return getLargeItem(

@@ -103,7 +103,7 @@ class TrandingMovieRow extends StatelessWidget {
 
   Widget getView(BuildContext context, String apiName, jsonResult, int index) {
     if (jsonResult is NowPlayingRespo) {
-      Result item = jsonResult.results[index];
+      NowPlayResult item = jsonResult.results[index];
       return getMovieItemRow(
           context: context,
           apiName: apiName,

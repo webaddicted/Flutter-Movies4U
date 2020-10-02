@@ -1,9 +1,9 @@
+import 'package:Moviesfree4U/data/home/now_playing_respo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Moviesfree4U/data/bean/movie_respo.dart';
 
 class MovieList extends StatelessWidget {
-  final List<Movie> movieList;
+  final List<NowPlayResult> movieList;
 
   const MovieList({Key key, this.movieList}) : super(key: key);
 
@@ -22,7 +22,7 @@ class MovieList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: Image.network(
-                'https://image.tmdb.org/t/p/w342${movieList[index].posterPath}',
+                'https://image.tmdb.org/t/p/w342${movieList[index].poster_path}',
                 fit: BoxFit.fill,
               ),
             ),
