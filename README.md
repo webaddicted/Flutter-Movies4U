@@ -22,9 +22,9 @@ This is simple repository, that help in fetch latest, upcomming movies.
 <img src="screenshot/video/webaddicted_home.gif" width="205"> <img src="screenshot/video/webaddicted_profile.gif" width="205">  <img src="screenshot/video/webaddicted_movie_detail.gif" width="205"> <img src="screenshot/video/webaddicted_onboarding.gif" width="205">
 
 ## Cover Feature
-*   Splash Screen
-*   Onboarding-Screen  
-*   Select favourite movie
+* Splash Screen
+* Onboarding-Screen  
+* Select favourite movie
 * Home Screen
 * Tranding movie
 * Movies different category
@@ -41,6 +41,18 @@ This is simple repository, that help in fetch latest, upcomming movies.
 * User Profile
 * IMDB Rating ⭐
 * Setting
+
+
+### Created & Maintained By
+
+[Deepak Sharma](https://github.com/webaddicted)
+
+> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> - [PayPal](https://www.paypal.me/webaddicted/)
+
+
+
 
 ## Movie Cast and Crew
 
