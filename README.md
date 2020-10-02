@@ -18,6 +18,16 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 [![MoviesFree4U](https://img.shields.io/badge/Moviesfree4U-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/Flutter-Movies4U/tree/master/apk/Moviesfree4U.apk)
 
+
+### Created & Maintained By
+
+[Deepak Sharma](https://github.com/webaddicted)
+
+> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> - [PayPal](https://www.paypal.me/webaddicted/)
+
+
 ## GIF
 <img src="screenshot/video/webaddicted_home.gif" width="205"> <img src="screenshot/video/webaddicted_profile.gif" width="205">  <img src="screenshot/video/webaddicted_movie_detail.gif" width="205"> <img src="screenshot/video/webaddicted_onboarding.gif" width="205">
 
@@ -41,16 +51,6 @@ This is simple repository, that help in fetch latest, upcomming movies.
 * User Profile
 * IMDB Rating ⭐
 * Setting
-
-
-### Created & Maintained By
-
-[Deepak Sharma](https://github.com/webaddicted)
-
-> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
->
-> - [PayPal](https://www.paypal.me/webaddicted/)
-
 
 
 
