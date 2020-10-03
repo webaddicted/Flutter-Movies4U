@@ -54,14 +54,14 @@ class _MovieListScreenState extends State<MovieListScreen> {
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: ColorConst.BLACK_COLOR,
+          color:ColorConst.BLACK_COLOR,
         ),
         onPressed: () => Navigator.pop(context));
     return Scaffold(
         appBar: getAppBarWithBackBtn(
             ctx: context,
             title: getTitle(dynamicList != null ? dynamicList : apiName),
-            bgColor: Colors.white,
+            bgColor: ColorConst.WHITE_BG_COLOR,
             titleTag: titleTag,
             icon: homeIcon),
         body: ScopedModel(model: model, child: apiresponse()));

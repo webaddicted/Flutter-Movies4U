@@ -12,11 +12,11 @@ class ProfileScreen extends StatelessWidget {
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios, //menu,//dehaze,
-          color: ColorConst.WHITE_COLOR,
+          color: ColorConst.WHITE_ORIG_COLOR,
         ),
-        onPressed: () =>Navigator.of(_context).pop());
+        onPressed: () => Navigator.of(_context).pop());
     return Scaffold(
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: ColorConst.WHITE_BG_COLOR,
         extendBodyBehindAppBar: true,
         extendBody: true,
         appBar: AppBar(
@@ -27,11 +27,11 @@ class ProfileScreen extends StatelessWidget {
         body: Builder(
           builder: (context) => _createUi(context),
         ));
-
   }
-  Widget _createUi(BuildContext context){
+
+  Widget _createUi(BuildContext context) {
     _context = context;
-    return   SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           ProfileHeader(
@@ -41,11 +41,11 @@ class ProfileScreen extends StatelessWidget {
             subtitle: StringConst.WEBADDICTED,
             actions: <Widget>[
               MaterialButton(
-                color: Colors.white,
+                color: ColorConst.BLACK_COLOR,
                 shape: CircleBorder(),
                 elevation: 0,
-                child: Icon(Icons.edit),
-                onPressed: () =>showSnackBar(_context, 'Comming Soon'),
+                child: Icon(Icons.edit, color: ColorConst.WHITE_COLOR,),
+                onPressed: () => showSnackBar(_context, 'Comming Soon'),
               )
             ],
           ),
@@ -70,7 +70,7 @@ class UserInfo extends StatelessWidget {
             child: Text(
               "User Information",
               style: TextStyle(
-                color: Colors.black87,
+                color: ColorConst.BLACK_COLOR,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
               ),
@@ -90,34 +90,37 @@ class UserInfo extends StatelessWidget {
                         tiles: [
                           ListTile(
                             leading: Icon(Icons.email),
-                            title: getTxt(msg:"Email"),
-                            subtitle: getTxt(msg:"deepaksharma040695@gmail.com"),
+                            title: getTxt(msg: "Email"),
+                            subtitle:
+                                getTxt(msg: "deepaksharma040695@gmail.com"),
                           ),
                           ListTile(
                             leading: Icon(Icons.phone),
-                            title: getTxt(msg:"Phone"),
-                            subtitle: getTxt(msg:"+91-9924****07"),
+                            title: getTxt(msg: "Phone"),
+                            subtitle: getTxt(msg: "+91-9924****07"),
                           ),
                           ListTile(
                             leading: Icon(Icons.my_location),
-                            title: getTxt(msg:"Location"),
-                            subtitle: getTxt(msg:"Noida, India"),
+                            title: getTxt(msg: "Location"),
+                            subtitle: getTxt(msg: "Noida, India"),
                           ),
                           ListTile(
                             leading: Icon(Icons.web),
-                            title: getTxt(msg:"Website"),
-                            subtitle: getTxt(msg:"https://www.github.com/webaddicted"),
+                            title: getTxt(msg: "Website"),
+                            subtitle: getTxt(
+                                msg: "https://www.github.com/webaddicted"),
                           ),
                           ListTile(
                             leading: Icon(Icons.calendar_view_day),
-                            title: getTxt(msg:"Joined Date"),
-                            subtitle: getTxt(msg:"21 January 2016"),
+                            title: getTxt(msg: "Joined Date"),
+                            subtitle: getTxt(msg: "21 January 2016"),
                           ),
                           ListTile(
                             leading: Icon(Icons.person),
-                            title: getTxt(msg:"About Me"),
-                            subtitle: getTxt(msg:
-                                "This is a about me link and you can khow about me in this section."),
+                            title: getTxt(msg: "About Me"),
+                            subtitle: getTxt(
+                                msg:
+                                    "This is a about me link and you can khow about me in this section."),
                           ),
                         ],
                       ),
@@ -177,6 +180,7 @@ class ProfileHeader extends StatelessWidget {
             ),
           ),
         Container(
+
           width: double.infinity,
           margin: const EdgeInsets.only(top: 210),
           child: Column(
@@ -184,7 +188,7 @@ class ProfileHeader extends StatelessWidget {
               Avatar(
                 image: avatar,
                 radius: 40,
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.grey.shade300,
                 borderColor: Colors.grey.shade300,
                 borderWidth: 4.0,
               ),

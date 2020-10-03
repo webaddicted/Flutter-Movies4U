@@ -27,14 +27,15 @@ class MyApp extends StatelessWidget {
         builder: (context, _, model) => MaterialApp(
               title: StringConst.APP_NAME,
               debugShowCheckedModeBanner: false,
-              // darkTheme: ThemeData.light(),
-              darkTheme: model.getTheme ? ThemeData.dark():ThemeData.light(),
-              theme: ThemeData(
-                fontFamily: AssetsConst.ZILLASLAB_FONT,
-                accentColor: ColorConst.APP_COLOR,
-                accentColorBrightness: Brightness.light,
-                primarySwatch: ColorConst.APP_COLOR,
-              ),
+              darkTheme: ThemeData(brightness: Brightness.dark),
+              // darkTheme: model.getTheme != null ? ThemeData(brightness: Brightness.dark):ThemeData(brightness: Brightness.light),
+              // theme: ThemeData(
+              //   brightness: Brightness.light,
+              //   fontFamily: AssetsConst.ZILLASLAB_FONT,
+              //   accentColor: ColorConst.APP_COLOR,
+              //   accentColorBrightness: Brightness.light,
+              //   primarySwatch: ColorConst.APP_COLOR,
+              // ),
               home: IntroScreen(),
             ));
   }

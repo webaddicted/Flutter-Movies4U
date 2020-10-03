@@ -19,8 +19,13 @@ class _SettingScreenState extends State<SettingScreen> {
   var emailNoti = true;
   var darkMode = false;
   @override
+  void initState() {
+    super.initState();
+    darkMode = isDarkMode();
+  }
+  @override
   Widget build(BuildContext context) {
-  getThemeData();
+
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -31,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
         appBar: getAppBarWithBackBtn(
             ctx: context,
             title: StringConst.SETTING_TITLE,
-            bgColor: Colors.white,
+            bgColor: ColorConst.WHITE_BG_COLOR,
             icon: homeIcon),
         body: _createUi());
   }
@@ -170,8 +175,8 @@ class _SettingScreenState extends State<SettingScreen> {
     setState(() {});
   }
 
-  void getThemeData()async {
-    darkMode = ScopedModel.of<ThemeModel>(context).getTheme;
-    changeData();
-  }
+  // void getThemeData()async {
+  //   darkMode = ScopedModel.of<ThemeModel>(context).getTheme;
+  //   changeData();
+  // }
 }

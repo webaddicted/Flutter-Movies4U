@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -268,7 +269,7 @@ Widget getHeading(
             },
             child: getTxtColor(
                 msg: StringConst.VIEW_ALL,
-                txtColor: Colors.blue,
+                txtColor: ColorConst.APP_COLOR,
                 fontWeight: FontWeight.w800),
           )
       ],

@@ -74,7 +74,7 @@ class _PersonDetailState extends State<PersonDetail> {
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: ColorConst.WHITE_BG_COLOR,
               expandedHeight: 330.0,
               leading: homeIcon,
               floating: false,

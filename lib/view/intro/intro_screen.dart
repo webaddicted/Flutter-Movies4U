@@ -57,7 +57,7 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   Widget _crateUi(BuildContext context) {
-    Color color = ColorConst.WHITE_COLOR;
+    Color color = ColorConst.WHITE_BG_COLOR;
     // if (_currentPage == 0)
     //   color = ColorConst.SLIDER1_COLOR;
     // else if (_currentPage == 1)
@@ -91,10 +91,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         for (int i = 0; i < slideList.length; i++)
-                          if (i == _currentPage)
-                            SlideDots(true)
-                          else
-                            SlideDots(false)
+                          if (i == _currentPage) SlideDots(true)
+                          else SlideDots(false)
                       ],
                     ),
                   )

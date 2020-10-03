@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
@@ -15,7 +16,7 @@ class _CategoryMovieState extends State<CategoryMovie> {
         appBar: getAppBarWithBackBtn(
             ctx: context,
             title: StringConst.HOME_TITLE,
-            bgColor: Colors.white,),
+            bgColor: ColorConst.WHITE_BG_COLOR),
         body: _createUi());
   }
 

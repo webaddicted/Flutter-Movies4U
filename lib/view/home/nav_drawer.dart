@@ -25,7 +25,7 @@ class NavDrawer extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(left: 16.0, right: 40),
           decoration: BoxDecoration(
-              color: ColorConst.WHITE_COLOR,
+              color: ColorConst.WHITE_BG_COLOR,
               boxShadow: [BoxShadow(color: Colors.black45)]),
           width: 300,
           child: SafeArea(
@@ -66,7 +66,7 @@ class NavDrawer extends StatelessWidget {
                   getTxtColor(
                       msg: StringConst.WEBADDICTED,
                       fontSize: 16,
-                      txtColor: ColorConst.GREY_800),
+                      txtColor: ColorConst.BLACK_COLOR),
                   SizedBox(height: 30.0),
                   _buildRow(Icons.home, "Home"),
                   _buildDivider(),
@@ -114,12 +114,12 @@ class NavDrawer extends StatelessWidget {
         child: Row(children: [
           Icon(
             icon,
-            color: ColorConst.GREY_800,
+            color: ColorConst.BLACK_COLOR,
           ),
           SizedBox(width: 10.0),
           getTxtColor(
             msg: title,
-            txtColor: ColorConst.GREY_800,
+            txtColor: ColorConst.BLACK_COLOR,
             fontSize: 16,
             fontWeight: FontWeight.w600
           ),

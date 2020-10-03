@@ -5,6 +5,7 @@ import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 //  {START PAGE NAVIGATION}
 // void navigationPush(BuildContext context, StatefulWidget route) {
@@ -22,9 +23,11 @@ import 'package:flutter/material.dart';
 void navigationPush(BuildContext context, StatefulWidget route) {
   Navigator.push(context, RouteTransition(widget: route));
 }
+
 void navigationPushReplacement(BuildContext context, StatefulWidget route) {
   Navigator.pushReplacement(context, RouteTransition(widget: route));
 }
+
 void navigationPop(BuildContext context, StatefulWidget route) {
   Navigator.pop(context, RouteTransition(widget: route));
 }
@@ -309,12 +312,13 @@ String _getPlaceHolder(int placeHolderPos) {
       return AssetsConst.LOGO_IMG;
   }
 }
+
 ClipRRect loadCircleCacheImg(String url, double radius) {
   return ClipRRect(
-    borderRadius: BorderRadius.circular(radius),
-    child: getCacheImage(url:url, height:radius, width: radius)
-  );
+      borderRadius: BorderRadius.circular(radius),
+      child: getCacheImage(url: url, height: radius, width: radius));
 }
+
 Widget getCacheImage({String url, double height, double width}) {
   return CachedNetworkImage(
     fit: BoxFit.cover,
@@ -336,6 +340,7 @@ Divider getDivider() {
     height: 1,
   );
 }
+
 void showSnackBar(BuildContext context, String message) async {
   try {
     var snackbar = SnackBar(
@@ -354,3 +359,21 @@ void showSnackBar(BuildContext context, String message) async {
     print('object ' + e.toString());
   }
 }
+
+bool isDarkMode() {
+  var brightness = SchedulerBinding.instance.window.platformBrightness;
+  final isDarkMode =  brightness == Brightness.dark;
+  print("IS Dark MOde : $isDarkMode");
+  return isDarkMode;
+}
+
+// Color getColor(Color color) {
+//   if (color == ColorConst.WHITE_COLOR)
+//     return isDarkMode() ? ColorConst.BLACK_COLOR : ColorConst.WHITE_COLOR;
+//   else if (color == ColorConst.BLACK_COLOR)
+//     return isDarkMode() ? ColorConst.WHITE_COLOR : ColorConst.BLACK_COLOR;
+//   else if (color == ColorConst.WHITE_BG_COLOR)
+//     return isDarkMode() ? ColorConst.BLACK_BG_COLOR : ColorConst.WHITE_BG_COLOR;
+//   else
+//     return color;
+// }

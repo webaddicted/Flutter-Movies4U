@@ -38,6 +38,7 @@ class MovieTag extends StatelessWidget {
                 index: index,
                 // required
                 title: item.name,
+                color: ColorConst.WHITE_COLOR,
                 active: false,
                 textStyle: TextStyle(fontSize: 12),
                 elevation: 0,

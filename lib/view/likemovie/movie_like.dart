@@ -86,7 +86,7 @@ class _FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: ColorConst.WHITE_COLOR,
+        color: ColorConst.WHITE_BG_COLOR,
         child: SafeArea(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             SizedBox(height: Adapt.px(300)),
@@ -115,10 +115,11 @@ class _FirstPage extends StatelessWidget {
                         color: ColorConst.APP_COLOR,
                         borderRadius: BorderRadius.circular(30)),
                     child: Center(
-                      child: getTxtWhiteColor(
+                      child: getTxtColor(
                           msg: 'continue',
                           fontSize: 20,
-                          fontWeight: FontWeight.w700),
+                          fontWeight: FontWeight.w700,
+                          txtColor: ColorConst.WHITE_ORIG_COLOR),
                     ))),
             SizedBox(height: Adapt.px(20))
           ]),
@@ -245,11 +246,11 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                     color: const Color(0xFF202F39),
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
-                    child: getTxtWhiteColor(
+                    child: getTxtColor(
                         msg: widget.buttonTitle,
                         fontSize: 20,
                         textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w700)),
+                        fontWeight: FontWeight.w700, txtColor: ColorConst.WHITE_ORIG_COLOR)),
               )),
         ]),
         SizedBox(height: Adapt.px(20))

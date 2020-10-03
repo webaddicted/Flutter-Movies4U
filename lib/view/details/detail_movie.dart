@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/api_constant.dart';
@@ -151,7 +152,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorConst.WHITE_BG_COLOR,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(35),
           topRight: Radius.circular(25),

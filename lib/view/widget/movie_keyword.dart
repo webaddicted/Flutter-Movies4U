@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/string_const.dart';
@@ -70,7 +71,7 @@ class MovieKeyword extends StatelessWidget {
                     movieId: keywords[i].id)),
             child: Chip(
               elevation: 3.0,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorConst.WHITE_COLOR,
               label: Text(keywords[i].name),
             ),
           ),

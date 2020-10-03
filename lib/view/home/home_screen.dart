@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ColorConst.BLACK_COLOR;
     _context = context;
     var homeIcon = IconButton(
         icon: Icon(
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: getAppBarWithBackBtn(
               ctx: context,
               title: StringConst.HOME_TITLE,
-              bgColor: Colors.white,
+              bgColor: ColorConst.WHITE_BG_COLOR,
               icon: homeIcon),
           drawer: NavDrawer(),
           body: ScopedModel(model: model, child: _createUi())),
@@ -107,7 +108,7 @@ Future<bool> onWillPop(BuildContext context) async {
       builder: (_) {
         return AlertDialog(
           content: getTxtColor(
-              msg: "Are you sure you want to exit this app?", fontSize: 17, txtColor: ColorConst.GREY_800),
+              msg: "Are you sure you want to exit this app?", fontSize: 17, txtColor: ColorConst.BLACK_COLOR),
           title: getTxtBlackColor(
               msg: "Warning!", fontSize: 18, fontWeight: FontWeight.bold),
           actions: <Widget>[

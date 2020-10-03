@@ -15,9 +15,9 @@ class SPManager {
     SPHelper.setPreference(StringConst.IS_THEME_DARK, isThemeDark);
   }
 
-  static Future<T> getThemeDark<T>() async {
-    var spValue =  await SPHelper.getPreference(StringConst.IS_THEME_DARK, false);
-    return spValue as T;
+  static Future<bool> getThemeDark() async {
+    final spValue =  await SPHelper.getPreference(StringConst.IS_THEME_DARK, false);
+    return spValue;
   }
 
 

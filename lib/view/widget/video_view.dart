@@ -77,7 +77,7 @@ class VideoView extends StatelessWidget {
                               Positioned.fill(
                                 child: Icon(
                                   Icons.play_circle_outline,
-                                  color: ColorConst.WHITE_COLOR,
+                                  color: ColorConst.WHITE_ORIG_COLOR,
                                   size: 50.0,
                                 ),
                               ),
