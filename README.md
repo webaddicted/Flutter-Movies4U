@@ -84,13 +84,13 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 <img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
 
-## Movie Detail
-
-<img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
-
 ## Dark Mode
 
 <img src="screenshot/darkmode/web addicted intro.jpg" width="205">    <img src="screenshot/darkmode/web addicted home.jpg" width="205"><img src="screenshot/darkmode/web addicted navi.jpg" width="205"><img src="screenshot/darkmode/web addicted details.jpg" width="205">
+
+## Movie Detail
+
+<img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
 
 ## Onboarding
 
