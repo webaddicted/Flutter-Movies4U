@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/model/theme_model.dart';
 import 'package:Moviesfree4U/view/home/nav_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ColorConst.BLACK_COLOR;
     _context = context;
     var homeIcon = IconButton(
         icon: Icon(

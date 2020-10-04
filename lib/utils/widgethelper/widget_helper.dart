@@ -1,11 +1,13 @@
 import 'package:Moviesfree4U/constant/assets_const.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
+import 'package:Moviesfree4U/model/theme_model.dart';
 import 'package:Moviesfree4U/utils/SlideRoute.dart';
 import 'package:Moviesfree4U/utils/apiutils/api_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 //  {START PAGE NAVIGATION}
 // void navigationPush(BuildContext context, StatefulWidget route) {
@@ -359,12 +361,13 @@ void showSnackBar(BuildContext context, String message) async {
     print('object ' + e.toString());
   }
 }
-
-bool isDarkMode() {
+bool isDarkMode([BuildContext context]) {
+  // ThemeModel.isDarkTheme;
   var brightness = SchedulerBinding.instance.window.platformBrightness;
   final isDarkMode =  brightness == Brightness.dark;
-  print("IS Dark MOde : $isDarkMode");
-  return isDarkMode;
+  // print("IS Dark Mode system : $isDarkMode \n app : ${ThemeModel.dark}");
+  // ScopedModel.of<ThemeModel>(context).getTheme;
+  return isDarkMode;//appDakMode;
 }
 
 // Color getColor(Color color) {

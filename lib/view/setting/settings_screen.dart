@@ -21,7 +21,7 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   void initState() {
     super.initState();
-    darkMode = isDarkMode();
+    darkMode = isDarkMode(context);
   }
   @override
   Widget build(BuildContext context) {
@@ -155,7 +155,7 @@ class _SettingScreenState extends State<SettingScreen> {
             value: darkMode,
             onChanged: (val) {
               darkMode = !darkMode;
-              ScopedModel.of<ThemeModel>(context).setTheme(darkMode);
+              // ScopedModel.of<ThemeModel>(context).setTheme(darkMode);
               changeData();
             },
           ),

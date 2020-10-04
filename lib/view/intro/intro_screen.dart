@@ -1,3 +1,4 @@
+import 'package:Moviesfree4U/model/theme_model.dart';
 import 'package:Moviesfree4U/view/likemovie/movie_like.dart';
 import 'package:flutter/material.dart';
 import 'package:Moviesfree4U/constant/color_const.dart';
@@ -6,6 +7,7 @@ import 'package:Moviesfree4U/utils/widgethelper/widget_helper.dart';
 import 'package:Moviesfree4U/view/intro/slide.dart';
 import 'package:Moviesfree4U/view/intro/slide_dots.dart';
 import 'package:Moviesfree4U/view/intro/slide_item.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -35,6 +37,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext ctx) {
+    print("INtro : ${ThemeModel.dark}");
     return Scaffold(
         body: FutureBuilder(
       future: SPManager.getOnboarding(),
