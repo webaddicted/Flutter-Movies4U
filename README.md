@@ -51,7 +51,7 @@ This is simple repository, that help in fetch latest, upcomming movies.
 * User Profile
 * IMDB Rating ⭐
 * Setting
-
+* Dark Theme
 
 
 ## Movie Cast and Crew
