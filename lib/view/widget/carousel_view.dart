@@ -58,50 +58,53 @@ class CarouselView extends StatelessWidget {
 }
 
 Widget fullListImage({String name, String image, String tag, Function onTap}) {
-  return Container(
+  return SizedBox(
     height: 180,
-    margin: EdgeInsets.all(5.0),
-    child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        child: Stack(
-          children: <Widget>[
-            Hero(
-                tag: tag,
-                child: SizedBox(
-                  height: 180,
-                    width: double.infinity, child: getCacheImage(url:image, height: 180))),
-            Positioned(
-              bottom: 0.0,
-              left: 0.0,
-              right: 0.0,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromARGB(200, 0, 0, 0),
-                      Color.fromARGB(0, 0, 0, 0)
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
+    child: Container(
+      height: 180,
+      margin: EdgeInsets.all(5.0),
+      child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          child: Stack(
+            children: <Widget>[
+              Hero(
+                  tag: tag,
+                  child: SizedBox(
+                    height: 180,
+                      width: double.infinity, child: getCacheImage(url:image, height: 180))),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
                   ),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                child: Text(
-                  name==null?"":name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
+                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  child: Text(
+                    name==null?"":name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned.fill(
-                child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                        splashColor: Colors.redAccent, onTap: () => onTap()))),
-          ],
-        )),
+              Positioned.fill(
+                  child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                          splashColor: Colors.redAccent, onTap: () => onTap()))),
+            ],
+          )),
+    ),
   );
 }

@@ -86,7 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               SizedBox(height: 10),
               // SizedBox(height:450,child: ShimmerView.movieDetailsTag()),
-              CarouselView(),
+              SizedBox(
+                  height: 180,
+                  width: double.infinity,
+                  child: CarouselView()),
               TrandingMovieRow(apiName: ApiConstant.TRENDING_MOVIE_LIST),
               MovieCate(),
               TrandingMovieRow(apiName: ApiConstant.POPULAR_MOVIES),
