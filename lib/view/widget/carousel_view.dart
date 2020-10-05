@@ -59,6 +59,7 @@ class CarouselView extends StatelessWidget {
 
 Widget fullListImage({String name, String image, String tag, Function onTap}) {
   return Container(
+    height: 180,
     margin: EdgeInsets.all(5.0),
     child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
