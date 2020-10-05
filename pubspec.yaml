@@ -1,0 +1,51 @@
+name: moviesfree4u
+description: A new Flutter application.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  dio: ^3.0.9
+  provider: ^4.1.3
+  shimmer: ^1.1.1
+  # scoped model
+  scoped_model: ^1.0.1
+  # dependency injection
+  get_it: ^5.0.1
+  carousel_slider: ^2.2.1
+  cached_network_image: ^2.2.0+1
+  flutter_rating_bar: ^3.0.1+1
+  #  eva_icons_flutter: ^2.0.0
+  flutter_staggered_grid_view: ^0.3.0
+  flutter_tags: ^0.4.8
+  youtube_player_flutter: ^7.0.0+7
+  photo_view: ^0.10.2
+  shared_preferences: ^0.5.8
+#  font_awesome_flutter: ^8.8.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+  fonts:
+    - family: Zillaslab
+      fonts:
+        - asset: fonts/Zillaslab-bold.ttf
+        - asset: fonts/Zillaslab-light.ttf
+        - asset: fonts/Zillaslab-medium.ttf
+        - asset: fonts/Zillaslab-regular.ttf
+    - family: PT
+      fonts:
+        - asset: fonts/PT-bold.ttf
+        - asset: fonts/PT-italic.ttf
+        - asset: fonts/PT-regular.ttf
