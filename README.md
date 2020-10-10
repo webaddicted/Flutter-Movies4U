@@ -27,6 +27,8 @@ This is simple repository, that help in fetch latest, upcomming movies.
 >
 > - [PayPal](https://www.paypal.me/webaddicted/)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="60px" width="200px"/>](https://www.paypal.me/webaddicted/)
+
 ## Release 1.0 (05/OCT/2020)
 
 [Release 1.0 Download Here](https://github.com/webaddicted/Flutter-Movies4U/archive/1.0.zip.zip)
