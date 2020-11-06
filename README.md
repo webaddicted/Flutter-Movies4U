@@ -1,8 +1,7 @@
 # Moviesfree4U
 
 
-[![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23406-2CA3E6.svg?style=flat)](http://androidweekly.net/issues/issue-406)
+[![GitHub license](https://img.shields.io/badge/License-Apache-blue.svg)](LICENSE)
 ![Github Followers](https://img.shields.io/github/followers/webaddicted?label=Follow&style=social)
 ![GitHub stars](https://img.shields.io/github/stars/webaddicted/Flutter-Movies4U?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/webaddicted/Flutter-Movies4U?style=social)
