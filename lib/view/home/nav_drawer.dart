@@ -85,7 +85,7 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.settings, "Settings"),
                   _buildDivider(),
-                  _buildRow(Icons.share, "Share"),
+                  _buildRow(Icons.share, "Share App"),
                   _buildDivider(),
                   _buildRow(Icons.email, "Contact us"),
                   _buildDivider(),
@@ -185,7 +185,7 @@ class NavDrawer extends StatelessWidget {
         break;
       case "Share App":
         final RenderBox box = _context.findRenderObject();
-        Share.share('*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n\n${StringConst.PLAYSTORE_URL}',
+        Share.share('*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
             sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
         break;
         case "Contact us":

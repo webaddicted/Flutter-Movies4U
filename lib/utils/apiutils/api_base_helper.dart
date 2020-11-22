@@ -41,7 +41,7 @@ class ApiBaseHelper {
       response.statusCode = ApiRespoCode.known;
       response.statusMessage = ApiConstant.known;
     }
-    print('respo : '+response.toString());
+    // print('respo : '+response.toString());
     return response;
   }
 
