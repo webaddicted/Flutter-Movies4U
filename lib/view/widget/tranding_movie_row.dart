@@ -217,7 +217,7 @@ Widget getMovieItemRow(
                     itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                     itemBuilder: (context, _) => Icon(
                       Icons.star,
-                      color: _getBackgrountRate(vote),
+                      color: getBackgrountRate(vote),
                     ),
                     onRatingUpdate: (rating) {
                       print(rating);
@@ -231,7 +231,7 @@ Widget getMovieItemRow(
       );
 }
 
-Color _getBackgrountRate(double rate) {
+Color getBackgrountRate(double rate) {
   if (rate < 5.0) {
     return Colors.red;
   } else if (rate < 6.8) {

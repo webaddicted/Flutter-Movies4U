@@ -1,3 +1,4 @@
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -196,7 +197,24 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                 child: getTxtBlackColor(
                     msg: movieName, fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              RatingResult(movie == null ? 0 : movie.voteAverage, 12.0)
+              RatingResult(movie == null ? 0 : movie.voteAverage, 12.0),
+              SizedBox(width: 5),
+              RatingBar(
+                itemSize: 12.0,
+                initialRating: movie == null ? 0 : movie.voteAverage / 2,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: getBackgrountRate(movie == null ? 0 : movie.voteAverage),
+                ),
+                onRatingUpdate: (rating) {
+                  print(rating);
+                },
+              )
             ],
           ),
           SizedBox(height: 7),
