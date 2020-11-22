@@ -8,6 +8,7 @@ import 'package:movies4u/view/home/home_screen.dart';
 import 'package:movies4u/view/profile_screen.dart';
 import 'package:movies4u/view/setting/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class NavDrawer extends StatelessWidget {
   BuildContext _context;
@@ -83,8 +84,8 @@ class NavDrawer extends StatelessWidget {
                   _buildRow(Icons.person_pin, "Profile"),
                   _buildDivider(),
                   _buildRow(Icons.settings, "Settings"),
-                  // _buildDivider(),
-                  // _buildRow(FontA.data_usage_sharp, "Clear Data"),
+                  _buildDivider(),
+                  _buildRow(Icons.share, "Share"),
                   _buildDivider(),
                   _buildRow(Icons.email, "Contact us"),
                   _buildDivider(),
@@ -182,7 +183,12 @@ class NavDrawer extends StatelessWidget {
       case "Settings":
         navigationPush(_context, SettingScreen());
         break;
-      case "Contact us":
+      case "Share App":
+        final RenderBox box = _context.findRenderObject();
+        Share.share('*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n\n${StringConst.PLAYSTORE_URL}',
+            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        break;
+        case "Contact us":
         break;
       case "About us":
         break;
