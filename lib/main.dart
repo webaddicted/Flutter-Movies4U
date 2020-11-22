@@ -1,11 +1,9 @@
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/model/theme_model.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/assets_const.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/view/intro/intro_screen.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:movies4u/constant/assets_const.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/view/splash/splash_page.dart';
 
 void main() {
   // SPManager.getThemeDark();
@@ -45,7 +43,7 @@ class MyApp extends StatelessWidget {
               //   accentColorBrightness: Brightness.light,
               //   primarySwatch: ColorConst.APP_COLOR,
               // ),
-              home: IntroScreen(),
+              home: SplashPage(),
             // )
     );
   }

@@ -1,8 +1,8 @@
-import 'package:moviesfree4u/constant/assets_const.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/model/theme_model.dart';
-import 'package:moviesfree4u/utils/SlideRoute.dart';
-import 'package:moviesfree4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/constant/assets_const.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/model/theme_model.dart';
+import 'package:movies4u/utils/SlideRoute.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

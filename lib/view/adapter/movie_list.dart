@@ -1,4 +1,4 @@
-import 'package:moviesfree4u/data/home/now_playing_respo.dart';
+import 'package:movies4u/data/home/now_playing_respo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

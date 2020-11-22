@@ -1,13 +1,12 @@
-import 'package:moviesfree4u/model/theme_model.dart';
-import 'package:moviesfree4u/view/likemovie/movie_like.dart';
+import 'package:movies4u/model/theme_model.dart';
+import 'package:movies4u/view/likemovie/movie_like.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/utils/sp/sp_manager.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/intro/slide.dart';
-import 'package:moviesfree4u/view/intro/slide_dots.dart';
-import 'package:moviesfree4u/view/intro/slide_item.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/utils/sp/sp_manager.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/intro/slide.dart';
+import 'package:movies4u/view/intro/slide_dots.dart';
+import 'package:movies4u/view/intro/slide_item.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -145,7 +144,7 @@ class _IntroScreenState extends State<IntroScreen> {
         curve: Curves.easeIn,
       );
     } else {
-      SPManager.setOnboarding(true);
+
       navigationPush(context, MovieLikeScreen());
     }
   }

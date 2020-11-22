@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/utils/global_utility.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/utils/global_utility.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 
 class ColorConst {
   // "63FF90"

@@ -1,5 +1,5 @@
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/utils/sp/sp_helper.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/sp/sp_helper.dart';
 
 class SPManager {
   static void setOnboarding<T>(bool isOnBoardingShow) {

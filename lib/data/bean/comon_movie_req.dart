@@ -1,4 +1,4 @@
-import 'package:moviesfree4u/constant/api_constant.dart';
+import 'package:movies4u/constant/api_constant.dart';
 
 class CommonMovieReq {
   String apiKey = ApiConstant.API_KEY;

@@ -1,12 +1,12 @@
-import 'package:moviesfree4u/constant/api_constant.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/utils/widgethelper/oval-right-clipper.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/details/movie_list_screen.dart';
-import 'package:moviesfree4u/view/home/home_screen.dart';
-import 'package:moviesfree4u/view/profile_screen.dart';
-import 'package:moviesfree4u/view/setting/settings_screen.dart';
+import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/widgethelper/oval-right-clipper.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/details/movie_list_screen.dart';
+import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/profile_screen.dart';
+import 'package:movies4u/view/setting/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -83,6 +83,8 @@ class NavDrawer extends StatelessWidget {
                   _buildRow(Icons.person_pin, "Profile"),
                   _buildDivider(),
                   _buildRow(Icons.settings, "Settings"),
+                  // _buildDivider(),
+                  // _buildRow(FontA.data_usage_sharp, "Clear Data"),
                   _buildDivider(),
                   _buildRow(Icons.email, "Contact us"),
                   _buildDivider(),

@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/data/person/person_detail_respo.dart';
-import 'package:moviesfree4u/model/movie_model.dart';
-import 'package:moviesfree4u/utils/apiutils/api_response.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/widget/shimmer_view.dart';
-import 'package:moviesfree4u/view/widget/sifi_movie_row.dart';
-import 'package:moviesfree4u/view/widget/tranding_movie_row.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/data/person/person_detail_respo.dart';
+import 'package:movies4u/model/movie_model.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/widget/shimmer_view.dart';
+import 'package:movies4u/view/widget/sifi_movie_row.dart';
+import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shimmer/shimmer.dart';
 

@@ -1,13 +1,12 @@
-import 'package:moviesfree4u/constant/api_constant.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/model/theme_model.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/home/home_screen.dart';
-import 'package:moviesfree4u/view/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/sp/sp_manager.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/profile_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -18,14 +17,17 @@ class _SettingScreenState extends State<SettingScreen> {
   var pushNoti = false;
   var emailNoti = true;
   var darkMode = false;
+
+  BuildContext ctx;
+
   @override
   void initState() {
     super.initState();
     darkMode = isDarkMode(context);
   }
+
   @override
   Widget build(BuildContext context) {
-
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -38,16 +40,19 @@ class _SettingScreenState extends State<SettingScreen> {
             title: StringConst.SETTING_TITLE,
             bgColor: ColorConst.WHITE_BG_COLOR,
             icon: homeIcon),
-        body: _createUi());
+        body: Builder(builder: (_context) {
+          return _createUi(_context);
+        }));
   }
 
-  Widget _createUi() {
+  Widget _createUi(BuildContext context) {
+    ctx = context;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
           InkWell(
-            onTap: ()=>navigationStateLessPush(context, ProfileScreen()),
+            onTap: () => navigationStateLessPush(context, ProfileScreen()),
             child: Row(
               children: <Widget>[
                 Container(
@@ -117,6 +122,23 @@ class _SettingScreenState extends State<SettingScreen> {
             onTap: () {},
           ),
           getDivider(),
+          ListTile(
+            title: getTxtBlackColor(
+                msg: "Clear Data", fontSize: 16, fontWeight: FontWeight.bold),
+            subtitle: getTxtColor(
+                msg: "Start app from introduction screen",
+                fontSize: 15,
+                txtColor: ColorConst.GREY_COLOR),
+            trailing: Icon(
+              Icons.keyboard_arrow_right,
+              color: Colors.grey.shade400,
+            ),
+            onTap: () {
+              SPManager.setOnboarding(false);
+              showSnackBar(ctx, 'Data clear successfully !!');
+            },
+          ),
+          getDivider(),
           SwitchListTile(
             title: getTxtBlackColor(
                 msg: "Email Notifications",
@@ -147,11 +169,11 @@ class _SettingScreenState extends State<SettingScreen> {
           getDivider(),
           SwitchListTile(
             title: getTxtBlackColor(
-                msg: "Dark Mode",
-                fontSize: 16,
-                fontWeight: FontWeight.bold),
+                msg: "Dark Mode", fontSize: 16, fontWeight: FontWeight.bold),
             subtitle: getTxtColor(
-                msg: 'Turn dark mode on/off', fontSize: 15, txtColor: ColorConst.GREY_COLOR),
+                msg: 'Turn dark mode on/off',
+                fontSize: 15,
+                txtColor: ColorConst.GREY_COLOR),
             value: darkMode,
             onChanged: (val) {
               darkMode = !darkMode;
@@ -175,8 +197,8 @@ class _SettingScreenState extends State<SettingScreen> {
     setState(() {});
   }
 
-  // void getThemeData()async {
-  //   darkMode = ScopedModel.of<ThemeModel>(context).getTheme;
-  //   changeData();
-  // }
+// void getThemeData()async {
+//   darkMode = ScopedModel.of<ThemeModel>(context).getTheme;
+//   changeData();
+// }
 }

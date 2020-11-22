@@ -1,11 +1,12 @@
-import 'package:moviesfree4u/constant/assets_const.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/home/home_screen.dart';
-import 'package:moviesfree4u/view/likemovie/adapt.dart';
-import 'package:moviesfree4u/view/likemovie/item_like.dart';
-import 'package:moviesfree4u/view/likemovie/keepalive_widget.dart';
+import 'package:movies4u/constant/assets_const.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/sp/sp_manager.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/likemovie/adapt.dart';
+import 'package:movies4u/view/likemovie/item_like.dart';
+import 'package:movies4u/view/likemovie/keepalive_widget.dart';
 import 'package:flutter/material.dart';
 
 class MovieLikeScreen extends StatefulWidget {
@@ -73,6 +74,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
         backTapped: () => pageController.previousPage(
             duration: Duration(milliseconds: 400), curve: Curves.ease),
         nextTapped: () {
+          SPManager.setOnboarding(true);
           navigationPush(ctx, HomeScreen());
         }),
   ];
@@ -88,40 +90,56 @@ class _FirstPage extends StatelessWidget {
     return Container(
         color: ColorConst.WHITE_BG_COLOR,
         child: SafeArea(
-          child: Column( children: [
-            SizedBox(
-                width: Adapt.screenW(),
-                height: 250,//Adapt.px(500),
-                child: Image.asset(AssetsConst.MOVIE_ICON)),
-            getTxtBlackColor(
-                msg: 'welcome',
-                fontSize: 30,
-                textAlign: TextAlign.center,
-                fontWeight: FontWeight.w700),
-            SizedBox(height: Adapt.px(20)),
-            getTxtBlackColor(
-                msg: 'let start with few steps',
-                fontSize: 20,
-                textAlign: TextAlign.center,
-                fontWeight: FontWeight.w600),
-            Expanded(child: SizedBox()),
-            GestureDetector(
-                onTap: continueTapped,
-                child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: Adapt.px(40)),
-                    height: 60,
-                    decoration: BoxDecoration(
-                        color: ColorConst.APP_COLOR,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Center(
-                      child: getTxtColor(
-                          msg: 'continue',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          txtColor: ColorConst.WHITE_ORIG_COLOR),
-                    ))),
-            SizedBox(height: Adapt.px(20))
-          ]),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Container(
+                child: Column(children: [
+                  SizedBox(height: 20),
+                  SizedBox(
+                      width: 280,
+                      height: 250, //Adapt.px(500),
+                      child: Image.asset(AssetsConst.MOVIE_ICON)),
+                  getTxtBlackColor(
+                      msg: 'welcome',
+                      fontSize: 30,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w700),
+                  SizedBox(height: 5),
+                  getTxtBlackColor(
+                      msg: 'let start with few steps',
+                      fontSize: 20,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w600),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    child: getTxtBlackColor(
+                        msg: StringConst.DUMMY_TEXT_SHORT,
+                        fontSize: 16,
+                        textAlign: TextAlign.center,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(height: 100),
+                  GestureDetector(
+                      onTap: continueTapped,
+                      child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 50),
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: ColorConst.APP_COLOR,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                            child: getTxtColor(
+                                msg: 'continue',
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                txtColor: ColorConst.WHITE_ORIG_COLOR),
+                          ))),
+                  SizedBox(height: 40)
+                ]),
+              ),
+            ),
+          ),
         ));
   }
 }
@@ -249,7 +267,8 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                         msg: widget.buttonTitle,
                         fontSize: 20,
                         textAlign: TextAlign.center,
-                        fontWeight: FontWeight.w700, txtColor: ColorConst.WHITE_ORIG_COLOR)),
+                        fontWeight: FontWeight.w700,
+                        txtColor: ColorConst.WHITE_ORIG_COLOR)),
               )),
         ]),
         SizedBox(height: Adapt.px(20))

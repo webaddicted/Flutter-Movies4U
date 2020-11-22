@@ -1,14 +1,14 @@
-import 'package:moviesfree4u/constant/color_const.dart';
+import 'package:movies4u/constant/color_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/data/details/keyword_respo.dart';
-import 'package:moviesfree4u/model/movie_model.dart';
-import 'package:moviesfree4u/utils/apiutils/api_response.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/details/movie_list_screen.dart';
-import 'package:moviesfree4u/view/widget/shimmer_view.dart';
-import 'package:moviesfree4u/view/widget/tranding_movie_row.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/data/details/keyword_respo.dart';
+import 'package:movies4u/model/movie_model.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/details/movie_list_screen.dart';
+import 'package:movies4u/view/widget/shimmer_view.dart';
+import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieKeyword extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/intro/slide.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/intro/slide.dart';
 
 class SlideItem extends StatelessWidget {
   final int index;

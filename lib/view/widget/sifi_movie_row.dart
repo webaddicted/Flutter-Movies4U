@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/api_constant.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/data/details/movie_img_respo.dart';
-import 'package:moviesfree4u/data/home/now_playing_respo.dart';
-import 'package:moviesfree4u/model/movie_model.dart';
-import 'package:moviesfree4u/utils/apiutils/api_response.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/details/detail_movie.dart';
-import 'package:moviesfree4u/view/home/home_screen.dart';
-import 'package:moviesfree4u/view/widget/full_image.dart';
-import 'package:moviesfree4u/view/widget/shimmer_view.dart';
-import 'package:moviesfree4u/view/widget/tranding_movie_row.dart';
+import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/data/details/movie_img_respo.dart';
+import 'package:movies4u/data/home/now_playing_respo.dart';
+import 'package:movies4u/model/movie_model.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/details/detail_movie.dart';
+import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/widget/full_image.dart';
+import 'package:movies4u/view/widget/shimmer_view.dart';
+import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SifiMovieRow extends StatelessWidget {

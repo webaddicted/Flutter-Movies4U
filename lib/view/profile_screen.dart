@@ -1,7 +1,7 @@
-import 'package:moviesfree4u/constant/api_constant.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/constant/string_const.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {

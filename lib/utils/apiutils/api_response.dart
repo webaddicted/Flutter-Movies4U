@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:moviesfree4u/constant/api_constant.dart';
-import 'package:moviesfree4u/utils/apiutils/api_base_helper.dart';
+import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/utils/apiutils/api_base_helper.dart';
 
 class ApiResponse<T> {
   ApiStatus status;

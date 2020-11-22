@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:moviesfree4u/constant/color_const.dart';
-import 'package:moviesfree4u/data/details/video_respo.dart';
-import 'package:moviesfree4u/model/movie_model.dart';
-import 'package:moviesfree4u/utils/apiutils/api_response.dart';
-import 'package:moviesfree4u/utils/widgethelper/widget_helper.dart';
-import 'package:moviesfree4u/view/home/home_screen.dart';
-import 'package:moviesfree4u/view/widget/shimmer_view.dart';
-import 'package:moviesfree4u/view/widget/tranding_movie_row.dart';
-import 'package:moviesfree4u/view/widget/video_player.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/data/details/video_respo.dart';
+import 'package:movies4u/model/movie_model.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/widget/shimmer_view.dart';
+import 'package:movies4u/view/widget/tranding_movie_row.dart';
+import 'package:movies4u/view/widget/video_player.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:moviesfree4u/constant/api_constant.dart';
+import 'package:movies4u/constant/api_constant.dart';
 
 class ApiBaseHelper {
   Dio _dio;
