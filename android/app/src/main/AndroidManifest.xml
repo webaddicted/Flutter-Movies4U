@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webaddicted.moviesfree4u">
+    package="com.webaddicted.movies4u">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
@@ -10,10 +10,14 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="moviesfree4u"
+        android:label="movies4u"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.webaddicted.movies4u.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
