@@ -1,6 +1,6 @@
 {
-    "name": "moviesfree4u",
-    "short_name": "moviesfree4u",
+    "name": "movies4u",
+    "short_name": "movies4u",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
