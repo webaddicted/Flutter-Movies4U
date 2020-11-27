@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage>
     var isOnboardingShow = await SPManager.getOnboarding();
     Future.delayed(const Duration(seconds: 4), () {
       // if (isOnboardingShow)
-        navigationPush(context, isOnboardingShow!=null && isOnboardingShow?HomeScreen():IntroScreen());
+      navigationPushReplacement(context, isOnboardingShow!=null && isOnboardingShow?HomeScreen():IntroScreen());
       // else
       //   navigationPush(context, IntroScreen());
     });

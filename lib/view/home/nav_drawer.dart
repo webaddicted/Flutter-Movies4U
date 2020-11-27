@@ -5,6 +5,9 @@ import 'package:movies4u/utils/widgethelper/oval-right-clipper.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/details/movie_list_screen.dart';
 import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/other/feedback_screen.dart';
+import 'package:movies4u/view/other/help_screen.dart';
+import 'package:movies4u/view/other/invite_friend_screen.dart';
 import 'package:movies4u/view/profile_screen.dart';
 import 'package:movies4u/view/setting/settings_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +45,7 @@ class NavDrawer extends StatelessWidget {
                         onPressed: () => Navigator.of(_context).pop()),
                   ),
                   InkWell(
-                    onTap: ()=>_navigateOnNextScreen('Profile'),
+                    onTap: () => _navigateOnNextScreen('Profile'),
                     child: Container(
                       height: 128,
                       alignment: Alignment.center,
@@ -87,7 +90,11 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.share, "Share App"),
                   _buildDivider(),
-                  _buildRow(Icons.email, "Contact us"),
+                  _buildRow(Icons.feedback, "Feedback"),
+                  _buildDivider(),
+                  _buildRow(Icons.help, "Help us"),
+                  _buildDivider(),
+                  _buildRow(Icons.supervised_user_circle, "Invite Friend"),
                   _buildDivider(),
                   _buildRow(Icons.info_outline, "About us"),
                   _buildDivider(),
@@ -121,11 +128,10 @@ class NavDrawer extends StatelessWidget {
           ),
           SizedBox(width: 10.0),
           getTxtColor(
-            msg: title,
-            txtColor: ColorConst.BLACK_COLOR,
-            fontSize: 16,
-            fontWeight: FontWeight.w600
-          ),
+              msg: title,
+              txtColor: ColorConst.BLACK_COLOR,
+              fontSize: 16,
+              fontWeight: FontWeight.w600),
           Spacer(),
           if (showBadge)
             Material(
@@ -185,11 +191,16 @@ class NavDrawer extends StatelessWidget {
         break;
       case "Share App":
         final RenderBox box = _context.findRenderObject();
-        Share.share('*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
+        Share.share(
+            '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
             sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
         break;
-        case "Contact us":
-        break;
+      case "Feedback":
+        return navigationPush(_context, FeedbackScreen());
+      case "Help us":
+        return navigationPush(_context, HelpScreen());
+      case "Invite Friend":
+        return navigationPush(_context, InviteFriend());
       case "About us":
         break;
       case "Exit":

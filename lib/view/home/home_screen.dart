@@ -1,3 +1,4 @@
+// import 'package:in_app_update/in_app_update.dart';
 import 'package:movies4u/view/home/nav_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   BuildContext _context;
-
+  // AppUpdateInfo _updateInfo;
   @override
   void initState() {
     super.initState();
+    checkForUpdate();
     model = MovieModel();
     model.fetchNowPlaying();
     model.fetchTrandingPerson();
@@ -102,7 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+  Future<void> checkForUpdate() async {
+    // InAppUpdate.checkForUpdate().then((info) {
+    //   if(_updateInfo?.updateAvailable == true)
+    //     InAppUpdate.performImmediateUpdate().catchError((e) => print(e.toString()));
+    // }).catchError((e) =>  print(e.toString()));
+  }
 }
 Future<bool> onWillPop(BuildContext context) async {
   return showDialog<bool>(

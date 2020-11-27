@@ -2,14 +2,14 @@ import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/utils/sp/sp_helper.dart';
 
 class SPManager {
-  static void setOnboarding<T>(bool isOnBoardingShow) {
-    SPHelper.setPreference(StringConst.IS_ON_BOARDING_SHOW, isOnBoardingShow);
-  }
+    static void setOnboarding<T>(bool isOnBoardingShow) {
+      SPHelper.setPreference(StringConst.IS_ON_BOARDING_SHOW, isOnBoardingShow);
+    }
 
-  static Future<bool> getOnboarding<T>() async {
-    var spValue =  await SPHelper.getPreference(StringConst.IS_ON_BOARDING_SHOW, false);
-    return spValue;
-  }
+    static Future<bool> getOnboarding<T>() async {
+      var spValue =  await SPHelper.getPreference(StringConst.IS_ON_BOARDING_SHOW, false);
+      return spValue;
+    }
 
   static void setThemeDark<T>(bool isThemeDark) {
     SPHelper.setPreference(StringConst.IS_THEME_DARK, isThemeDark);

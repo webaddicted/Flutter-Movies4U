@@ -6,13 +6,17 @@ class AssetsConst {
 //  {END FONT FAMILY}
 
 //  {START IMAGES}
-  static const String LOGO_IMG = 'images/logo.png';
-  static const String PIZZA_IMG = 'images/pizza.jpg';
-  static String SLIDER1_IMG = 'images/slide1.png';
-  static String SLIDER2_IMG = 'images/slide2.png';
-  static String SLIDER3_IMG = 'images/slide3.png';
-  static String SLIDER4_IMG = 'images/slide4.png';
-  static String MOVIE_ICON = 'images/movie.png';
+  static const String LOGO_IMG = 'assets/images/logo.png';
+  static const String PIZZA_IMG = 'assets/images/pizza.jpg';
+  static String SLIDER1_IMG = 'assets/images/slide1.png';
+  static String SLIDER2_IMG = 'assets/images/slide2.png';
+  static String SLIDER3_IMG = 'assets/images/slide3.png';
+  static String SLIDER4_IMG = 'assets/images/slide4.png';
+  static String MOVIE_ICON = 'assets/images/movie.png';
+  static String FEEDBACK_IMG = 'assets/images/feedbackImage.png';
+  static String HELP_IMG = 'assets/images/helpImage.png';
+  static String INVITE_IMG = 'assets/images/inviteImage.png';
 
-  //  {END IMAGES}
+
+//  {END IMAGES}
 }

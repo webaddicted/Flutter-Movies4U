@@ -75,7 +75,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
             duration: Duration(milliseconds: 400), curve: Curves.ease),
         nextTapped: () {
           SPManager.setOnboarding(true);
-          navigationPush(ctx, HomeScreen());
+          navigationPushReplacement(ctx, HomeScreen());
         }),
   ];
 }

@@ -116,7 +116,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     msg: 'SKIP', fontSize: 16, fontWeight: FontWeight.bold),
                 onPressed: () {
                   // _setPrefValue();
-                  navigationPush(context, MovieLikeScreen());
+                  navigationPushReplacement(context, MovieLikeScreen());
                 },
               ),
               FlatButton(
@@ -145,7 +145,7 @@ class _IntroScreenState extends State<IntroScreen> {
       );
     } else {
 
-      navigationPush(context, MovieLikeScreen());
+      navigationPushReplacement(context, MovieLikeScreen());
     }
   }
 }

@@ -29,6 +29,9 @@ dependencies:
   shared_preferences: ^0.5.8
 #  font_awesome_flutter: ^8.8.1
   share: ^0.6.5+4
+#  in_app_update: ^1.1.12
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -36,16 +39,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/
+    - assets/images/
+    - assets/fonts/
+
   fonts:
     - family: Zillaslab
       fonts:
-        - asset: fonts/Zillaslab-bold.ttf
-        - asset: fonts/Zillaslab-light.ttf
-        - asset: fonts/Zillaslab-medium.ttf
-        - asset: fonts/Zillaslab-regular.ttf
+        - asset: assets/fonts/Zillaslab-bold.ttf
+        - asset: assets/fonts/Zillaslab-light.ttf
+        - asset: assets/fonts/Zillaslab-medium.ttf
+        - asset: assets/fonts/Zillaslab-regular.ttf
     - family: PT
       fonts:
-        - asset: fonts/PT-bold.ttf
-        - asset: fonts/PT-italic.ttf
-        - asset: fonts/PT-regular.ttf
+        - asset: assets/fonts/PT-bold.ttf
+        - asset: assets/fonts/PT-italic.ttf
+        - asset: assets/fonts/PT-regular.ttf
