@@ -30,7 +30,7 @@ dependencies:
 #  font_awesome_flutter: ^8.8.1
   share: ^0.6.5+4
 #  in_app_update: ^1.1.12
-
+  webview_flutter: ^1.0.5
 
 dev_dependencies:
   flutter_test:

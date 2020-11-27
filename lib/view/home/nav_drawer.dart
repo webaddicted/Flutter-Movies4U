@@ -5,6 +5,7 @@ import 'package:movies4u/utils/widgethelper/oval-right-clipper.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/details/movie_list_screen.dart';
 import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/other/about_us_screen.dart';
 import 'package:movies4u/view/other/feedback_screen.dart';
 import 'package:movies4u/view/other/help_screen.dart';
 import 'package:movies4u/view/other/invite_friend_screen.dart';
@@ -202,7 +203,7 @@ class NavDrawer extends StatelessWidget {
       case "Invite Friend":
         return navigationPush(_context, InviteFriend());
       case "About us":
-        break;
+        return navigationPush(_context, AboutUsScreen());
       case "Exit":
         onWillPop(_context);
         break;

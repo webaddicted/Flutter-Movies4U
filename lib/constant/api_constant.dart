@@ -40,4 +40,6 @@ class ApiConstant {
   // static var IMAGE_POSTER_300 = 'https://image.tmdb.org/t/p/w300';
 
   static var LANGUAGE = 'en-US';
+
+  static var WEB_VIEW_URL = 'https://github.com/webaddicted/';
 }
