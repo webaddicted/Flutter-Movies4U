@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '2'
+    flutterVersionCode = '3'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.1'
+    flutterVersionName = '1.2'
 }
 
 apply plugin: 'com.android.application'
@@ -39,12 +39,12 @@ android {
 
     defaultConfig {
         applicationId "com.webaddicted.movies4u"
-        versionCode 2
-        versionName '1.1'
+//        versionCode 2
+//        versionName '1.1'
         minSdkVersion 21
         targetSdkVersion 30
-//        versionCode flutterVersionCode.toInteger()
-//        versionName flutterVersionName
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
     buildTypes {
