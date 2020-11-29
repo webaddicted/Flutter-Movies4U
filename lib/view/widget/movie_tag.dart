@@ -4,7 +4,7 @@ import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/data/details/movie_details_respo.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
-import 'package:movies4u/view/details/movie_list_screen.dart';
+import 'package:movies4u/view/listing/movie_list_screen.dart';
 import 'package:movies4u/view/widget/shimmer_view.dart';
 
 class MovieTag extends StatelessWidget {

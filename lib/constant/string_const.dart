@@ -48,5 +48,7 @@ class StringConst {
 
   static String IS_THEME_DARK = "IS_THEME_DARK";
 
+  static var SEARCH_MOVIE = 'Search Movie';
+
 //  {END TITLE}
 }

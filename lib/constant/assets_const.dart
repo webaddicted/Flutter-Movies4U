@@ -17,6 +17,5 @@ class AssetsConst {
   static String HELP_IMG = 'assets/images/helpImage.png';
   static String INVITE_IMG = 'assets/images/inviteImage.png';
 
-
 //  {END IMAGES}
 }

@@ -1,28 +1,28 @@
 import 'package:movies4u/constant/api_constant.dart';
 
-class CategoryMovieReq {
+class SearchMovieReq {
   String apiKey = ApiConstant.API_KEY;
-  String catMovieId = "";
-  String page = '1';
+  String query = "";
+  String page = "1";
 
-  CategoryMovieReq.empty(String cateMovieIds, int page) {
+  SearchMovieReq.empty(String query, String page) {
     this.apiKey = ApiConstant.API_KEY;
-    this.catMovieId = cateMovieIds;
-    this.page = page.toString();
+    this.query = query;
+    this.page = page;
   }
 
-  CategoryMovieReq({this.apiKey, this.page});
+  SearchMovieReq({this.apiKey, this.page});
 
-  CategoryMovieReq.fromJson(Map<String, String> json) {
+  SearchMovieReq.fromJson(Map<String, String> json) {
     apiKey = json['api_key'];
-    catMovieId = json['with_genres'];
+    query = json['query'];
     page = json['page'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, String> data = new Map<String, String>();
     data['api_key'] = this.apiKey;
-    data['with_genres'] = this.catMovieId;
+    data['query'] = this.query;
     data['page'] = this.page;
     return data;
   }

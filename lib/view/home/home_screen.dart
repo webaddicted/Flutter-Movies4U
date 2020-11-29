@@ -7,6 +7,7 @@ import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/search/search_screen.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cate.dart';
 import 'package:movies4u/view/widget/sifi_movie_row.dart';
@@ -72,6 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ctx: context,
               title: StringConst.HOME_TITLE,
               bgColor: ColorConst.WHITE_BG_COLOR,
+              actions: [IconButton(
+                  icon: Icon(Icons.search_rounded, color: ColorConst.BLACK_COLOR,), onPressed: () => navigationPush(context, SearchScreen()))],
               icon: homeIcon),
           drawer: NavDrawer(),
           body: ScopedModel(model: model, child: _createUi())),
@@ -161,26 +164,26 @@ String getTitle(String apiName) {
   }
 }
 
-callMovieApi(String apiName, MovieModel model, {int movieId}) {
+callMovieApi(String apiName, MovieModel model, {int movieId, int page=1}) {
   switch (apiName) {
     case ApiConstant.POPULAR_MOVIES:
-      return model.fetchPopularMovie();
+      return model.fetchPopularMovie(page);
     case ApiConstant.GENRES_LIST:
       return model.fetchMovieCat();
     case ApiConstant.TRENDING_MOVIE_LIST:
-      return model.trandingMovie();
+      return model.trandingMovie(page);
     case ApiConstant.DISCOVER_MOVIE:
-      return model.discoverMovie();
+      return model.discoverMovie(page);
     case ApiConstant.UPCOMING_MOVIE:
-      return model.upcommingMovie();
+      return model.upcommingMovie(page);
     case ApiConstant.TOP_RATED:
-      return model.topRatedMovie();
+      return model.topRatedMovie(page);
     case ApiConstant.RECOMMENDATIONS_MOVIE:
-      return model.fetchRecommendMovie(movieId);
+      return model.fetchRecommendMovie(movieId, page);
     case ApiConstant.SIMILAR_MOVIES:
-      return model.fetchSimilarMovie(movieId);
+      return model.fetchSimilarMovie(movieId, page);
     case ApiConstant.SIMILAR_MOVIES:
-      return model.fetchSimilarMovie(movieId);
+      return model.fetchSimilarMovie(movieId, page);
     case StringConst.MOVIE_CAST:
     case StringConst.MOVIE_CREW:
       return model.movieCrewCast(movieId);
@@ -190,9 +193,9 @@ callMovieApi(String apiName, MovieModel model, {int movieId}) {
     case StringConst.PERSON_MOVIE_CREW:
       return model.fetchPersonMovie(movieId);
     case StringConst.MOVIE_CATEGORY:
-      return model.fetchCategoryMovie(movieId);
+      return model.fetchCategoryMovie(movieId, page);
     case StringConst.MOVIES_KEYWORDS:
-      return model.fetchKeywordMovieList(movieId);
+      return model.fetchKeywordMovieList(movieId,page);
   }
 }
 

@@ -17,6 +17,8 @@ class ApiConstant {
   static const DISCOVER_MOVIE = 'discover/movie';
   static const UPCOMING_MOVIE = 'movie/upcoming';
   static const TOP_RATED = 'movie/top_rated';
+  static const SEARCH_MOVIES = 'search/movie';
+
 
   static const MOVIE_DETAILS = 'movie/';
   static const CREDITS_CREW = '/credits';

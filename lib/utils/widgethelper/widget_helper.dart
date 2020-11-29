@@ -1,13 +1,11 @@
-import 'package:movies4u/constant/assets_const.dart';
-import 'package:movies4u/constant/color_const.dart';
-import 'package:movies4u/model/theme_model.dart';
-import 'package:movies4u/utils/SlideRoute.dart';
-import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:movies4u/constant/assets_const.dart';
+import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/utils/SlideRoute.dart';
+import 'package:movies4u/utils/apiutils/api_response.dart';
 
 //  {START PAGE NAVIGATION}
 // void navigationPush(BuildContext context, StatefulWidget route) {
@@ -29,6 +27,7 @@ void navigationPush(BuildContext context, StatefulWidget route) {
 void navigationPushReplacement(BuildContext context, Widget route) {
   Navigator.pushReplacement(context, RouteTransition(widget: route));
 }
+
 void navigationPop(BuildContext context, StatefulWidget route) {
   Navigator.pop(context, RouteTransition(widget: route));
 }
@@ -142,10 +141,12 @@ AppBar getAppBarWithBackBtn(
     Color bgColor,
     double fontSize,
     String titleTag,
-    Widget icon}) {
+    Widget icon,
+    List<Widget> actions}) {
   return AppBar(
     backgroundColor: bgColor == null ? ColorConst.APP_COLOR : bgColor,
     leading: icon,
+    actions: actions,
     centerTitle: true,
     title: Hero(
       tag: titleTag == null ? "" : titleTag,
@@ -360,13 +361,14 @@ void showSnackBar(BuildContext context, String message) async {
     print('object ' + e.toString());
   }
 }
+
 bool isDarkMode([BuildContext context]) {
   // ThemeModel.isDarkTheme;
   var brightness = SchedulerBinding.instance.window.platformBrightness;
-  final isDarkMode =  brightness == Brightness.dark;
+  final isDarkMode = brightness == Brightness.dark;
   // print("IS Dark Mode system : $isDarkMode \n app : ${ThemeModel.dark}");
   // ScopedModel.of<ThemeModel>(context).getTheme;
-  return isDarkMode;//appDakMode;
+  return isDarkMode; //appDakMode;
 }
 
 // Color getColor(Color color) {

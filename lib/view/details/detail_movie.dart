@@ -52,8 +52,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     model = MovieModel();
     model.movieDetails(movieId);
     model.movieCrewCast(movieId);
-    model.fetchRecommendMovie(movieId);
-    model.fetchSimilarMovie(movieId);
+    model.fetchRecommendMovie(movieId,1);
+    model.fetchSimilarMovie(movieId,1);
     model.keywordList(movieId);
     model.movieVideo(movieId);
     model.movieImg(movieId);

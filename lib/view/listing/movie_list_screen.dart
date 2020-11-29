@@ -41,12 +41,28 @@ class _MovieListScreenState extends State<MovieListScreen> {
   String castCrewTitle, titleTag;
   MovieModel model;
   String apiName, dynamicList;
+  List<NowPlayResult> dataResult = new List();
+  ScrollController _scrollController = new ScrollController();
+  int total_pages = 1;
+  int pageSize = 1;
 
   @override
   void initState() {
     super.initState();
     model = MovieModel();
-    callMovieApi(apiName, model, movieId: movieId);
+    callMovieApi(apiName, model, movieId: movieId, page: pageSize);
+    _scrollController.addListener(() {
+      // debugPrint(
+      //     "pixels : ${_scrollController.position
+      //         .pixels}  \n maxScrollExtent : ${_scrollController.position
+      //         .maxScrollExtent}");
+      if (_scrollController.position.pixels > 0 &&
+          _scrollController.position.pixels ==
+              _scrollController.position.maxScrollExtent) {
+        if (pageSize <= total_pages)
+          callMovieApi(apiName, model, movieId: movieId, page: pageSize);
+      }
+    });
   }
 
   @override
@@ -54,7 +70,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color:ColorConst.BLACK_COLOR,
+          color: ColorConst.BLACK_COLOR,
         ),
         onPressed: () => Navigator.pop(context));
     return Scaffold(
@@ -87,6 +103,10 @@ class _MovieListScreenState extends State<MovieListScreen> {
   }
 
   Widget _createUi(data) {
+    if(data is NowPlayingRespo){
+    pageSize++;
+    total_pages = data.total_pages;
+    dataResult.addAll(data.results);}
     final size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
@@ -103,11 +123,13 @@ class _MovieListScreenState extends State<MovieListScreen> {
               })
           : StaggeredGridView.countBuilder(
               crossAxisCount: 4,
-              itemCount: getCount(data),
+              // itemCount: getCount(data),
               //results.length,
+              controller: _scrollController,
+              itemCount:data is NowPlayingRespo? dataResult.length:getCount(data),
               itemBuilder: (BuildContext context, int index) => Padding(
                 padding: const EdgeInsets.all(6.0),
-                child: getItemView(data, index),
+                child: getItemView(data, index,dataResult:dataResult),
               ),
               staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
               mainAxisSpacing: 4.0,
@@ -135,7 +157,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
       return 1;
   }
 
-  Widget getItemView(data, int index) {
+  Widget getItemView(data, int index,{List<NowPlayResult> dataResult}) {
     if (data is CreditsCrewRespo) return getPersonDetails(data, index);
     if (data is TrandingPersonRespo) {
       var result = data.results[index];
@@ -153,8 +175,10 @@ class _MovieListScreenState extends State<MovieListScreen> {
                   name: result.name,
                   imgPath: ApiConstant.IMAGE_POSTER + result.profilePath,
                   tag: tag)));
-    } else if (data is NowPlayingRespo) {
-      NowPlayResult item = data.results[index];
+    } else if (data is NowPlayingRespo ) {
+      // NowPlayResult item = data.results[index];
+      NowPlayResult item = dataResult[index];
+
       return getMovieItemRow(
           context: context,
           apiName: apiName,

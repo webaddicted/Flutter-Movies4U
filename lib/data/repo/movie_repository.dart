@@ -4,6 +4,7 @@ import 'package:movies4u/data/bean/category_movie_req.dart';
 import 'package:movies4u/data/bean/comon_movie_req.dart';
 import 'package:movies4u/data/bean/movie_req.dart';
 import 'package:movies4u/data/bean/movie_respo.dart';
+import 'package:movies4u/data/bean/search_movie_req.dart';
 import 'package:movies4u/data/details/credits_crew_respo.dart';
 import 'package:movies4u/data/details/keyword_respo.dart';
 import 'package:movies4u/data/details/movie_details_respo.dart';
@@ -210,11 +211,28 @@ class MovieRepository {
           data: null);
     }
   }
-  fetchCategoryMovie(int catMovieId) async {
+  fetchCategoryMovie(int catMovieId, int page) async {
     try {
+      // print('object : fetchCategoryMovie');
       final response = await apiHelper.getWithParam(
           "${ApiConstant.DISCOVER_MOVIE}",
-          CategoryMovieReq.empty(catMovieId.toString()).toJson());
+          CategoryMovieReq.empty(catMovieId.toString(), page).toJson());
+      return ApiResponse.returnResponse(response,
+          NowPlayingRespo.fromJson(jsonDecode(response.toString())));
+    } catch (error, stacktrace) {
+      return ApiResponse.error(
+          errCode: ApiRespoCode.known,
+          errMsg: error.toString(),
+          errBdy: stacktrace.toString(),
+          data: null);
+    }
+  }
+
+  searchMovies(String query, int page)async {
+    try {
+      final response = await apiHelper.getWithParam(
+          "${ApiConstant.SEARCH_MOVIES}",
+          SearchMovieReq.empty(query, page.toString()).toJson());
       return ApiResponse.returnResponse(response,
           NowPlayingRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
 
 class HelpScreen extends StatefulWidget {
@@ -35,11 +36,12 @@ class _HelpScreenState extends State<HelpScreen> {
                 ),
               ),
               Container(
+                height: 250,
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).padding.top,
                     left: 16,
                     right: 16),
-                child: Image.asset('assets/images/helpImage.png'),
+                child: Image.asset(AssetsConst.HELP_IMG),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 8),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:share/share.dart';
@@ -40,11 +41,12 @@ class _InviteFriendState extends State<InviteFriend> {
                 ),
               ),
               Container(
+                height: 250,
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).padding.top,
                     left: 16,
                     right: 16),
-                child: Image.asset('assets/images/inviteImage.png'),
+                child: Image.asset(AssetsConst.INVITE_IMG),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 8),
