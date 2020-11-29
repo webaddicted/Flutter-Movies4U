@@ -18,7 +18,7 @@ import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:movies4u/view/widget/video_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shimmer/shimmer.dart';
-
+import 'package:intl/intl.dart';
 class DetailsMovieScreen extends StatefulWidget {
   final apiName;
   final tag;
@@ -238,6 +238,18 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   }
 
   Widget _contentAbout(MovieDetailsRespo _dataMovie) {
+    var relDate;
+    var budget,revenue;
+    try {
+      var inputFormat = DateFormat("yyyy-MM-dd");
+      DateTime date1 = inputFormat.parse(_dataMovie.releaseDate);
+       relDate = '${date1.day}/${date1.month}/${date1.year}';
+      budget = NumberFormat.simpleCurrency().format( _dataMovie.budget);
+      revenue = NumberFormat.simpleCurrency().format( _dataMovie.revenue);
+
+    }catch(exp){
+
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -253,11 +265,11 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               _contentDescriptionAbout('Duration',
                   '${_dataMovie != null ? _dataMovie.runtime : null} min'),
               _contentDescriptionAbout('Release Date',
-                  _dataMovie != null ? _dataMovie.releaseDate : null),
+                  _dataMovie != null ? relDate : null),
               _contentDescriptionAbout('Budget',
-                  '\$${_dataMovie != null ? _dataMovie.budget : null}'),
+                  '${_dataMovie != null ? _dataMovie.budget==0?' N/A':'${budget}' : null}'),
               _contentDescriptionAbout('Revenue',
-                  '\$${_dataMovie != null ? _dataMovie.revenue : null}'),
+                  '${_dataMovie != null ? _dataMovie.revenue==0?' N/A':'${revenue}' : null}'),
             ],
           ),
           ClipRRect(

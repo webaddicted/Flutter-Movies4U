@@ -92,6 +92,7 @@ class _FirstPage extends StatelessWidget {
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Container(
                 child: Column(children: [
                   SizedBox(height: 20),

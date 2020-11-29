@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Container(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

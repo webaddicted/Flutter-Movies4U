@@ -23,6 +23,7 @@ class _CategoryMovieState extends State<CategoryMovie> {
   Widget _createUi() {
     return Container(
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemCount: imgList.length,

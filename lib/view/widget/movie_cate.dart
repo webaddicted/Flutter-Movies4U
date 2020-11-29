@@ -40,6 +40,7 @@ class MovieCate extends StatelessWidget {
           height: 150,
           child: Container(
             child: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: genres.length,

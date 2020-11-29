@@ -32,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
   Widget _createUi(BuildContext context) {
     _context = context;
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(
         children: <Widget>[
           ProfileHeader(

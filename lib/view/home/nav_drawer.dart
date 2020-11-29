@@ -35,6 +35,7 @@ class NavDrawer extends StatelessWidget {
           width: 300,
           child: SafeArea(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 children: <Widget>[
                   Container(

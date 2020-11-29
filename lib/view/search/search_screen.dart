@@ -33,13 +33,13 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     model = MovieModel();
-    model.serachMovies(query, pageSize, true);
+    model.serachMovies(searchController.text.toString(), pageSize, true);
     super.initState();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels > 0 &&
           _scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent) {
-        if (pageSize <= total_pages) model.serachMovies(query, pageSize, false);
+        if (pageSize <= total_pages) model.serachMovies(searchController.text.toString(), pageSize, false);
       }
     });
   }
@@ -131,6 +131,7 @@ class _SearchScreenState extends State<SearchScreen> {
     dataResult.addAll(data.results);
     return Expanded(
       child: ListView.separated(
+          physics: BouncingScrollPhysics(),
           controller: _scrollController,
           itemCount: dataResult.length,
           separatorBuilder: (context, index) {

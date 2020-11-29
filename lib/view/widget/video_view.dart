@@ -46,6 +46,7 @@ class VideoView extends StatelessWidget {
         SizedBox(
           height: 190.0,
           child: ListView.builder(
+            physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: results.length,

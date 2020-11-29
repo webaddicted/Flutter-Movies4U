@@ -117,6 +117,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
       alignment: Alignment.center,
       child: data is MovieCatRespo
           ? ListView.builder(
+          physics: BouncingScrollPhysics(),
               itemCount: getCount(data),
               itemBuilder: (BuildContext context, int index) {
                 return getItemView(data, index);
@@ -125,6 +126,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
               crossAxisCount: 4,
               // itemCount: getCount(data),
               //results.length,
+        physics: BouncingScrollPhysics(),
               controller: _scrollController,
               itemCount:data is NowPlayingRespo? dataResult.length:getCount(data),
               itemBuilder: (BuildContext context, int index) => Padding(

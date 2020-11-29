@@ -56,6 +56,7 @@ class TrandingPerson extends StatelessWidget {
     return Container(
       height: 150.0,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: persons.length,
         itemBuilder: (context, index) {

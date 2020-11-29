@@ -62,6 +62,7 @@ class TrandingMovieRow extends StatelessWidget {
         SizedBox(
           height: 240.0,
           child: ListView.builder(
+            physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: getCount(jsonResult), //results.length,

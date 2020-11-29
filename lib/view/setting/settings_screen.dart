@@ -48,6 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget _createUi(BuildContext context) {
     ctx = context;
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       padding: const EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[

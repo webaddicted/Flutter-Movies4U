@@ -58,6 +58,7 @@ class MovieCastCrew extends StatelessWidget {
     return Container(
       height: 150.0,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: castCrew == StringConst.MOVIE_CAST
             ? results.cast.length

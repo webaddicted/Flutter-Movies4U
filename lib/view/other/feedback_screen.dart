@@ -22,6 +22,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           // backgroundColor: AppTheme.nearlyWhite,
 
           body: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Column(
@@ -135,6 +136,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             constraints: const BoxConstraints(minHeight: 80, maxHeight: 160),
             // color: AppTheme.white,
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               padding:
                   const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
               child: TextField(
