@@ -165,32 +165,32 @@ Widget getMovieItemRow(
           width: width,
           child: Column(
             children: <Widget>[
-              Stack(
-                children: [
-                  SizedBox(
+            SizedBox(
                     height: height,
                     child: ClipRRect(
-                      child: getCacheImage(
-                          url:ApiConstant.IMAGE_POSTER + img.toString(), height: height),
+                      child: Stack(
+                        children: [
+                          getCacheImage(
+                              url:ApiConstant.IMAGE_POSTER + img.toString(), height: height),
+                          Positioned.fill(
+                              child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                      splashColor: ColorConst.SPLASH_COLOR,
+                                      onTap: () {
+                                        if (onTap != null) {
+                                          onTap();
+                                        } else
+                                          navigationPush(
+                                              context,
+                                              DetailsMovieScreen(
+                                                  name, ApiConstant.IMAGE_POSTER+img,apiName, index, id, tag));
+                                      }))),
+                        ],
+                      ),
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                  Positioned.fill(
-                      child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                              splashColor: Colors.redAccent,
-                              onTap: () {
-                                if (onTap != null) {
-                                  onTap();
-                                } else
-                                  navigationPush(
-                                      context,
-                                      DetailsMovieScreen(
-                                          name, ApiConstant.IMAGE_POSTER+img,apiName, index, id, tag));
-                              }))),
-                ],
-              ),
               Align(
                   alignment: Alignment.topLeft,
                   child: getTxtBlackColor(

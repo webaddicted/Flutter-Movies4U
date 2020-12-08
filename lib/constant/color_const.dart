@@ -29,7 +29,7 @@ class ColorConst {
   static Color SLIDER3_COLOR = colorFromHex("#3395ff");
   static Color SLIDER4_COLOR = colorFromHex("#c873f4");
   static Color GREY_SHADE = Colors.grey.shade400;
-
+  static Color  SPLASH_COLOR = Colors.redAccent;
 
   static Color CIRCLE_FADE1 = colorFromHex('#9BCCFFFF');
   static Color CIRCLE_FADE2 = colorFromHex('#ACCCE6FF');

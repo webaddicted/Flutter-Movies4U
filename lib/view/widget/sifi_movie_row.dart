@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/data/details/movie_img_respo.dart';
 import 'package:movies4u/data/home/now_playing_respo.dart';
@@ -121,7 +122,9 @@ class SifiMovieRow extends StatelessWidget {
           screenSpace: 80,
           tag: tag,
           onTap: () => navigationPush(
-              context, DetailsMovieScreen(item.original_title,img,apiName, index, item.id, tag)));
+              context,
+              DetailsMovieScreen(
+                  item.original_title, img, apiName, index, item.id, tag)));
     } else
       Container(child: getTxt(msg: StringConst.NO_DATA_FOUND));
   }
@@ -164,41 +167,40 @@ Widget getLargeItem(
     Function onTap}) {
   final size = MediaQuery.of(context).size;
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-    child:  Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Hero(
-          tag: tag,
-          child: Stack(
-              children: [
-                Container(
-                  height: 150,
-                  width: size.width - screenSpace,
-                  child: ClipRRect(
-                    child: Image.network(
-                      img,
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
+      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Hero(
+            tag: tag,
+            child: Container(
+              height: 150,
+              width: size.width - screenSpace,
+              child: ClipRRect(
+                child: Stack(children: [
+                  Image.network(
+                    img,
+                    fit: BoxFit.cover,
+                    width: size.width - screenSpace,
                   ),
-                ),
-                Positioned.fill(
-                    child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          splashColor: Colors.redAccent,
-                          onTap: () => onTap(),
-                        ))),
-              ],
+                  Positioned.fill(
+                      child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            splashColor: ColorConst.SPLASH_COLOR,
+                            onTap: () => onTap(),
+                          ))),
+                ]),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-        ),
-        SizedBox(height: 5),
-        if (name != null)
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: getTxtBlackColor(
-                  msg: name, fontSize: 15, fontWeight: FontWeight.w700)),
-      ],
-    ));
+          ),
+          SizedBox(height: 5),
+          if (name != null)
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: getTxtBlackColor(
+                    msg: name, fontSize: 15, fontWeight: FontWeight.w700)),
+        ],
+      ));
 }

@@ -129,16 +129,22 @@ Widget castCrewItem(
                 )
               : Hero(
                   tag: tag,
-                  child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: new BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: new DecorationImage(
-                            fit: BoxFit.cover,
-                            image:
-                                NetworkImage(ApiConstant.IMAGE_POSTER + image)),
-                      )),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                      child: Stack(
+                        children: [
+                          loadCircleCacheImg(ApiConstant.IMAGE_POSTER + image, 80),
+                         Positioned.fill(
+                                  child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                          splashColor: ColorConst.SPLASH_COLOR,
+                                          onTap: () {
+                                            onTap(id);
+                                          }))),
+                        ],
+                      ),
+                    ),
                 ),
           SizedBox(height: 5.0),
           getTxtBlackColor(

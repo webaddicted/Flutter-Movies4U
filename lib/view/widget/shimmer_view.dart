@@ -269,36 +269,36 @@ class ShimmerView extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 2.0),
-          ),
-          Container(
-            width: 280,
-            height: 8,
-            color: Colors.white,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Container(
-              width: double.infinity,
-              height: height,
-              color: Colors.white,
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 2.0),
-          ),
-          Container(
-            width: 280,
-            height: 8,
-            color: Colors.white,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 2.0),
+          // ),
+          // Container(
+          //   width: 280,
+          //   height: 8,
+          //   color: Colors.white,
+          // ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 10.0),
+          // ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.circular(5),
+          //   child: Container(
+          //     width: double.infinity,
+          //     height: height,
+          //     color: Colors.white,
+          //   ),
+          // ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 2.0),
+          // ),
+          // Container(
+          //   width: 280,
+          //   height: 8,
+          //   color: Colors.white,
+          // ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 10.0),
+          // ),
         ],
       ),
     );

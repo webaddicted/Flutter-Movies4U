@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/data/home/movie_cat_respo.dart';
 import 'package:movies4u/model/movie_model.dart';
@@ -59,31 +60,26 @@ class MovieCate extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
-            Stack(
-              children: <Widget>[
-                loadCircleCacheImg(getCategoryMovie()[index], 100),
-                // ClipRRect(
-                //   borderRadius: BorderRadius.circular(100),
-                //   child: Container(
-                //     height: 100,
-                //     width: 100,
-                //     color: ColorConst.BLACK_FADE,
-                //   ),
-                // ),
-                Positioned.fill(
-                    child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                            splashColor: Colors.redAccent,
-                            onTap: () {
-                              navigationPush(
-                                  context,
-                                  MovieListScreen(
-                                      apiName: StringConst.MOVIE_CATEGORY,
-                                      dynamicList: item.name,
-                                      movieId: item.id));
-                            }))),
-              ],
+            ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(100.0)),
+              child: Stack(
+                children: [
+                  loadCircleCacheImg(getCategoryMovie()[index], 100),
+                  Positioned.fill(
+                      child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                              splashColor: ColorConst.SPLASH_COLOR,
+                              onTap: () {
+                                navigationPush(
+                                    context,
+                                    MovieListScreen(
+                                        apiName: StringConst.MOVIE_CATEGORY,
+                                        dynamicList: item.name,
+                                        movieId: item.id));
+                              }))),
+                ],
+              ),
             ),
             getTxtBlackColor(msg: item.name, fontWeight: FontWeight.w700)
           ],

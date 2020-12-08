@@ -82,7 +82,7 @@ class _FullImageState extends State<FullImage> {
         child: PhotoViewGallery.builder(
       scrollPhysics: const BouncingScrollPhysics(),
       builder: (BuildContext context, int indexss) {
-        String imgurl = ApiConstant.IMAGE_POSTER + urls[indexss].filePath;
+        String imgurl = 'https://image.tmdb.org/t/p/original' + urls[indexss].filePath;
         return PhotoViewGalleryPageOptions(
           imageProvider: CachedNetworkImageProvider(imgurl),
           minScale: PhotoViewComputedScale.contained * 0.8,

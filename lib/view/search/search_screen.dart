@@ -192,7 +192,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Material(
                           color: Colors.transparent,
                           child: InkWell(
-                              splashColor: Colors.redAccent,
+                              splashColor: ColorConst.SPLASH_COLOR,
                               onTap: () {
                                 navigationPush(
                                     context,

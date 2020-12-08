@@ -80,16 +80,18 @@ class _MovieListScreenState extends State<MovieListScreen> {
             bgColor: ColorConst.WHITE_BG_COLOR,
             titleTag: titleTag,
             icon: homeIcon),
-        body: ScopedModel(model: model, child: apiresponse()));
+        body: OrientationBuilder(
+            builder: (context, orientation) =>
+                ScopedModel(model: model, child: apiresponse(orientation))));
   }
 
-  Widget apiresponse() {
+  Widget apiresponse(Orientation orientation) {
     return ScopedModelDescendant<MovieModel>(
       builder: (context, _, model) {
         var jsonResult = getData(apiName, model);
         if (jsonResult.status == ApiStatus.COMPLETED) {
           return getCount(jsonResult.data) > 0
-              ? _createUi(jsonResult.data)
+              ? _createUi(jsonResult.data, orientation)
               : Container();
         } else
           return apiHandler(
@@ -102,14 +104,17 @@ class _MovieListScreenState extends State<MovieListScreen> {
     );
   }
 
-  Widget _createUi(data) {
-    if(data is NowPlayingRespo){
-    pageSize++;
-    total_pages = data.total_pages;
-    dataResult.addAll(data.results);}
+  Widget _createUi(data, Orientation orientation) {
+    if (data is NowPlayingRespo) {
+      pageSize++;
+      total_pages = data.total_pages;
+      dataResult.addAll(data.results);
+    }
     final size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
+
+    int columnCount = orientation == Orientation.portrait ? data is NowPlayingRespo?2:3 : data is NowPlayingRespo?4:4;
     return Container(
 //      width: double.infinity,
 //      height: double.infinity,
@@ -117,25 +122,24 @@ class _MovieListScreenState extends State<MovieListScreen> {
       alignment: Alignment.center,
       child: data is MovieCatRespo
           ? ListView.builder(
-          physics: BouncingScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               itemCount: getCount(data),
               itemBuilder: (BuildContext context, int index) {
                 return getItemView(data, index);
               })
           : StaggeredGridView.countBuilder(
-              crossAxisCount: 4,
-              // itemCount: getCount(data),
-              //results.length,
-        physics: BouncingScrollPhysics(),
+              crossAxisCount: columnCount,
+              mainAxisSpacing: 1.0,
+              crossAxisSpacing: 1.0,
+              staggeredTileBuilder: (int index) => StaggeredTile.extent(1, data is NowPlayingRespo?290:128),
+              physics: BouncingScrollPhysics(),
               controller: _scrollController,
-              itemCount:data is NowPlayingRespo? dataResult.length:getCount(data),
+              itemCount:
+                  data is NowPlayingRespo ? dataResult.length : getCount(data),
               itemBuilder: (BuildContext context, int index) => Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: getItemView(data, index,dataResult:dataResult),
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: getItemView(data, index, dataResult: dataResult),
               ),
-              staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0,
             ),
     ));
   }
@@ -159,83 +163,89 @@ class _MovieListScreenState extends State<MovieListScreen> {
       return 1;
   }
 
-  Widget getItemView(data, int index,{List<NowPlayResult> dataResult}) {
-    if (data is CreditsCrewRespo) return getPersonDetails(data, index);
-    if (data is TrandingPersonRespo) {
-      var result = data.results[index];
-      var tag = apiName + 'tranding' + index.toString();
-      return castCrewItem(
-          id: result.id,
-          name: result.name,
-          tag: tag,
-          image: result.profilePath,
-          job: result.knownForDepartment,
-          onTap: (int id) => navigationPush(
-              context,
-              PersonDetail(
-                  id: id,
-                  name: result.name,
-                  imgPath: ApiConstant.IMAGE_POSTER + result.profilePath,
-                  tag: tag)));
-    } else if (data is NowPlayingRespo ) {
-      // NowPlayResult item = data.results[index];
-      NowPlayResult item = dataResult[index];
-
-      return getMovieItemRow(
-          context: context,
-          apiName: apiName,
-          index: index,
-          height: 240,
-          width: 135,
-          id: item.id,
-          img: item.poster_path,
-          name: item.original_title,
-          vote: item.vote_average);
-    } else if (apiName == StringConst.PERSON_MOVIE_CAST &&
-        data is PersonMovieRespo) {
-      PersonCast item = data.cast[index];
-      return getMovieItemRow(
-          context: context,
-          apiName: apiName,
-          index: index,
-          height: 240,
-          width: 135,
-          id: item.id,
-          img: item.posterPath,
-          name: item.originalTitle,
-          vote: item.voteAverage);
-    } else if (apiName == StringConst.PERSON_MOVIE_CREW &&
-        data is PersonMovieRespo) {
-      PersonCrew item = data.crew[index];
-      return getMovieItemRow(
-          context: context,
-          apiName: apiName,
-          index: index,
-          height: 240,
-          width: 135,
-          id: item.id,
-          img: item.posterPath,
-          name: item.originalTitle,
-          vote: item.voteAverage);
-    } else if (apiName == ApiConstant.GENRES_LIST && data is MovieCatRespo) {
-      Genres item = data.genres[index];
-      String tag = getTitle(apiName) + item.name + index.toString();
-      return fullListImage(
-          name: item.name,
-          image: getCategoryMovie()[index],
-          tag: tag,
-          onTap: () {
-            navigationPush(
+  Widget getItemView(data, int index, {List<NowPlayResult> dataResult}) {
+    try {
+      if (data is CreditsCrewRespo) return getPersonDetails(data, index);
+      if (data is TrandingPersonRespo) {
+        var result = data.results[index];
+        var tag = apiName + 'tranding' + index.toString();
+        return castCrewItem(
+            id: result.id,
+            name: result.name,
+            tag: tag,
+            image: result.profilePath,
+            job: result.knownForDepartment,
+            onTap: (int id) => navigationPush(
                 context,
-                MovieListScreen(
-                    apiName: StringConst.MOVIE_CATEGORY,
-                    dynamicList: item.name,
-                    movieId: item.id));
-          });
-    } else
-      Container(
-        child: getTxt(msg: 'Data not found'),
-      );
+                PersonDetail(
+                    id: id,
+                    name: result.name,
+                    imgPath: ApiConstant.IMAGE_POSTER + result.profilePath,
+                    tag: tag)));
+      } else if (data is NowPlayingRespo) {
+        // NowPlayResult item = data.results[index];
+        NowPlayResult item = dataResult[index];
+
+        return getMovieItemRow(
+            context: context,
+            apiName: apiName,
+            index: index,
+            height: 250,
+            width: 135,
+            id: item.id,
+            img: item.poster_path,
+            name: item.original_title,
+            vote: item.vote_average);
+      } else if (apiName == StringConst.PERSON_MOVIE_CAST &&
+          data is PersonMovieRespo) {
+        PersonCast item = data.cast[index];
+        return getMovieItemRow(
+            context: context,
+            apiName: apiName,
+            index: index,
+            height: 240,
+            width: 135,
+            id: item.id,
+            img: item.posterPath,
+            name: item.originalTitle,
+            vote: item.voteAverage);
+      } else if (apiName == StringConst.PERSON_MOVIE_CREW &&
+          data is PersonMovieRespo) {
+        PersonCrew item = data.crew[index];
+        return getMovieItemRow(
+            context: context,
+            apiName: apiName,
+            index: index,
+            height: 240,
+            width: 135,
+            id: item.id,
+            img: item.posterPath,
+            name: item.originalTitle,
+            vote: item.voteAverage);
+      } else if (apiName == ApiConstant.GENRES_LIST && data is MovieCatRespo) {
+        Genres item = data.genres[index];
+        String tag = getTitle(apiName) + item.name + index.toString();
+        return fullListImage(
+            name: item.name,
+            image: getCategoryMovie()[index],
+            tag: tag,
+            onTap: () {
+              navigationPush(
+                  context,
+                  MovieListScreen(
+                      apiName: StringConst.MOVIE_CATEGORY,
+                      dynamicList: item.name,
+                      movieId: item.id));
+            });
+      } else
+        Container(
+          child: getTxt(msg: 'Data not found'),
+        );
+    } catch (ex) {
+      return Card(
+          clipBehavior: Clip.antiAlias,
+          color: ColorConst.GREY_SHADE);
+    }
   }
 
   Widget getPersonDetails(CreditsCrewRespo results, int index) {

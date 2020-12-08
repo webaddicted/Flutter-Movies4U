@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/data/home/now_playing_respo.dart';
 import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
@@ -102,7 +103,7 @@ Widget fullListImage({String name, String image, String tag, Function onTap}) {
                   child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                          splashColor: Colors.redAccent, onTap: () => onTap()))),
+                          splashColor: ColorConst.SPLASH_COLOR, onTap: () => onTap()))),
             ],
           )),
     ),

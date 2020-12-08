@@ -13,7 +13,7 @@ class ApiBaseHelper {
         connectTimeout: ApiConstant.TIME_OUT);
     options.baseUrl = ApiConstant.BASE_URL;
     _dio = Dio(options);
-    _dio.interceptors.add(LogInterceptor());
+    // _dio.interceptors.add(LogInterceptor());
   }
 
   Future<Response<dynamic>> get(String url) async {
@@ -41,7 +41,7 @@ class ApiBaseHelper {
       response.statusCode = ApiRespoCode.known;
       response.statusMessage = ApiConstant.known;
     }
-    print('respo : '+response.toString());
+    // print('respo : '+response.toString());
     return response;
   }
 
