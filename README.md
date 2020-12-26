@@ -41,7 +41,7 @@ This release cover following feature :
 
 
 ## GIF
-<img src="screenshot/video/webaddicted_home.gif" width="205"> <img src="screenshot/video/webaddicted_profile.gif" width="205">  <img src="screenshot/video/webaddicted_movie_detail.gif" width="205"> <img src="screenshot/video/webaddicted_onboarding.gif" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/tree/main/movies4u/video/webaddicted_home.gif" width="205"> <img src="https://github.com/webaddicted/LocalFiles/tree/main/movies4u/video/webaddicted_profile.gif" width="205">  <img src="https://github.com/webaddicted/LocalFiles/tree/main/movies4u/video/webaddicted_movie_detail.gif" width="205"> <img src="https://github.com/webaddicted/LocalFiles/tree/main/movies4u/video/webaddicted_onboarding.gif" width="205">
 
 ## Cover Feature
 * Splash Screen
