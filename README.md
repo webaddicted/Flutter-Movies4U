@@ -26,9 +26,9 @@ This is simple repository, that help in fetch latest, upcomming movies.
 
 > If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
 >
-> - [PayPal](https://www.paypal.me/webaddicted/)
+> - ##[PayPal](https://www.paypal.me/webaddicted/)
 
-[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="60px" width="200px"/>](https://www.paypal.me/webaddicted/)
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="60px" width="200px"/>](https://www.buymeacoffee.com/webaddicted)
 
 ## Release 1.0 (05/OCT/2020)
 
