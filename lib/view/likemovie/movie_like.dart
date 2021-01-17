@@ -8,6 +8,7 @@ import 'package:movies4u/view/likemovie/adapt.dart';
 import 'package:movies4u/view/likemovie/item_like.dart';
 import 'package:movies4u/view/likemovie/keepalive_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class MovieLikeScreen extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
   static PageController pageController = new PageController();
 
   static BuildContext ctx;
+
 
   @override
   void initState() {
@@ -45,7 +47,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
   }
 
   Widget _buildPage(Widget page) {
-    return KeepAliveWidget(page);
+      return KeepAliveWidget(page);
   }
 
   final pages = [
@@ -71,12 +73,14 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
         tag: 'tvshow_',
         isMovie: false,
         genres: _tvGenres,
+
         backTapped: () => pageController.previousPage(
             duration: Duration(milliseconds: 400), curve: Curves.ease),
         nextTapped: () {
           SPManager.setOnboarding(true);
           navigationPushReplacement(ctx, HomeScreen());
-        }),
+        },
+      ),
   ];
 }
 
@@ -168,7 +172,9 @@ class _SubscribeTopicPage extends StatefulWidget {
 }
 
 class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
-  final List<ItemLike> _genres = List<ItemLike>();
+  final List<ItemLike> _genres = <ItemLike>[];
+
+  SizingInformation sizeInfo;
 
   @override
   void initState() {
@@ -182,25 +188,27 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: SafeArea(
+        child: ResponsiveBuilder(builder: (context, sizeInf) {
+      sizeInfo =sizeInf;
+      return SafeArea(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        SizedBox(height: Adapt.px(80)),
+        SizedBox(height: 30),
         Padding(
-            padding: EdgeInsets.symmetric(horizontal: Adapt.px(50)),
+            padding: EdgeInsets.symmetric(horizontal: 50),
             child: getTxtBlackColor(
                 msg: widget.title,
                 fontSize: 28,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w700)),
-        SizedBox(height: Adapt.px(60)),
+        SizedBox(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?60:30),
         Expanded(
             child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
                 child: Wrap(
                   direction: Axis.vertical,
-                  runSpacing: Adapt.px(20),
-                  spacing: Adapt.px(20),
+                  runSpacing: sizeInfo.deviceScreenType == DeviceScreenType.desktop?30:20,
+                  spacing: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:20,
                   children: _genres.map<Widget>((d) {
                     final _index = _genres.indexOf(d);
                     bool _selected = widget.genres[d.value];
@@ -212,11 +220,11 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                           setState(() {});
                         },
                         child: Container(
-                          width: Adapt.px(200),
-                          height: Adapt.px(200),
-                          padding: EdgeInsets.all(Adapt.px(30)),
+                          width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?150:120,
+                          height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?150:120,
+                          padding: EdgeInsets.all(10),
                           margin: EdgeInsets.only(
-                              top: (_index + 4) % 8 == 0 ? Adapt.px(80) : 0),
+                              top: (_index + 4) % 8 == 0 ?(sizeInfo.deviceScreenType == DeviceScreenType.desktop?100:80) : 0),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: _selected
@@ -226,7 +234,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                           child: Center(
                               child: getTxtColor(
                                   msg: d.name,
-                                  fontSize: Adapt.px(28),
+                                  fontSize: sizeInfo.deviceScreenType == DeviceScreenType.desktop?28:16,
                                   textAlign: TextAlign.center,
                                   fontWeight: FontWeight.w700,
                                   txtColor: _selected
@@ -234,17 +242,17 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                                       : const Color(0xFF0000000))),
                         ));
                   }).toList()
-                    ..add(Container(height: Adapt.px(900), width: Adapt.px(40)))
+                    ..add(Container(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?900:900, width:sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:40))
                     ..insert(0,
-                        Container(height: Adapt.px(900), width: Adapt.px(40))),
+                        Container(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?900:900, width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:40)),
                 ))),
         Row(children: [
-          SizedBox(width: Adapt.px(80)),
+          SizedBox(width: 50),
           InkWell(
               onTap: widget.backTapped,
               child: SizedBox(
-                  width: Adapt.px(100),
-                  height: Adapt.px(80),
+                  width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:80,
+                  height:sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:80,
                   child: Center(
                       child: getTxtBlackColor(
                           msg: 'back',
@@ -257,8 +265,8 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                 widget.nextTapped();
               },
               child: Container(
-                width: Adapt.px(250),
-                margin: EdgeInsets.symmetric(horizontal: Adapt.px(40)),
+                width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:100,
+                margin: EdgeInsets.symmetric(horizontal:40),
                 height: 50,
                 decoration: BoxDecoration(
                     color: const Color(0xFF202F39),
@@ -272,9 +280,9 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                         txtColor: ColorConst.WHITE_ORIG_COLOR)),
               )),
         ]),
-        SizedBox(height: Adapt.px(20))
+        SizedBox(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?30:20)
       ]),
-    ));
+    );}));
   }
 }
 
