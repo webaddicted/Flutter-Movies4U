@@ -128,14 +128,12 @@ This release cover following feature :
 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home_dark.jpg"> 
 
+## Onboarding
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
 
 ## Movie Detail
 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/details.jpg"> 
-
-
-## Onboarding
-<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
 
 
 ## User Profile
