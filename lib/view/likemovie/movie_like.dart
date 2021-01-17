@@ -200,7 +200,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                 fontSize: 28,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w700)),
-        SizedBox(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?60:30),
+        SizedBox(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?30:30),
         Expanded(
             child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -251,8 +251,8 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
           InkWell(
               onTap: widget.backTapped,
               child: SizedBox(
-                  width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:80,
-                  height:sizeInfo.deviceScreenType == DeviceScreenType.desktop?40:80,
+                  width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?200:80,
+                  height:sizeInfo.deviceScreenType == DeviceScreenType.desktop?50:80,
                   child: Center(
                       child: getTxtBlackColor(
                           msg: 'back',
