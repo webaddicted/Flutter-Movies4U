@@ -90,7 +90,7 @@ This release cover following feature :
 
 ## Movie Cast and Crew
 
-<img src="screenshot/person/cast.jpg" width="205">  
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/cast.jpg" width="205">  
 <!--
 <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
 -->
