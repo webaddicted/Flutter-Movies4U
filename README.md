@@ -122,7 +122,9 @@ This release cover following feature :
 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home.jpg"> 
 
+## Movie Detail
 
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/details.jpg"> 
 
 ## Dark Mode
 
@@ -130,10 +132,6 @@ This release cover following feature :
 
 ## Onboarding
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
-
-## Movie Detail
-
-<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/details.jpg"> 
 
 
 ## User Profile
