@@ -21,6 +21,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const String route = '/home';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

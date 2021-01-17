@@ -8,6 +8,8 @@ import 'package:movies4u/view/intro/intro_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class SplashPage extends StatefulWidget {
+  static const String route = '/splash';
+
   @override
   _SplashPageState createState() => _SplashPageState();
 }
@@ -24,6 +26,8 @@ class _SplashPageState extends State<SplashPage>
     Future.delayed(const Duration(seconds: 4), () {
       // if (isOnboardingShow)
       navigationPushReplacement(context, isOnboardingShow!=null && isOnboardingShow?HomeScreen():IntroScreen());
+      // navigationPushReplacementsss(context,HomeScreen.route ,isOnboardingShow!=null && isOnboardingShow?HomeScreen():IntroScreen());
+
       // else
       //   navigationPush(context, IntroScreen());
     });

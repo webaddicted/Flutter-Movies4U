@@ -12,6 +12,7 @@ import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/details/detail_movie.dart';
 import 'package:movies4u/view/widget/rating_result.dart';
 import 'package:movies4u/view/widget/tranding_movie_row.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -30,6 +31,8 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController searchController = TextEditingController();
   int total_pages = 1;
   int pageSize = 1;
+
+  SizingInformation sizeInfo;
   @override
   void initState() {
     model = MovieModel();
@@ -61,9 +64,11 @@ class _SearchScreenState extends State<SearchScreen> {
         //     titleTag: 'Search mOivie',
         //     icon: homeIcon),
         body: Container(
-      child: Column(
+      child: ResponsiveBuilder(builder: (context, sizeInf) {
+        sizeInfo =sizeInf;
+        return Column(
         children: [
-          SizedBox(height: 30),
+          SizedBox(height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?0:30),
           PreferredSize(
             child: Container(
               child: Card(
@@ -92,7 +97,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           Container(child: ScopedModel(model: model, child: apiresponse())),
         ],
-      ),
+      );})
     ));
     // _createUi(null));
     //

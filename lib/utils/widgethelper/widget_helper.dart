@@ -6,6 +6,7 @@ import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/utils/SlideRoute.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/view/home/home_screen.dart';
 
 //  {START PAGE NAVIGATION}
 // void navigationPush(BuildContext context, StatefulWidget route) {
@@ -26,6 +27,9 @@ void navigationPush(BuildContext context, StatefulWidget route) {
 
 void navigationPushReplacement(BuildContext context, Widget route) {
   Navigator.pushReplacement(context, RouteTransition(widget: route));
+}
+void navigationPushReplacementsss(BuildContext context,String name, Widget route) {
+  Navigator.pushReplacementNamed(context,name);
 }
 
 void navigationPop(BuildContext context, StatefulWidget route) {
