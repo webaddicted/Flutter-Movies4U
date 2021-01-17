@@ -138,6 +138,9 @@ This release cover following feature :
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/profile.jpg"> 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home_light.jpg"> 
 
+## Web App
+
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/web_home.jpg" width="400">  <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/web_details.jpg" width="400">  
       
 
 ## Command
