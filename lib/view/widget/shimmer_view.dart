@@ -175,7 +175,7 @@ class ShimmerView extends StatelessWidget {
         children: [
           getPersonRow(),
           getPersonRow(),
-          getPersonRow(),
+          // getPersonRow(),
         ],
       ),
     );
