@@ -90,15 +90,15 @@ This release cover following feature :
 
 ## Movie Cast and Crew
 
-<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/cast.jpg" width="400">  
-<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/category.jpg" width="400">  
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/cast.jpg" >  
+ 
 <!--
 <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
 -->
 
 ## Movie Category
 
-<img src="https://github.com/webaddicted/LocalFiles/raw/main/movies4u/pics/webaddicted_home.gif" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/category.jpg"> 
 
 
 ## Cover Feature
@@ -120,35 +120,29 @@ This release cover following feature :
 
 ## Home
 
-<img src="screenshot/home/web addicted home1.jpg" width="205">    <img src="screenshot/home/web addicted home2.jpg" width="205"><img src="screenshot/home/web addicted home3.jpg" width="205"><img src="screenshot/home/web addicted home4.jpg" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home.jpg"> 
+
+
 
 ## Dark Mode
 
-<img src="screenshot/darkmode/web addicted intro.jpg" width="205">    <img src="screenshot/darkmode/web addicted home.jpg" width="205"><img src="screenshot/darkmode/web addicted navi.jpg" width="205"><img src="screenshot/darkmode/web addicted details.jpg" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home_dark.jpg"> 
+
 
 ## Movie Detail
 
-<img src="screenshot/details/web addicted detail1.jpg" width="205">    <img src="screenshot/details/web addicted detail2.jpg" width="205"><img src="screenshot/details/web addicted detail3.jpg" width="205"><img src="screenshot/details/web addicted detail4.jpg" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/details.jpg"> 
+
 
 ## Onboarding
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
 
-<img src="screenshot/onboarding/web addicted onboarding1.jpg" width="205">    <img src="screenshot/onboarding/web addicted onboarding2.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding3.jpg" width="205"><img src="screenshot/onboarding/web addicted onboarding4.jpg" width="205">
 
 ## User Profile
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/profile.jpg"> 
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home_light.jpg"> 
 
-<img src="screenshot/profile/web addicted nav.jpg" width="205">    <img src="screenshot/profile/web addicted profile.jpg" width="205"><img src="screenshot/profile/web addicted setting.jpg" width="205"><img src="screenshot/profile/web addicted exit.jpg" width="205">
-
-<img src="screenshot/person/web addicted movie cast.jpg" width="205">    <img src="screenshot/person/web addicted moview crew.jpg" width="205"><img src="screenshot/person/web addicted tranding person.jpg" width="205">
-
-## Splash   
-<img src="screenshot/splash/web addicted splash.jpg" width="205">    <img src="screenshot/splash/web addicted splash2.jpg" width="205">    
-
-## Select Favourite Movie and TV category
-
-<img src="screenshot/fav movie/web addicted fav movie1.jpg" width="205">    <img src="screenshot/fav movie/web addicted fav movie2.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv1.jpg" width="205"><img src="screenshot/fav movie/web addicted fav tv2.jpg" width="205">
-
-## Movie Poster
-<img src="screenshot/poster/web addicted poster.jpg" width="205">    <img src="screenshot/poster/web addicted poster1.jpg" width="205"><img src="screenshot/poster/web addicted poster3.jpg" width="205"><img src="screenshot/poster/web addicted poster4.jpg" width="205">
+      
 
 ## Command
 
