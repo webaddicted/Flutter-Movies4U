@@ -90,11 +90,14 @@ This release cover following feature :
 
 ## Movie Cast and Crew
 
-<img src="screenshot/person/web addicted cast detail1.jpg" width="205">    <img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
+<img src="screenshot/person/cast.jpg" width="205">  
+<!--
+<img src="screenshot/person/web addicted cast detail2.jpg" width="205"><img src="screenshot/person/web addicted cast detail3.jpg" width="205"><img src="screenshot/person/web addicted cast.jpg" width="205">
+-->
 
 ## Movie Category
 
-<img src="screenshot/category/web addicted movie cat1.jpg" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
+<img src="https://github.com/webaddicted/LocalFiles/raw/main/movies4u/pics/webaddicted_home.gif" width="205">    <img src="screenshot/category/web addicted movie cat2.jpg" width="205"><img src="screenshot/category/web addicted movie list1.jpg" width="205"><img src="screenshot/category/web addicted movie list2.jpg" width="205">
 
 
 ## Cover Feature
