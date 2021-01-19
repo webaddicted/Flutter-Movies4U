@@ -222,7 +222,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               ),
               RatingResult(movie == null ? 0 : movie.voteAverage, 12.0),
               SizedBox(width: 5),
-              RatingBar(
+              RatingBar.builder(
                 itemSize: 12.0,
                 initialRating: movie == null ? 0 : movie.voteAverage / 2,
                 minRating: 1,

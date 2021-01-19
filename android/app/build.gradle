@@ -39,8 +39,8 @@ android {
 
     defaultConfig {
         applicationId "com.webaddicted.movies4u"
-        versionCode 5
-        versionName '1.4'
+        versionCode 6
+        versionName '1.5'
         minSdkVersion 21
         targetSdkVersion 30
 //        versionCode flutterVersionCode.toInteger()
