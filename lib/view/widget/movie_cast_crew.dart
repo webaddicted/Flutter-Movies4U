@@ -62,6 +62,7 @@ class MovieCastCrew extends StatelessWidget {
     return Container(
       height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?300:150.0,
       child: ListView.builder(
+        shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: castCrew == StringConst.MOVIE_CAST

@@ -139,6 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
           physics: BouncingScrollPhysics(),
           controller: _scrollController,
           itemCount: dataResult.length,
+          shrinkWrap: true,
           separatorBuilder: (context, index) {
             return Container(
                 margin: EdgeInsets.only(left: 18, right: 5),

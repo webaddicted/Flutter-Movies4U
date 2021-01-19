@@ -62,6 +62,7 @@ class TrandingPerson extends StatelessWidget {
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
         itemCount: persons.length,
         itemBuilder: (context, index) {
           var item = persons[index];

@@ -13,7 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   dio: ^3.0.9
   provider: ^4.1.3
-  shimmer: ^1.1.2
+#  shimmer: ^1.1.2
   # scoped model
   scoped_model: ^1.0.1
   # dependency injection

@@ -74,7 +74,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ctx=context;
+    ctx = context;
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -89,10 +89,11 @@ class _MovieListScreenState extends State<MovieListScreen> {
             titleTag: titleTag,
             icon: homeIcon),
         body: ResponsiveBuilder(builder: (context, sizeInf) {
-          sizeInfo =sizeInf;
+          sizeInfo = sizeInf;
           return OrientationBuilder(
-            builder: (context, orientation) =>
-                ScopedModel(model: model, child: apiresponse(orientation)));}));
+              builder: (context, orientation) =>
+                  ScopedModel(model: model, child: apiresponse(orientation)));
+        }));
   }
 
   Widget apiresponse(Orientation orientation) {
@@ -119,49 +120,91 @@ class _MovieListScreenState extends State<MovieListScreen> {
     final size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
-    int columnCount=0;
+    int columnCount = 0;
     if (data is NowPlayingRespo) {
       pageSize++;
       total_pages = data.total_pages;
       dataResult.addAll(data.results);
-      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop?6:orientation == Orientation.portrait ? 2 : 4;
-    }else if(data is TrandingPersonRespo){
+      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
+          ? 6
+          : orientation == Orientation.portrait
+              ? 2
+              : 4;
+    } else if (data is TrandingPersonRespo) {
       pageSize++;
       total_pages = data.total_pages;
       dataPersonResult.addAll(data.results);
-      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop?5:orientation == Orientation.portrait ? 3 : 4;
-    }else{
+      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
+          ? 5
+          : orientation == Orientation.portrait
+              ? 3
+              : 4;
+    } else {
       pageSize++;
       // total_pages = data.total_pages;
       // dataPersonResult.addAll(data.results);
-      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop?5:orientation == Orientation.portrait ? 3 : 4;
+      columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
+          ? 5
+          : orientation == Orientation.portrait
+              ? 3
+              : 4;
+      if ((apiName == StringConst.PERSON_MOVIE_CAST &&
+              data is PersonMovieRespo) ||
+          (apiName == StringConst.PERSON_MOVIE_CREW &&
+              data is PersonMovieRespo))
+        columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
+            ? 6
+            : orientation == Orientation.portrait
+                ? 2
+                : 4;
     }
+    double screenSize = data is NowPlayingRespo
+        ? (sizeInfo.deviceScreenType == DeviceScreenType.desktop)
+            ? 350
+            : 290
+        : sizeInfo.deviceScreenType == DeviceScreenType.desktop
+            ? 280
+            : 128;
+    if ((apiName == StringConst.PERSON_MOVIE_CAST &&
+            data is PersonMovieRespo) ||
+        (apiName == StringConst.PERSON_MOVIE_CREW && data is PersonMovieRespo))
+      screenSize =
+          (sizeInfo.deviceScreenType == DeviceScreenType.desktop) ? 350 : 290;
+    // print("screenSize   : $screenSize");
     // columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop?5:(orientation == Orientation.portrait ? (data is NowPlayingRespo?2:3 ): (data is NowPlayingRespo?4:4));
     return Container(
 //      width: double.infinity,
 //      height: double.infinity,
         child: Container(
       alignment: Alignment.center,
-      child: (data is MovieCatRespo && sizeInfo.deviceScreenType!=DeviceScreenType.desktop)
+      child: (data is MovieCatRespo &&
+              sizeInfo.deviceScreenType != DeviceScreenType.desktop)
           ? ListView.builder(
               physics: BouncingScrollPhysics(),
               itemCount: getCount(data),
+          shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                return Container(height:180,child: getItemView(data, index));
+                return Container(height: 180, child: getItemView(data, index));
                 // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
               })
           : StaggeredGridView.countBuilder(
               crossAxisCount: columnCount,
               mainAxisSpacing: 1.0,
               crossAxisSpacing: 1.0,
-              staggeredTileBuilder: (int index) => StaggeredTile.extent(1, data is NowPlayingRespo?(sizeInfo.deviceScreenType == DeviceScreenType.desktop?350:290):sizeInfo.deviceScreenType == DeviceScreenType.desktop?280:128),
+              shrinkWrap: true,
+              staggeredTileBuilder: (int index) =>
+                  StaggeredTile.extent(1, screenSize),
               physics: BouncingScrollPhysics(),
               controller: _scrollController,
-              itemCount:
-                  data is NowPlayingRespo ? dataResult.length :(data is TrandingPersonRespo ? dataPersonResult.length:getCount(data)),
+              itemCount: data is NowPlayingRespo
+                  ? dataResult.length
+                  : (data is TrandingPersonRespo
+                      ? dataPersonResult.length
+                      : getCount(data)),
               itemBuilder: (BuildContext context, int index) => Padding(
                 padding: const EdgeInsets.only(left: 5, right: 5),
-                child: getItemView(data, index, dataResult: dataResult, dataPersonResult: dataPersonResult),
+                child: getItemView(data, index,
+                    dataResult: dataResult, dataPersonResult: dataPersonResult),
               ),
             ),
     ));
@@ -186,7 +229,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
       return 1;
   }
 
-  Widget getItemView(data, int index, {List<NowPlayResult> dataResult,  List<Results> dataPersonResult}) {
+  Widget getItemView(data, int index,
+      {List<NowPlayResult> dataResult, List<Results> dataPersonResult}) {
     try {
       if (data is CreditsCrewRespo) return getPersonDetails(data, index);
       if (data is TrandingPersonRespo) {
@@ -214,7 +258,9 @@ class _MovieListScreenState extends State<MovieListScreen> {
             context: context,
             apiName: apiName,
             index: index,
-            height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?310:250,
+            height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                ? 310
+                : 250,
             width: 135,
             id: item.id,
             img: item.poster_path,
@@ -227,7 +273,9 @@ class _MovieListScreenState extends State<MovieListScreen> {
             context: context,
             apiName: apiName,
             index: index,
-            height: 240,
+            height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                ? 310
+                : 240,
             width: 135,
             id: item.id,
             img: item.posterPath,
@@ -240,7 +288,9 @@ class _MovieListScreenState extends State<MovieListScreen> {
             context: context,
             apiName: apiName,
             index: index,
-            height: 240,
+            height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                ? 310
+                : 240,
             width: 135,
             id: item.id,
             img: item.posterPath,
@@ -250,29 +300,28 @@ class _MovieListScreenState extends State<MovieListScreen> {
         Genres item = data.genres[index];
         String tag = getTitle(apiName) + item.name + index.toString();
         final size = MediaQuery.of(ctx).size;
-        if(sizeInfo.deviceScreenType == DeviceScreenType.desktop)
-          return getCatRow(context,index, item, sizeInfo);
-        else return fullListImage(
-            name: item.name,
-            image: getCategoryMovie()[index],
-            tag: tag,
-            size:size,
-            onTap: () {
-              navigationPush(
-                  context,
-                  MovieListScreen(
-                      apiName: StringConst.MOVIE_CATEGORY,
-                      dynamicList: item.name,
-                      movieId: item.id));
-            });
+        if (sizeInfo.deviceScreenType == DeviceScreenType.desktop)
+          return getCatRow(context, index, item, sizeInfo);
+        else
+          return fullListImage(
+              name: item.name,
+              image: getCategoryMovie()[index],
+              tag: tag,
+              size: size,
+              onTap: () {
+                navigationPush(
+                    context,
+                    MovieListScreen(
+                        apiName: StringConst.MOVIE_CATEGORY,
+                        dynamicList: item.name,
+                        movieId: item.id));
+              });
       } else
         Container(
           child: getTxt(msg: 'Data not found'),
         );
     } catch (ex) {
-      return Card(
-          clipBehavior: Clip.antiAlias,
-          color: ColorConst.GREY_SHADE);
+      return Card(clipBehavior: Clip.antiAlias, color: ColorConst.GREY_SHADE);
     }
   }
 

@@ -11,7 +11,7 @@ import 'package:movies4u/view/widget/sifi_movie_row.dart';
 import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shimmer/shimmer.dart';
+// import 'package:shimmer/shimmer.dart';
 
 class PersonDetail extends StatefulWidget {
   final id;
@@ -202,15 +202,11 @@ class _PersonDetailState extends State<PersonDetail> {
             textAlign: TextAlign.start),
         SizedBox(height: 3),
         if (detail == null)
-          sizeInfo.deviceScreenType == DeviceScreenType.desktop?Container():Shimmer.fromColors(
-              baseColor: Colors.grey[300],
-              highlightColor: Colors.grey[100],
-              enabled: true,
-              child: Container(
+          Container(
                 width: 150,
                 height: 10,
-                color: Colors.white,
-              ))
+                color: Colors.grey[300],
+              )
         else
           getTxtBlackColor(
               msg: detail != null ? detail : '-',

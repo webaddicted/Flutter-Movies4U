@@ -4,7 +4,6 @@ import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ShimmerView extends StatelessWidget {
   //VIEW TYPE

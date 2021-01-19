@@ -19,7 +19,6 @@ import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:movies4u/view/widget/video_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:intl/intl.dart';
 class DetailsMovieScreen extends StatefulWidget {
   final apiName;
@@ -324,15 +323,11 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                 textAlign: TextAlign.start),
             Text(' : '),
             if (value == null)
-              sizeInfo.deviceScreenType == DeviceScreenType.desktop?Container():Shimmer.fromColors(
-                  baseColor: Colors.grey[300],
-                  highlightColor: Colors.grey[100],
-                  enabled: true,
-                  child: Container(
+         Container(
                     width: 150,
                     height: 10,
-                    color: Colors.white,
-                  ))
+                    color: Colors.grey[300],
+                  )
             else
               getTxtAppColor(
                   msg: value != null ? value : '',
