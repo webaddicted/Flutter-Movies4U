@@ -1,7 +1,5 @@
 // import 'package:in_app_update/in_app_update.dart';
 import 'package:movies4u/constant/assets_const.dart';
-import 'package:movies4u/view/home/OrientationLayout.dart';
-import 'package:movies4u/view/home/ScreenTypeLayout.dart';
 import 'package:movies4u/view/home/nav_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

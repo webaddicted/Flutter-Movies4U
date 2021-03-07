@@ -29,7 +29,7 @@ class CarouselView extends StatelessWidget {
         if (jsonResult.status == ApiStatus.COMPLETED)
           return CarouselSlider.builder(
             itemCount: jsonResult.data.results.length,
-            itemBuilder: (BuildContext context, int itemIndex) => getSliderItem(
+            itemBuilder: (BuildContext context, int itemIndex, int realIndex) => getSliderItem(
                 context, itemIndex, jsonResult.data.results[itemIndex], sizeInfo),
             options: CarouselOptions(
               aspectRatio: 2.0,
