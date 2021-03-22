@@ -152,7 +152,7 @@ This release cover following feature :
 * path--->build/web
 * flutter build web
 * firebase deploy
- * firebase deploy --only hosting
+* firebase deploy --only hosting
  
 ## LICENSE
 ```
