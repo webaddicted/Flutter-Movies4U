@@ -1,25 +1,29 @@
 // import 'package:in_app_update/in_app_update.dart';
-import 'package:movies4u/constant/assets_const.dart';
-import 'package:movies4u/view/home/nav_drawer.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:movies4u/constant/api_constant.dart';
+import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/home/nav_drawer.dart';
 import 'package:movies4u/view/search/search_screen.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cate.dart';
 import 'package:movies4u/view/widget/sifi_movie_row.dart';
 import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:movies4u/view/widget/tranding_person.dart';
-import 'package:flutter/services.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = '/home';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -29,8 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   BuildContext _context;
+  final InAppReview _inAppReview = InAppReview.instance;
+  AppUpdateInfo _updateInfo;
 
-  // AppUpdateInfo _updateInfo;
   @override
   void initState() {
     super.initState();
@@ -47,10 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
     callMovieApi(ApiConstant.UPCOMING_MOVIE, model);
     // model.fetchTrandingPerson();
     callMovieApi(ApiConstant.TOP_RATED, model);
+    inAppReview();
   }
 
   @override
   Widget build(BuildContext context) {
+    final InAppReview _inAppReview = InAppReview.instance;
     _context = context;
     var homeIcon = IconButton(
         icon: Icon(
@@ -71,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
     return WillPopScope(
       onWillPop: () {
+        // checkForUpdate();
         return onWillPop(context);
       },
       child: Scaffold(
@@ -119,8 +127,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: CarouselView(sizeInfo)),
                   Center(
                     child: SizedBox(
-                        width: sizeInfo.deviceScreenType == DeviceScreenType.desktop? 450:350,
-                        height: sizeInfo.deviceScreenType == DeviceScreenType.desktop? 80:70, //Adapt.px(500),
+                        width: sizeInfo.deviceScreenType ==
+                                DeviceScreenType.desktop
+                            ? 450
+                            : 350,
+                        height: sizeInfo.deviceScreenType ==
+                                DeviceScreenType.desktop
+                            ? 80
+                            : 70, //Adapt.px(500),
                         child: Image.asset(AssetsConst.DIVIDER_IMG)),
                   ),
                   TrandingMovieRow(
@@ -133,8 +147,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   SifiMovieRow(ApiConstant.UPCOMING_MOVIE, sizeInfo),
                   Center(
                     child: SizedBox(
-                        width: sizeInfo.deviceScreenType == DeviceScreenType.desktop? 450:350,
-                        height: sizeInfo.deviceScreenType == DeviceScreenType.desktop? 80:70,//Adapt.px(500),
+                        width: sizeInfo.deviceScreenType ==
+                                DeviceScreenType.desktop
+                            ? 450
+                            : 350,
+                        height: sizeInfo.deviceScreenType ==
+                                DeviceScreenType.desktop
+                            ? 80
+                            : 70, //Adapt.px(500),
                         child: Image.asset(AssetsConst.DIVIDER_IMG)),
                   ),
                   TrandingMovieRow(
@@ -150,10 +170,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> checkForUpdate() async {
-    // InAppUpdate.checkForUpdate().then((info) {
-    //   if(_updateInfo?.updateAvailable == true)
-    //     InAppUpdate.performImmediateUpdate().catchError((e) => print(e.toString()));
-    // }).catchError((e) =>  print(e.toString()));
+    InAppUpdate.checkForUpdate().then((info) {
+      print(info);
+      _updateInfo = info;
+      if (_updateInfo?.updateAvailability == UpdateAvailability.updateAvailable)
+        InAppUpdate.performImmediateUpdate()
+            .catchError((e) => print(e.toString()));
+    }).catchError((e) => print(e.toString()));
+  }
+
+  void inAppReview() async {
+    try {
+      final isAvailable = await _inAppReview.isAvailable();
+      if (isAvailable) {
+        await _inAppReview.requestReview();
+      } else
+        print("revieew Not available $isAvailable");
+    } catch (e) {
+      print("$e");
+    }
   }
 }
 

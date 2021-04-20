@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '3'
+    flutterVersionCode = '11'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.2'
+    flutterVersionName = '2.0.0'
 }
 
 apply plugin: 'com.android.application'
@@ -27,7 +27,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -36,15 +36,15 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-
+// also change in Local properties
     defaultConfig {
         applicationId "com.webaddicted.movies4u"
-        versionCode 6
-        versionName '1.5'
+//        versionCode 6
+//        versionName '1.5'
         minSdkVersion 21
         targetSdkVersion 30
-//        versionCode flutterVersionCode.toInteger()
-//        versionName flutterVersionName
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
     buildTypes {

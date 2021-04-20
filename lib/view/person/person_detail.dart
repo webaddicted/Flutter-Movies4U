@@ -205,6 +205,7 @@ class _PersonDetailState extends State<PersonDetail> {
           Container(
                 width: 150,
                 height: 10,
+
                 color: Colors.grey[300],
               )
         else
