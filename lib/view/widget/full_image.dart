@@ -36,7 +36,7 @@ class _FullImageState extends State<FullImage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        body: GestureDetector(
+        body: InkWell(
 //          onVerticalDragDown: (details) {
 //            Navigator.pop(context);
 //          },
