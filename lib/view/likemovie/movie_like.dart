@@ -125,7 +125,7 @@ class _FirstPage extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 100),
-                  GestureDetector(
+                  InkWell(
                       onTap: continueTapped,
                       child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 50),
@@ -212,7 +212,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                   children: _genres.map<Widget>((d) {
                     final _index = _genres.indexOf(d);
                     bool _selected = widget.genres[d.value];
-                    return GestureDetector(
+                    return InkWell(
                         key: ValueKey(d.name),
                         onTap: () {
                           _selected = !_selected;
@@ -260,7 +260,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.w700)))),
           Expanded(child: SizedBox()),
-          GestureDetector(
+          InkWell(
               onTap: () async {
                 widget.nextTapped();
               },
