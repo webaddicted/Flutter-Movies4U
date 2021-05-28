@@ -1,4 +1,4 @@
-import 'package:movies4u/utils/sp/sp_manager.dart';
+  import 'package:movies4u/utils/sp/sp_manager.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class ThemeModel extends Model {
@@ -15,3 +15,4 @@ class ThemeModel extends Model {
     notifyListeners();
   }
 }
+
