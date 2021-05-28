@@ -169,7 +169,7 @@ class _SearchScreenState extends State<SearchScreen> {
       String desc,
       var vote}) {
     String tag = StringConst.SEARCH_MOVIE + img + index.toString();
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         navigationPush(
             context,
