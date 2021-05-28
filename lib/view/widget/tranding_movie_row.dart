@@ -274,7 +274,7 @@ Widget getHeading(
               fontWeight: FontWeight.w700),
         ),
         if (isShowViewAll)
-          GestureDetector(
+          InkWell(
             onTap: () {
               navigationPush(
                   context, MovieListScreen(apiName: apiName, movieId: movieId));
