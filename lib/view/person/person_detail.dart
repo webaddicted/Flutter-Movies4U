@@ -86,7 +86,7 @@ class _PersonDetailState extends State<PersonDetail> {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                title: GestureDetector(
+                title: InkWell(
                     onTap: () {
                       // model.fetchPersonMovie(personId);
                     },
