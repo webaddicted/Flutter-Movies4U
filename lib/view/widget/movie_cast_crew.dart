@@ -112,7 +112,7 @@ Widget castCrewItem(
   return Container(
     padding: EdgeInsets.only(top: 10.0),
     width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?280:100.0,
-    child: GestureDetector(
+    child: InkWell(
       onTap: () {
         onTap(id);
       },
