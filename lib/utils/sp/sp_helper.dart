@@ -7,7 +7,7 @@ class SPHelper<T> {
       if (defautlValue is String) {
         return sp.getString(key) as T;
       } else if (defautlValue is bool) {
-        return sp.getBool(key) as T;
+        return (sp.getBool(key)==null ?false:sp.getBool(key)) as T;
       } else if (defautlValue is int) {
         return sp.getInt(key) as T;
       } else if (defautlValue is double) {
@@ -16,7 +16,7 @@ class SPHelper<T> {
         return sp.getDouble(key) as T;
       }
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper getPreference: "+e.toString());
     }
     return 0 as T;
   }
@@ -38,7 +38,7 @@ class SPHelper<T> {
         return sp.setStringList(key, value);
       }
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper setPreference: "+e.toString());
     }
     return false;
   }
@@ -48,7 +48,7 @@ class SPHelper<T> {
     try {
       return sp.getKeys();
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper getAllKeys: "+e.toString());
       return null!;
     }
   }
@@ -58,7 +58,7 @@ class SPHelper<T> {
     try {
       return sp.remove(key);
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper removeKey: "+e.toString());
       return false;
     }
   }
@@ -68,7 +68,7 @@ class SPHelper<T> {
     try {
       return sp.clear();
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper clearPreference: "+e.toString());
       return false;
     }
   }
@@ -78,7 +78,7 @@ class SPHelper<T> {
     try {
       return sp.containsKey(key);
     } catch (e) {
-      print("SP helper : "+e.toString());
+      print("SP helper keyExist: "+e.toString());
       return false;
     }
   }

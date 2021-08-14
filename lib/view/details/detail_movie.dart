@@ -96,11 +96,16 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
             right: 0,
             child: _helperImage(data),
           ),
-          CustomScrollView(
-            slivers: <Widget>[
-              _appBarView(),
-              _contentSection(data),
-            ],
+          Scrollbar(
+            isAlwaysShown: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+            radius: Radius.circular(5),
+            thickness: 20,
+            child: CustomScrollView(
+              slivers: <Widget>[
+                _appBarView(),
+                _contentSection(data),
+              ],
+            ),
           ),
         ],
       );

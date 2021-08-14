@@ -21,60 +21,66 @@ class _CategoryMovieState extends State<CategoryMovie> {
 
   Widget _createUi() {
     return Container(
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemCount: imgList.length,
-        itemBuilder: (context, pos) {
-          return Container(
-              margin: EdgeInsets.only(bottom: 16.0),
-              height: 148,
-              child: new ClipRRect(
-                borderRadius: new BorderRadius.circular(8.0),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            imgList[pos],
+      child:  Scrollbar(
+        isAlwaysShown: true,//sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+        radius: Radius.circular(5),
+        thickness: 20,
+        child: SingleChildScrollView(
+          child: ListView.builder(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: imgList.length,
+            itemBuilder: (context, pos) {
+              return Container(
+                  margin: EdgeInsets.only(bottom: 16.0),
+                  height: 148,
+                  child: new ClipRRect(
+                    borderRadius: new BorderRadius.circular(8.0),
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                imgList[pos],
+                              ),
+                            ),
                           ),
+                          height: 350.0,
                         ),
-                      ),
-                      height: 350.0,
+                        Container(
+                          height: 350.0,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              gradient: LinearGradient(
+                                  begin: FractionalOffset.topCenter,
+                                  end: FractionalOffset.bottomCenter,
+                                  colors: [
+                                    Colors.black26,
+                                    Colors.black26,
+                                  ],
+                                  stops: [
+                                    0.0,
+                                    1.0
+                                  ])),
+                        ),
+                        Center(
+                          child: Text(
+                            "Kampanya",
+                            style: TextStyle(
+                                fontSize: 26,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      height: 350.0,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          gradient: LinearGradient(
-                              begin: FractionalOffset.topCenter,
-                              end: FractionalOffset.bottomCenter,
-                              colors: [
-                                Colors.black26,
-                                Colors.black26,
-                              ],
-                              stops: [
-                                0.0,
-                                1.0
-                              ])),
-                    ),
-                    Center(
-                      child: Text(
-                        "Kampanya",
-                        style: TextStyle(
-                            fontSize: 26,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    )
-                  ],
-                ),
-              ));
-        },
+                  ));
+            },
+          ),
+        ),
       ),
     );
   }

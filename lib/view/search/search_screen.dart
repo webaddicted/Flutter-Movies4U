@@ -109,7 +109,10 @@ class _SearchScreenState extends State<SearchScreen> {
         var jsonResult = model.searchMovieRespo;
         if (jsonResult.status == ApiStatus.COMPLETED) {
           return jsonResult.data!.totalResults! > 0 || dataResult.length > 0
-              ? _createUi(jsonResult.data!)
+              ?  Scrollbar(
+              isAlwaysShown: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+              radius: Radius.circular(5),
+              thickness: 20,child: SingleChildScrollView(child: _createUi(jsonResult.data!)))
               : Column(children: [
                   SizedBox(height: 50),
                   Container(
@@ -134,8 +137,7 @@ class _SearchScreenState extends State<SearchScreen> {
     pageSize++;
     total_pages = data.totalPages!;
     dataResult.addAll(data.results!);
-    return Expanded(
-      child: ListView.separated(
+    return  ListView.separated(
           physics: BouncingScrollPhysics(),
           controller: _scrollController,
           itemCount: dataResult.length,
@@ -156,8 +158,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 name: data.originalTitle!,
                 desc: data.overview!,
                 vote: data.voteAverage);
-          }),
-    );
+          });
   }
 
   Widget getMovieItemRow(

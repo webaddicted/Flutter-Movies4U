@@ -74,32 +74,37 @@ class _PersonDetailState extends State<PersonDetail> {
         });
     return Container(child: ResponsiveBuilder(builder: (context, sizeInf) {
       sizeInfo = sizeInf;
-      return CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-              backgroundColor: ColorConst.WHITE_BG_COLOR,
-              expandedHeight: 330.0,
-              leading: homeIcon,
-              floating: false,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: InkWell(
-                    onTap: () {
-                      // model.fetchPersonMovie(personId);
-                    },
-                    child: getTxtBlackColor(
-                        msg: name, fontWeight: FontWeight.bold, fontSize: 16)),
-                background: Hero(
-                    tag: tag,
-                    child: getCacheImage(
-                      url: imgPath.toString(),
-                    )),
-              )),
-          SliverList(
-            delegate: SliverChildListDelegate([getContent(data)]),
-          )
-        ],
+      return  Scrollbar(
+        isAlwaysShown: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+        radius: Radius.circular(5),
+        thickness: 20,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+                backgroundColor: ColorConst.WHITE_BG_COLOR,
+                expandedHeight: 330.0,
+                leading: homeIcon,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  title: InkWell(
+                      onTap: () {
+                        // model.fetchPersonMovie(personId);
+                      },
+                      child: getTxtBlackColor(
+                          msg: name, fontWeight: FontWeight.bold, fontSize: 16)),
+                  background: Hero(
+                      tag: tag,
+                      child: getCacheImage(
+                        url: imgPath.toString(),
+                      )),
+                )),
+            SliverList(
+              delegate: SliverChildListDelegate([getContent(data)]),
+            )
+          ],
+        ),
       );
     }));
   }

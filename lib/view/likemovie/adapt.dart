@@ -10,6 +10,7 @@ class Adapt {
   static var _ratio;
 
   static initContext(BuildContext context) {
+    mediaQuery = MediaQuery.of(context);
     if (mediaQuery == null) {
       mediaQuery = MediaQuery.of(context);
       _width = mediaQuery.size.width;

@@ -29,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MovieModel model= MovieModel();
+  MovieModel model = MovieModel();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   late BuildContext _context;
@@ -102,11 +102,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _createUi() {
     return SafeArea(
-      child: Container(
-        child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: ResponsiveBuilder(builder: (context, sizeInfo) {
-              return Column(
+      child: Container(child: ResponsiveBuilder(builder: (context, sizeInfo) {
+        return Scrollbar(
+          isAlwaysShown: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+          radius: Radius.circular(5),
+          thickness: 20,
+          child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   //   ScreenTypeLayout(
@@ -162,9 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   TrandingMovieRow(
                       apiName: ApiConstant.TOP_RATED, sizeInfo: sizeInfo),
                 ],
-              );
-            })),
-      ),
+              )),
+        );
+      })),
     );
   }
 
@@ -250,7 +253,8 @@ String getTitle(String apiName) {
   }
 }
 
-callMovieApi(String apiName, MovieModel model, {int movieId = 0, int page = 1}) {
+callMovieApi(String apiName, MovieModel model,
+    {int movieId = 0, int page = 1}) {
   switch (apiName) {
     case ApiConstant.POPULAR_MOVIES:
       return model.fetchPopularMovie(page);

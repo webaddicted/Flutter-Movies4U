@@ -103,7 +103,14 @@ class _MovieListScreenState extends State<MovieListScreen> {
         var jsonResult = getData(apiName!, model);
         if (jsonResult.status == ApiStatus.COMPLETED) {
           return getCount(jsonResult.data) > 0
-              ? _createUi(jsonResult.data, orientation)
+              ?  Scrollbar(
+            isAlwaysShown: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+            radius: Radius.circular(5),
+            thickness: 20,
+                child: SingleChildScrollView(
+
+                child: _createUi(jsonResult.data, orientation)),
+              )
               : Container();
         } else
           return apiHandler(
