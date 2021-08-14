@@ -14,7 +14,6 @@ class _CategoryMovieState extends State<CategoryMovie> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            ctx: context,
             title: StringConst.HOME_TITLE,
             bgColor: ColorConst.WHITE_BG_COLOR),
         body: _createUi());

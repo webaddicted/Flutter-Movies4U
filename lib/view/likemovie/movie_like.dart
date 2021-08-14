@@ -20,7 +20,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
   static Map<int, bool> _tvGenres = Map<int, bool>();
   static PageController pageController = new PageController();
 
-  static BuildContext ctx;
+  static late BuildContext ctx;
 
 
   @override
@@ -87,7 +87,7 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
 class _FirstPage extends StatelessWidget {
   final Function continueTapped;
 
-  const _FirstPage({this.continueTapped});
+  const _FirstPage({required this.continueTapped});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class _FirstPage extends StatelessWidget {
                   ),
                   SizedBox(height: 100),
                   InkWell(
-                      onTap: continueTapped,
+                      onTap: (){continueTapped();},
                       child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           height: 50,
@@ -150,13 +150,13 @@ class _FirstPage extends StatelessWidget {
 }
 
 class _SubscribeTopicPage extends StatefulWidget {
-  final String title;
-  final String buttonTitle;
-  final bool isMovie;
-  final String tag;
-  final Function backTapped;
-  final Function nextTapped;
-  final Map<int, bool> genres;
+  final String? title;
+  final String? buttonTitle;
+  final bool? isMovie;
+  final String? tag;
+  final Function? backTapped;
+  final Function? nextTapped;
+  final Map<int, bool>? genres;
 
   _SubscribeTopicPage(
       {this.backTapped,
@@ -174,11 +174,11 @@ class _SubscribeTopicPage extends StatefulWidget {
 class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
   final List<ItemLike> _genres = <ItemLike>[];
 
-  SizingInformation sizeInfo;
+  late SizingInformation sizeInfo;
 
   @override
   void initState() {
-    final _genresMap = widget.isMovie ? movieList : tvList;
+    final _genresMap = (widget.isMovie!) ? movieList : tvList;
     _genresMap.forEach((key, value) {
       _genres.add(ItemLike.fromParams(name: value, value: key));
     });
@@ -196,7 +196,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 50),
             child: getTxtBlackColor(
-                msg: widget.title,
+                msg: widget.title!,
                 fontSize: 28,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w700)),
@@ -211,12 +211,12 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                   spacing: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:20,
                   children: _genres.map<Widget>((d) {
                     final _index = _genres.indexOf(d);
-                    bool _selected = widget.genres[d.value];
+                    bool _selected = widget.genres![d.value]!;
                     return InkWell(
                         key: ValueKey(d.name),
                         onTap: () {
                           _selected = !_selected;
-                          widget.genres[d.value] = _selected;
+                          widget.genres![d.value] = _selected;
                           setState(() {});
                         },
                         child: Container(
@@ -233,7 +233,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                           ),
                           child: Center(
                               child: getTxtColor(
-                                  msg: d.name,
+                                  msg: d.name!,
                                   fontSize: sizeInfo.deviceScreenType == DeviceScreenType.desktop?28:16,
                                   textAlign: TextAlign.center,
                                   fontWeight: FontWeight.w700,
@@ -249,7 +249,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
         Row(children: [
           SizedBox(width: 50),
           InkWell(
-              onTap: widget.backTapped,
+              onTap: (){widget.backTapped!();},
               child: SizedBox(
                   width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?200:80,
                   height:sizeInfo.deviceScreenType == DeviceScreenType.desktop?50:80,
@@ -262,7 +262,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
           Expanded(child: SizedBox()),
           InkWell(
               onTap: () async {
-                widget.nextTapped();
+                widget.nextTapped!();
               },
               child: Container(
                 width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:100,
@@ -273,7 +273,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
                     child: getTxtColor(
-                        msg: widget.buttonTitle,
+                        msg: widget.buttonTitle!,
                         fontSize: 20,
                         textAlign: TextAlign.center,
                         fontWeight: FontWeight.w700,

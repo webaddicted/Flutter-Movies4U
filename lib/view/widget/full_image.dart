@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/data/details/movie_img_respo.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -22,7 +21,7 @@ class _FullImageState extends State<FullImage> {
   var index = 0;
   final tag;
 
-  PageController pageController;
+  late PageController pageController;
 
   _FullImageState(this.urls, this.index, this.tag);
 
@@ -82,7 +81,8 @@ class _FullImageState extends State<FullImage> {
         child: PhotoViewGallery.builder(
       scrollPhysics: const BouncingScrollPhysics(),
       builder: (BuildContext context, int indexss) {
-        String imgurl = 'https://image.tmdb.org/t/p/original' + urls[indexss].filePath;
+        String imgurl =
+            'https://image.tmdb.org/t/p/original' + urls[indexss].filePath!;
         return PhotoViewGalleryPageOptions(
           imageProvider: CachedNetworkImageProvider(imgurl),
           minScale: PhotoViewComputedScale.contained * 0.8,
@@ -98,7 +98,7 @@ class _FullImageState extends State<FullImage> {
           child: CircularProgressIndicator(
             value: event == null
                 ? 0
-                : event.cumulativeBytesLoaded / event.expectedTotalBytes,
+                : event.cumulativeBytesLoaded / event.expectedTotalBytes!,
           ),
         ),
       ),

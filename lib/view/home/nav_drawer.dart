@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
@@ -11,11 +12,10 @@ import 'package:movies4u/view/other/help_screen.dart';
 import 'package:movies4u/view/other/invite_friend_screen.dart';
 import 'package:movies4u/view/profile_screen.dart';
 import 'package:movies4u/view/setting/settings_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class NavDrawer extends StatelessWidget {
-  BuildContext _context;
+  late BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +192,9 @@ class NavDrawer extends StatelessWidget {
         navigationPush(_context, SettingScreen());
         break;
       case "Share App":
-        final RenderBox box = _context.findRenderObject();
+        final RenderObject box = _context.findRenderObject()!;
         Share.share(
-            '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
-            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+            '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}');
         break;
       case "Feedback":
         return navigationPush(_context, FeedbackScreen());

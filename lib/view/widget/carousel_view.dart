@@ -28,9 +28,9 @@ class CarouselView extends StatelessWidget {
         var jsonResult = model.nowPlayingRespo;
         if (jsonResult.status == ApiStatus.COMPLETED)
           return CarouselSlider.builder(
-            itemCount: jsonResult.data.results.length,
+            itemCount: jsonResult.data!.results!.length,
             itemBuilder: (BuildContext context, int itemIndex, int realIndex) => getSliderItem(
-                context, itemIndex, jsonResult.data.results[itemIndex], sizeInfo),
+                context, itemIndex, jsonResult.data!.results![itemIndex], sizeInfo),
             options: CarouselOptions(
               aspectRatio: 2.0,
 //          enlargeCenterPage: true,
@@ -48,25 +48,25 @@ class CarouselView extends StatelessWidget {
   }
 
   Widget getSliderItem(BuildContext context, int itemIndex, NowPlayResult result, SizingInformation sizeInfo) {
-    String tag = result.original_title + "Carosal" + itemIndex.toString();
-    String img = (sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) + result.backdrop_path;
+    String tag = result.originalTitle! + "Carosal" + itemIndex.toString();
+    String img = (sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) + result.backdropPath!;
     final size = MediaQuery.of(context).size;
     return fullListImage(
-        name: result.original_title,
+        name: result.originalTitle!,
         image: img,
         tag: tag,
         size:size,
         onTap: () {
           navigationPush(
             context,
-            DetailsMovieScreen(result.original_title, img,
-                result.original_title, itemIndex, result.id, tag),
+            DetailsMovieScreen(result.originalTitle!, img,
+                result.originalTitle!, itemIndex, result.id, tag),
           );
         });
   }
 }
 
-Widget fullListImage({String name, String image, String tag,Size size, Function onTap}) {
+Widget fullListImage({String name = "", String image = "", String tag = "",Size? size, Function? onTap}) {
   return Container(
       margin: EdgeInsets.all(5.0),
       child: ClipRRect(
@@ -76,7 +76,7 @@ Widget fullListImage({String name, String image, String tag,Size size, Function 
               Hero(
                   tag: tag,
                   child: Container(
-                      width: size.width, child: getCacheImage(url:image))),
+                      width: size!.width, child: getCacheImage(url:image))),
               Positioned(
                 bottom: 0.0,
                 left: 0.0,
@@ -107,7 +107,7 @@ Widget fullListImage({String name, String image, String tag,Size size, Function 
                   child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                          splashColor: ColorConst.SPLASH_COLOR, onTap: () => onTap()))),
+                          splashColor: ColorConst.SPLASH_COLOR, onTap: () => onTap!()))),
             ],
           )),
     );

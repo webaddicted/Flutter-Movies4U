@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Adapt {
-  static MediaQueryData mediaQuery;
-  static double _width;
-  static double _height;
-  static double _topbarH;
-  static double _botbarH;
-  static double _pixelRatio;
+  static late MediaQueryData mediaQuery;
+  static late double _width;
+  static late double _height;
+  static late double _topbarH;
+  static late double _botbarH;
+  static late double _pixelRatio;
   static var _ratio;
+
   static initContext(BuildContext context) {
     if (mediaQuery == null) {
       mediaQuery = MediaQuery.of(context);

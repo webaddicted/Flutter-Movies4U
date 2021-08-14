@@ -19,23 +19,24 @@ import 'package:movies4u/utils/apiutils/api_base_helper.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 
 class MovieRepository {
-  fetchMovieList() async {
-    try {
-      final response = await apiHelper.getWithParam(
-          "${ApiConstant.POPULAR_MOVIES}",
-          MovieReq(ApiConstant.API_KEY).toMap());
-      return ApiResponse.returnResponse(
-          response, MovieRespo.fromJson(jsonDecode(response.toString())));
-    } catch (error, stacktrace) {
-      return ApiResponse.error(
-          errCode: ApiRespoCode.known,
-          errMsg: error.toString(),
-          errBdy: stacktrace.toString(),
-          data: null);
-    }
-  }
+  // fetchMovieList() async {
+  //   try {
+  //     final response = await apiHelper.getWithParam(
+  //         "${ApiConstant.POPULAR_MOVIES}",
+  //         MovieReq(apiKey:ApiConstant.API_KEY).toJson());
+  //     return ApiResponse.returnResponse(
+  //         response, MovieRespo.fromJson(jsonDecode(response.toString())));
+  //   } catch (error, stacktrace) {
+  //     print("Error $error $stacktrace");
+  //     return ApiResponse.error(
+  //         errCode: ApiResponseCode.UNKNOWN,
+  //         errMsg: error.toString(),
+  //         errBdy: stacktrace.toString(),
+  //         data: null);
+  //   }
+  // }
 
-  fetchNowPlaying({String endPoint, int page}) async {
+  fetchNowPlaying({String endPoint = "", int page = 1}) async {
     try {
       var commonReq;
       if (page == null) {
@@ -43,12 +44,14 @@ class MovieRepository {
       } else {
         commonReq = CommonMovieReq.page(page.toString()).toJson();
       }
-      final response = await apiHelper.getWithParam("${endPoint}", commonReq);
+      final response =
+          await apiHelper.getWithParam(url: "${endPoint}", params: commonReq);
       return ApiResponse.returnResponse(
           response, NowPlayingRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -58,12 +61,14 @@ class MovieRepository {
   fetchMovieCat() async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.GENRES_LIST}", CommonMovieReq.empty().toJson());
+          url: "${ApiConstant.GENRES_LIST}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(
           response, MovieCatRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -73,13 +78,14 @@ class MovieRepository {
   movieDetails(int movieId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.MOVIE_DETAILS + movieId.toString()}",
-          CommonMovieReq.empty().toJson());
+          url: "${ApiConstant.MOVIE_DETAILS + movieId.toString()}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(response,
           MovieDetailsRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -89,13 +95,15 @@ class MovieRepository {
   movieCrewCast(int movieId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.CREDITS_CREW}",
-          CommonMovieReq.empty().toJson());
+          url:
+              "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.CREDITS_CREW}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(
           response, CreditsCrewRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -105,13 +113,15 @@ class MovieRepository {
   keywordList(int movieId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_KEYWORDS}",
-          CommonMovieReq.empty().toJson());
+          url:
+              "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_KEYWORDS}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(
           response, KeywordRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -121,13 +131,15 @@ class MovieRepository {
   movieImg(int movieId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_IMAGES}",
-          CommonMovieReq.empty().toJson());
+          url:
+              "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_IMAGES}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(
           response, MovieImgRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -137,13 +149,15 @@ class MovieRepository {
   movieVideo(int movieId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_VIDEOS}",
-          CommonMovieReq.empty().toJson());
+          url:
+              "${ApiConstant.MOVIE_DETAILS + movieId.toString() + ApiConstant.MOVIE_VIDEOS}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(
           response, VideoRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -152,14 +166,15 @@ class MovieRepository {
 
   fetchTrandingPerson(int page) async {
     try {
-
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.TRENDING_PERSONS}", CommonMovieReq.page(page.toString()).toJson());
-      return ApiResponse.returnResponse(
-          response, TrandingPersonRespo.fromJson(jsonDecode(response.toString())));
+          url: "${ApiConstant.TRENDING_PERSONS}",
+          params: CommonMovieReq.page(page.toString()).toJson());
+      return ApiResponse.returnResponse(response,
+          TrandingPersonRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -169,12 +184,14 @@ class MovieRepository {
   fetchPersonDetail(int id) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.PERSONS_DETAILS+id.toString()}", CommonMovieReq.empty().toJson());
+          url: "${ApiConstant.PERSONS_DETAILS + id.toString()}",
+          params: CommonMovieReq.empty().toJson());
       return ApiResponse.returnResponse(response,
           PersonDetailRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -184,13 +201,15 @@ class MovieRepository {
   fetchPersonMovie(int personId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.PERSONS_DETAILS + personId.toString() + ApiConstant.PERSONS_MOVIE_CREDITS}",
-          CommonMovieReq.empty().toJson());
-      return ApiResponse.returnResponse(response,
-          PersonMovieRespo.fromJson(jsonDecode(response.toString())));
+          url:
+              "${ApiConstant.PERSONS_DETAILS + personId.toString() + ApiConstant.PERSONS_MOVIE_CREDITS}",
+          params: CommonMovieReq.empty().toJson());
+      return ApiResponse.returnResponse(
+          response, PersonMovieRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
@@ -200,45 +219,50 @@ class MovieRepository {
   fetchPersonImage(int personId) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.PERSONS_DETAILS + personId.toString() + ApiConstant.PERSONS_IMAGES}",
-          CommonMovieReq.empty().toJson());
-      return ApiResponse.returnResponse(response,
-          MovieImgRespo.fromJson(jsonDecode(response.toString())));
+          url:
+              "${ApiConstant.PERSONS_DETAILS + personId.toString() + ApiConstant.PERSONS_IMAGES}",
+          params: CommonMovieReq.empty().toJson());
+      return ApiResponse.returnResponse(
+          response, MovieImgRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
-          errMsg: error.toString(),
-          errBdy: stacktrace.toString(),
-          data: null);
-    }
-  }
-  fetchCategoryMovie(int catMovieId, int page) async {
-    try {
-      // print('object : fetchCategoryMovie');
-      final response = await apiHelper.getWithParam(
-          "${ApiConstant.DISCOVER_MOVIE}",
-          CategoryMovieReq.empty(catMovieId.toString(), page).toJson());
-      return ApiResponse.returnResponse(response,
-          NowPlayingRespo.fromJson(jsonDecode(response.toString())));
-    } catch (error, stacktrace) {
-      return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);
     }
   }
 
-  searchMovies(String query, int page)async {
+  fetchCategoryMovie(int catMovieId, int page) async {
+    try {
+      // print('object : fetchCategoryMovie');
+      final response = await apiHelper.getWithParam(
+          url: "${ApiConstant.DISCOVER_MOVIE}",
+          params: CategoryMovieReq.empty(catMovieId.toString(), page).toJson());
+      return ApiResponse.returnResponse(
+          response, NowPlayingRespo.fromJson(jsonDecode(response.toString())));
+    } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
+      return ApiResponse.error(
+          errCode: ApiResponseCode.UNKNOWN,
+          errMsg: error.toString(),
+          errBdy: stacktrace.toString(),
+          data: null);
+    }
+  }
+
+  searchMovies(String query, int page) async {
     try {
       final response = await apiHelper.getWithParam(
-          "${ApiConstant.SEARCH_MOVIES}",
-          SearchMovieReq.empty(query, page.toString()).toJson());
-      return ApiResponse.returnResponse(response,
-          NowPlayingRespo.fromJson(jsonDecode(response.toString())));
+          url: "${ApiConstant.SEARCH_MOVIES}",
+          params: SearchMovieReq.empty(query, page.toString()).toJson());
+      return ApiResponse.returnResponse(
+          response, NowPlayingRespo.fromJson(jsonDecode(response.toString())));
     } catch (error, stacktrace) {
+      print("Error $error $stacktrace");
       return ApiResponse.error(
-          errCode: ApiRespoCode.known,
+          errCode: ApiResponseCode.UNKNOWN,
           errMsg: error.toString(),
           errBdy: stacktrace.toString(),
           data: null);

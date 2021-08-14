@@ -78,7 +78,7 @@ String filesize(dynamic size, [int round = 2]) {
 }
 
 List<String> getCategoryMovie() {
-  List<String> data = new List();
+  List<String> data = [];
   data.add(
       "https://www.chicagotribune.com/resizer/69RRXBl_mP_9LdXCW_Zmqa_YspQ=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GFHATTOROZDBNO4X67H7AMNGRQ.jpg"); //Action
   data.add(
@@ -130,4 +130,11 @@ List<String> getCategoryMovie() {
   data.add(
       "https://i.pinimg.com/originals/21/7c/0a/217c0a19c28b8e0c53239cbc7a9c8b25.jpg");
   return data;
+}
+void printWarning(String text) {
+  print('\x1B[33m$text\x1B[0m');
+}
+
+void printError(String text) {
+  print('\x1B[31m$text\x1B[0m');
 }

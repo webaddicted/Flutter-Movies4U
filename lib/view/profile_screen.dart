@@ -5,7 +5,7 @@ import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  BuildContext _context;
+  late BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,7 @@ class UserInfo extends StatelessWidget {
                           ListTile(
                             leading: Icon(Icons.phone),
                             title: getTxt(msg: "Phone"),
-                            subtitle: getTxt(msg: "+91-9924****07"),
+                            subtitle: getTxt(msg: "+91-9024****07"),
                           ),
                           ListTile(
                             leading: Icon(Icons.my_location),
@@ -138,20 +138,20 @@ class UserInfo extends StatelessWidget {
 }
 
 class ProfileHeader extends StatelessWidget {
-  final ImageProvider<dynamic> coverImage;
-  final ImageProvider<dynamic> avatar;
+  final  coverImage;
+  final  avatar;
   final String title;
   final String subtitle;
   final List<Widget> actions;
 
   const ProfileHeader(
-      {Key key,
-      @required this.coverImage,
-      @required this.avatar,
-      @required this.title,
-      this.subtitle,
-      this.actions})
-      : super(key: key);
+      {
+      required this.coverImage ,
+      required this.avatar,
+      required this.title,
+      this.subtitle = "",
+      required this.actions})
+    ;
 
   @override
   Widget build(BuildContext context) {
@@ -212,20 +212,19 @@ class ProfileHeader extends StatelessWidget {
 }
 
 class Avatar extends StatelessWidget {
-  final ImageProvider<dynamic> image;
+  final  image;
   final Color borderColor;
   final Color backgroundColor;
   final double radius;
   final double borderWidth;
 
-  const Avatar(
-      {Key key,
-      @required this.image,
+   Avatar(
+      {
+      this.image,
       this.borderColor = Colors.grey,
-      this.backgroundColor,
+      required this.backgroundColor,
       this.radius = 30,
-      this.borderWidth = 5})
-      : super(key: key);
+      this.borderWidth = 5});
 
   @override
   Widget build(BuildContext context) {

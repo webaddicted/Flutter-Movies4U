@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
+import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/utils/SlideRoute.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/view/home/home_screen.dart';
@@ -56,135 +57,168 @@ void delay(BuildContext context, int duration, StatefulWidget route) {
 
 //  {END PAGE NAVIGATION}
 
-Widget apiHandler<T>({ApiResponse<T> response, Widget loading, Widget error}) {
-  switch (response.status) {
-    case ApiStatus.LOADING:
-      return loading != null ? loading : Loading();
-      break;
-    case ApiStatus.ERROR:
-      return error != null
-          ? error
-          : Error(
-              errorMessage: response.apierror.errorMessage,
-              onRetryPressed: () {
-                //call api
-              },
-            );
-      break;
-    default:
-      {
-        return Container(
-          color: ColorConst.GREY_SHADE,
+
+Widget apiHandler<T>(
+    {required ApiResponse<T> response, Widget? loading, Widget? error}) {
+  if (response.status == null)
+    return Container();
+  else {
+    switch (response.status) {
+      case ApiStatus.LOADING:
+        return loading != null
+            ? loading
+            : Center(
+          child: CircularProgressIndicator(
+            valueColor:
+            AlwaysStoppedAnimation<Color>(ColorConst.APP_COLOR),
+          ),
         );
-      }
+        break;
+      case ApiStatus.ERROR:
+        return Center(
+          child: getTxtColor(
+              msg: response.apiError!.errorMessage.toString(),
+              txtColor: ColorConst.RED_COLOR),
+        );
+        // return error != null ? error : showError(response.apierror.errorMessage);
+        break;
+      default:
+        {
+          return Container(
+            color: Colors.amber,
+            child: getTxtAppColor(msg: StringConst.SOMETHING_WENT_WRONG),
+          );
+        }
+    }
   }
 }
 
-class Error extends StatelessWidget {
-  final String errorMessage;
 
-  final Function onRetryPressed;
 
-  const Error({Key key, this.errorMessage, this.onRetryPressed})
-      : super(key: key);
+// Widget apiHandler<T>({ApiResponse<T> response, Widget loading, Widget error}) {
+//   switch (response.status) {
+//     case ApiStatus.LOADING:
+//       return loading != null ? loading : Loading();
+//       break;
+//     case ApiStatus.ERROR:
+//       return error != null
+//           ? error
+//           : Error(
+//               errorMessage: response.apierror.errorMessage,
+//               onRetryPressed: () {
+//                 //call api
+//               },
+//             );
+//       break;
+//     default:
+//       {
+//         return Container(
+//           color: ColorConst.GREY_SHADE,
+//         );
+//       }
+//   }
+// }
+//
+// class Error extends StatelessWidget {
+//   final String errorMessage;
+//
+//   final Function onRetryPressed;
+//
+//   const Error({Key key, this.errorMessage, this.onRetryPressed})
+//       : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           Text(
+//             errorMessage,
+//             textAlign: TextAlign.center,
+//             style: TextStyle(
+//               color: Colors.lightGreen,
+//               fontSize: 18,
+//             ),
+//           ),
+//           SizedBox(height: 8),
+//           RaisedButton(
+//             color: Colors.lightGreen,
+//             child: Text('Retry', style: TextStyle(color: Colors.white)),
+//             onPressed: onRetryPressed,
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            errorMessage,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.lightGreen,
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(height: 8),
-          RaisedButton(
-            color: Colors.lightGreen,
-            child: Text('Retry', style: TextStyle(color: Colors.white)),
-            onPressed: onRetryPressed,
-          )
-        ],
-      ),
-    );
-  }
-}
+// class Loading extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           Text(
+//             "loadingMessage",
+//             textAlign: TextAlign.center,
+//             style: TextStyle(
+//               color: Colors.lightGreen,
+//               fontSize: 24,
+//             ),
+//           ),
+//           SizedBox(height: 24),
+//           CircularProgressIndicator(
+//             valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class Loading extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            "loadingMessage",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.lightGreen,
-              fontSize: 24,
-            ),
-          ),
-          SizedBox(height: 24),
-          CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 AppBar getAppBarWithBackBtn(
-    {@required BuildContext ctx,
-    String title,
-    Color bgColor,
-    double fontSize,
-    String titleTag,
-    Widget icon,
-    List<Widget> actions}) {
+    {String title = '',
+      Color bgColor = ColorConst.APP_COLOR,
+      double fontSize = 15,
+      String titleTag = '',
+      Widget? icon,
+      List<Widget>? actions}) {
   return AppBar(
     backgroundColor: bgColor == null ? ColorConst.APP_COLOR : bgColor,
     leading: icon,
     actions: actions,
     centerTitle: true,
     title: Hero(
-      tag: titleTag == null ? "" : titleTag,
-      child: new Text(
-        title,
-        style: new TextStyle(
-            fontWeight: FontWeight.bold,
-            color: ColorConst.BLACK_COLOR,
-            fontSize: fontSize != null ? fontSize : 16),
-      ),
-    ),
+        tag: titleTag,
+        child: getTxtColor(
+            msg: title,
+            txtColor: ColorConst.BLACK_COLOR,
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold)),
   );
 }
 
 //  {START TEXT VIEW}
 Text getTxt(
-    {@required String msg,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(msg,
       maxLines: maxLines,
       textAlign: textAlign,
-      style: TextStyle(
-          fontFamily: AssetsConst.ZILLASLAB_FONT,
-          fontWeight: fontWeight == null ? FontWeight.normal : fontWeight));
+      style: TextStyle(fontWeight: fontWeight));
 }
 
 Text getTxtAppColor(
-    {@required String msg,
-    double fontSize,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(
     msg,
     maxLines: maxLines,
@@ -197,11 +231,11 @@ Text getTxtAppColor(
 }
 
 Text getTxtWhiteColor(
-    {@required String msg,
-    double fontSize,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(
     msg,
     maxLines: maxLines,
@@ -214,11 +248,11 @@ Text getTxtWhiteColor(
 }
 
 Text getTxtBlackColor(
-    {@required String msg,
-    double fontSize,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(
     msg,
     textAlign: textAlign,
@@ -231,11 +265,11 @@ Text getTxtBlackColor(
 }
 
 Text getTxtGreyColor(
-    {@required String msg,
-    double fontSize,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(
     msg,
     textAlign: textAlign,
@@ -248,12 +282,12 @@ Text getTxtGreyColor(
 }
 
 Text getTxtColor(
-    {@required String msg,
-    @required Color txtColor,
-    double fontSize,
-    FontWeight fontWeight,
-    int maxLines,
-    TextAlign textAlign}) {
+    {required String msg,
+      required Color txtColor,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      int? maxLines,
+      TextAlign textAlign = TextAlign.start}) {
   return Text(
     msg,
     textAlign: textAlign,
@@ -264,17 +298,17 @@ Text getTxtColor(
 }
 
 TextStyle _getFontStyle(
-    {Color txtColor,
-    double fontSize,
-    FontWeight fontWeight,
-    String fontFamily,
-    TextDecoration txtDecoration}) {
+    {required Color txtColor,
+      double fontSize = 15,
+      FontWeight fontWeight = FontWeight.normal,
+      String fontFamily = AssetsConst.ZILLASLAB_FONT,
+      TextDecoration txtDecoration = TextDecoration.none}) {
   return TextStyle(
       color: txtColor,
-      fontSize: fontSize != null ? fontSize : 14,
-      decoration: txtDecoration == null ? TextDecoration.none : txtDecoration,
-      fontFamily: fontFamily == null ? AssetsConst.ZILLASLAB_FONT : fontFamily,
-      fontWeight: fontWeight == null ? FontWeight.normal : fontWeight);
+      fontSize: fontSize,
+      decoration: txtDecoration,
+      fontFamily: fontFamily,
+      fontWeight: fontWeight);
 }
 
 //  {END TEXT VIEW}
@@ -325,7 +359,7 @@ ClipRRect loadCircleCacheImg(String url, double radius) {
       child: getCacheImage(url: url, height: radius, width: radius));
 }
 
-Widget getCacheImage({String url, double height, double width}) {
+Widget getCacheImage({String url="", double height=double.infinity, double width=double.infinity}) {
   return CachedNetworkImage(
     fit: BoxFit.cover,
     width: width != null ? width : double.infinity,
@@ -359,16 +393,16 @@ void showSnackBar(BuildContext context, String message) async {
 //          logDubug(message + " undo");
 //        }),
     );
-    await Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context).hideCurrentSnackBar(reason: SnackBarClosedReason.hide);
     await Scaffold.of(context).showSnackBar(snackbar);
   } catch (e) {
     print('object ' + e.toString());
   }
 }
 
-bool isDarkMode([BuildContext context]) {
+bool isDarkMode() {
   // ThemeModel.isDarkTheme;
-  var brightness = SchedulerBinding.instance.window.platformBrightness;
+  var brightness = SchedulerBinding.instance?.window.platformBrightness;
   final isDarkMode = brightness == Brightness.dark;
   // print("IS Dark Mode system : $isDarkMode \n app : ${ThemeModel.dark}");
   // ScopedModel.of<ThemeModel>(context).getTheme;

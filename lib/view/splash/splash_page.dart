@@ -5,7 +5,6 @@ import 'package:movies4u/utils/sp/sp_manager.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/home/home_screen.dart';
 import 'package:movies4u/view/intro/intro_screen.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class SplashPage extends StatefulWidget {
   static const String route = '/splash';
@@ -18,8 +17,8 @@ class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
   var _visible = false;
 
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   startTime() async {
     var isOnboardingShow = await SPManager.getOnboarding();

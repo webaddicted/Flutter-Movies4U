@@ -11,9 +11,10 @@ class SPManager {
       return spValue;
     }
 
-  static void setThemeDark<T>(bool isThemeDark) {
+  static String setThemeDark<T>(bool isThemeDark) {
     SPHelper.setPreference(StringConst.IS_THEME_DARK, isThemeDark);
-  }
+  return "";
+    }
 
   static Future<bool> getThemeDark() async {
     final spValue =  await SPHelper.getPreference(StringConst.IS_THEME_DARK, false);

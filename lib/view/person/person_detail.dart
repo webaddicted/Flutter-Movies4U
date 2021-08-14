@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
@@ -31,9 +30,9 @@ class _PersonDetailState extends State<PersonDetail> {
   final imgPath;
   final tag;
   final name;
-  MovieModel model;
+  late MovieModel model;
 
-  SizingInformation sizeInfo;
+  late SizingInformation sizeInfo;
 
   _PersonDetailState(this.personId, this.name, this.imgPath, this.tag);
 
@@ -64,7 +63,7 @@ class _PersonDetailState extends State<PersonDetail> {
     );
   }
 
-  Widget _createUi({PersonDetailRespo data}) {
+  Widget _createUi({PersonDetailRespo? data}) {
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -73,10 +72,9 @@ class _PersonDetailState extends State<PersonDetail> {
         onPressed: () {
           Navigator.pop(context);
         });
-    return Container(
-      child: ResponsiveBuilder(builder: (context, sizeInf) {
-        sizeInfo =sizeInf;
-        return CustomScrollView(
+    return Container(child: ResponsiveBuilder(builder: (context, sizeInf) {
+      sizeInfo = sizeInf;
+      return CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
               backgroundColor: ColorConst.WHITE_BG_COLOR,
@@ -92,7 +90,6 @@ class _PersonDetailState extends State<PersonDetail> {
                     },
                     child: getTxtBlackColor(
                         msg: name, fontWeight: FontWeight.bold, fontSize: 16)),
-
                 background: Hero(
                     tag: tag,
                     child: getCacheImage(
@@ -103,11 +100,11 @@ class _PersonDetailState extends State<PersonDetail> {
             delegate: SliverChildListDelegate([getContent(data)]),
           )
         ],
-      );})
-    );
+      );
+    }));
   }
 
-  Widget getContent(PersonDetailRespo data) {
+  Widget getContent(PersonDetailRespo? data) {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -115,24 +112,28 @@ class _PersonDetailState extends State<PersonDetail> {
         children: [
           personalInfo(data),
           SizedBox(height: 10),
-          SifiMovieRow(StringConst.IMAGES,sizeInfo),
+          SifiMovieRow(StringConst.IMAGES, sizeInfo),
           TrandingMovieRow(
-              apiName: StringConst.PERSON_MOVIE_CREW,sizeInfo: sizeInfo, movieId: personId),
+              apiName: StringConst.PERSON_MOVIE_CREW,
+              sizeInfo: sizeInfo,
+              movieId: personId),
           TrandingMovieRow(
-              apiName: StringConst.PERSON_MOVIE_CAST,sizeInfo: sizeInfo, movieId: personId)
+              apiName: StringConst.PERSON_MOVIE_CAST,
+              sizeInfo: sizeInfo,
+              movieId: personId)
         ],
       ),
     );
   }
 
-  Widget personalInfo(PersonDetailRespo data) {
+  Widget personalInfo(PersonDetailRespo? data) {
     final size = MediaQuery.of(context).size;
     int yearold = 0;
     if (data != null && (data.deathday != null || data.birthday != null)) {
       final _now = data.deathday != null
           ? DateTime.parse(data.deathday).year
           : DateTime.now().year;
-      yearold = _now - DateTime.parse(data.birthday).year;
+      yearold = _now - DateTime.parse(data.birthday!).year;
     }
     return Container(
       padding: EdgeInsets.all(8),
@@ -149,11 +150,13 @@ class _PersonDetailState extends State<PersonDetail> {
           SizedBox(height: 15),
           if (data != null)
             getTxtGreyColor(
-                msg: data.biography != null ? data.biography : '',
+                msg: data.biography != null ? data.biography! : '',
                 fontSize: 15,
                 fontWeight: FontWeight.w400)
           else
-            sizeInfo.deviceScreenType == DeviceScreenType.desktop?Container():ShimmerView.getOverView(context),
+            sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                ? Container()
+                : ShimmerView.getOverView(context),
           SizedBox(height: 15),
           getTxtBlackColor(
               msg: StringConst.PERSONAL_INFO,
@@ -171,10 +174,10 @@ class _PersonDetailState extends State<PersonDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   getPIDetail('Gender',
-                      data != null && data?.gender == 2 ? 'Male' : 'Female'),
+                      data != null && data.gender == 2 ? 'Male' : 'Female'),
                   getPIDetail('Age', '$yearold years old'),
                   getPIDetail('Known For',
-                      data != null ? data?.knownForDepartment : null),
+                      data != null ? data.knownForDepartment : null),
                   getPIDetail(
                       'Date of Birth', data != null ? data.birthday : null),
                   getPIDetail(
@@ -182,7 +185,7 @@ class _PersonDetailState extends State<PersonDetail> {
                   getPIDetail(
                       'Official Site', data != null ? data.homepage : null),
                   getPIDetail('Also Known As',
-                      data != null ? data?.alsoKnownAs?.join(' , ') : null),
+                      data != null ? data.alsoKnownAs?.join(' , ') : null),
                 ],
               ),
             ),
@@ -192,7 +195,7 @@ class _PersonDetailState extends State<PersonDetail> {
     );
   }
 
-  Widget getPIDetail(String hint, String detail) {
+  Widget getPIDetail(String hint, String? detail) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -203,11 +206,10 @@ class _PersonDetailState extends State<PersonDetail> {
         SizedBox(height: 3),
         if (detail == null)
           Container(
-                width: 150,
-                height: 10,
-
-                color: Colors.grey[300],
-              )
+            width: 150,
+            height: 10,
+            color: Colors.grey[300],
+          )
         else
           getTxtBlackColor(
               msg: detail != null ? detail : '-',

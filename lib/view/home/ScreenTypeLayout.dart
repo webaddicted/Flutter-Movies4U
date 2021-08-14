@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-/**
- * Author : Deepak Sharma(Webaddicted)
- * Email : deepaksharmatheboss@gmail.com
- * Profile : https://github.com/webaddicted
- */
+/// Author : Deepak Sharma(Webaddicted)
+/// Email : deepaksharmatheboss@gmail.com
+/// Profile : https://github.com/webaddicted
 
 class ScreenTypeLayout extends StatelessWidget {
   // Mobile will be returned by default
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;
+
   const ScreenTypeLayout(
-      {Key key, @required this.mobile, this.tablet, this.desktop})
-      : super(key: key);
+      {required this.mobile, required this.tablet, required this.desktop});
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {

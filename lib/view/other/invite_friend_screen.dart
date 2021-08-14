@@ -10,7 +10,7 @@ class InviteFriend extends StatefulWidget {
 }
 
 class _InviteFriendState extends State<InviteFriend> {
-  BuildContext _context;
+  late BuildContext _context;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _InviteFriendState extends State<InviteFriend> {
           body: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 30,left: 13),
+                margin: EdgeInsets.only(top: 30, left: 13),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: IconButton(
@@ -89,10 +89,16 @@ class _InviteFriendState extends State<InviteFriend> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () { final RenderBox box = _context.findRenderObject();
-                          Share.share(
-                              '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
-                              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);},
+                          onTap: () {
+                            final RenderObject? box =
+                                _context.findRenderObject();
+                            Share.share(
+                                '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}');
+
+                            // Share.share(
+                            //     '*${StringConst.APP_NAME}*\n${StringConst.SHARE_DETAILS}\n${StringConst.PLAYSTORE_URL}',
+                            //     sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+                          },
                           child: Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

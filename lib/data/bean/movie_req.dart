@@ -1,19 +1,20 @@
+import 'package:movies4u/constant/api_constant.dart';
+
 /// api_key : "asfdadasdsadad"
 
 class MovieReq {
-  String _apiKey;
+  String? apiKey = ApiConstant.API_KEY;
 
-  String get apiKey => _apiKey;
+  MovieReq({
+    this.apiKey =ApiConstant.API_KEY});
 
-  MovieReq(this._apiKey);
-
-  MovieReq.map(dynamic obj) {
-    this._apiKey = obj["api_key"];
+  MovieReq.fromJson(Map<String, dynamic> json) {
+    apiKey = json['api_key'];
   }
 
-  Map<String, String> toMap() {
-    var map = new Map<String, String>();
-    map["api_key"] = _apiKey;
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    map['api_key'] = apiKey;
     return map;
   }
 

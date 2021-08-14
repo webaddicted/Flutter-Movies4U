@@ -17,7 +17,7 @@ class MovieCastCrew extends StatelessWidget {
   String castCrew;
   int movieId;
   SizingInformation sizeInfo;
-  MovieCastCrew({this.castCrew,@required this.sizeInfo, this.movieId});
+  MovieCastCrew({this.castCrew = "", required this.sizeInfo, this.movieId = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class MovieCastCrew extends StatelessWidget {
       builder: (context, _, model) {
         var jsonResult = model.getMovieCrew;
         if (jsonResult.status == ApiStatus.COMPLETED)
-          return trandingPerson(context, jsonResult.data);
+          return trandingPerson(context, jsonResult.data!);
         else
           return apiHandler(
               loading: ShimmerView(
@@ -66,28 +66,29 @@ class MovieCastCrew extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: castCrew == StringConst.MOVIE_CAST
-            ? results.cast.length
-            : results.crew.length,
+            ? results.cast!.length
+            : results.crew!.length,
         itemBuilder: (context, index) {
-          String image = castCrew == StringConst.MOVIE_CAST
-              ? results.cast[index].profilePath
-              : results.crew[index].profilePath;
-          String name = castCrew == StringConst.MOVIE_CAST
-              ? results.cast[index].name
-              : results.crew[index].name;
-          String chatactor = castCrew == StringConst.MOVIE_CAST
-              ? results.cast[index].character
-              : results.crew[index].job;
-          int id = castCrew == StringConst.MOVIE_CAST
-              ? results.cast[index].id
-              : results.crew[index].id;
+          String? image = castCrew == StringConst.MOVIE_CAST
+              ? results.cast![index].profilePath
+              : results.crew![index].profilePath;
+          String? name = castCrew == StringConst.MOVIE_CAST
+              ? results.cast![index].name
+              : results.crew![index].name;
+          String? chatactor = castCrew == StringConst.MOVIE_CAST
+              ? results.cast![index].character
+              : results.crew![index].job;
+          int? id = castCrew == StringConst.MOVIE_CAST
+              ? results.cast![index].id
+              : results.crew![index].id;
           var tag = castCrew + 'cast_view' + index.toString();
+          print("Path $image");
           return castCrewItem(
-              id: id,
-              tag: tag,
-              name: name,
-              image: image,
-              job: chatactor,
+              id: id ,
+              tag: tag ,
+              name: name ,
+              image: image ,
+              job: chatactor ,
               sizeInfo: sizeInfo,
               onTap: (int id) => navigationPush(
                   context,
@@ -103,12 +104,12 @@ class MovieCastCrew extends StatelessWidget {
 }
 
 Widget castCrewItem(
-    {int id,
-    String name,
-    String image,
-    String job,
-    String tag,
-    Function onTap, SizingInformation sizeInfo}) {
+    {int? id,
+     String? name ,
+    String? image ,
+    String? job ,
+    String? tag,
+      required Function onTap, required SizingInformation sizeInfo}) {
   return Container(
     padding: EdgeInsets.only(top: 10.0),
     width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?280:100.0,
@@ -121,7 +122,7 @@ Widget castCrewItem(
         children: <Widget>[
           image == null
               ? Hero(
-                  tag: tag,
+                  tag: tag!,
                   child: Container(
                     width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?200:80.0,
                     height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?200:80.0,
@@ -134,7 +135,7 @@ Widget castCrewItem(
                   ),
                 )
               : Hero(
-                  tag: tag,
+                  tag: tag.toString(),
                   child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(sizeInfo.deviceScreenType == DeviceScreenType.desktop?220:80.0)),
                       child: Stack(
@@ -154,7 +155,7 @@ Widget castCrewItem(
                 ),
           SizedBox(height: 5.0),
           getTxtBlackColor(
-              msg: name,
+              msg: name!,
               fontSize: 12,
               fontWeight: FontWeight.bold,
               maxLines: 1,

@@ -29,12 +29,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MovieModel model;
+  MovieModel model= MovieModel();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  BuildContext _context;
+  late BuildContext _context;
   final InAppReview _inAppReview = InAppReview.instance;
-  AppUpdateInfo _updateInfo;
+  late AppUpdateInfo _updateInfo;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: ColorConst.BLACK_COLOR,
         ),
         onPressed: () {
-          _scaffoldKey.currentState.openDrawer();
+          _scaffoldKey.currentState?.openDrawer();
           // model.fetchNowPlaying();
           // model.fetchTrandingPerson();
           // callMovieApi(ApiConstant.POPULAR_MOVIES, model);
@@ -84,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
           key: _scaffoldKey,
           appBar: getAppBarWithBackBtn(
-              ctx: context,
               title: StringConst.HOME_TITLE,
               bgColor: ColorConst.WHITE_BG_COLOR,
               actions: [
@@ -173,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
     InAppUpdate.checkForUpdate().then((info) {
       print(info);
       _updateInfo = info;
-      if (_updateInfo?.updateAvailability == UpdateAvailability.updateAvailable)
+      if (_updateInfo.updateAvailability == UpdateAvailability.updateAvailable)
         InAppUpdate.performImmediateUpdate()
             .catchError((e) => print(e.toString()));
     }).catchError((e) => print(e.toString()));
@@ -192,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Future<bool> onWillPop(BuildContext context) async {
-  return showDialog<bool>(
+onWillPop(BuildContext context) async {
+  return showDialog(
       context: context,
       builder: (_) {
         return AlertDialog(
@@ -205,15 +204,15 @@ Future<bool> onWillPop(BuildContext context) async {
               msg: "Warning!", fontSize: 18, fontWeight: FontWeight.bold),
           actions: <Widget>[
             FlatButton(
-                child: getTxtColor(
+                child: getTxt(
                   msg: "Yes",
-                  fontSize: 17,
+                  // fontSize: 17,
                 ),
                 onPressed: () => SystemNavigator.pop()),
             FlatButton(
-                child: getTxtColor(
+                child: getTxt(
                   msg: "No",
-                  fontSize: 17,
+                  // fontSize: 17,
                 ),
                 onPressed: () => Navigator.pop(context)),
           ],
@@ -251,7 +250,7 @@ String getTitle(String apiName) {
   }
 }
 
-callMovieApi(String apiName, MovieModel model, {int movieId, int page = 1}) {
+callMovieApi(String apiName, MovieModel model, {int movieId = 0, int page = 1}) {
   switch (apiName) {
     case ApiConstant.POPULAR_MOVIES:
       return model.fetchPopularMovie(page);

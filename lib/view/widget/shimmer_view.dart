@@ -19,10 +19,10 @@ class ShimmerView extends StatelessWidget {
   SizingInformation sizeInfo;
   ShimmerView(this.sizeInfo,
       {this.apiName: "",
-      this.viewType,
+      this.viewType = "",
       this.parentHeight: 180,
       this.height: 180,
-      this.width});
+      this.width = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class ShimmerView extends StatelessWidget {
       return getCategoryView();
     } else if (viewType == VIEW_GRID_MOVIE) {
       return getMovieGrid();
-    }
+    }else return Container();
   }
 
   Widget getCarosalShimmer(bool isShowTitle) {

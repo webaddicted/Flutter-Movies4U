@@ -18,7 +18,7 @@ import 'package:scoped_model/scoped_model.dart';
 class MovieCate extends StatelessWidget {
   SizingInformation sizeInfo;
 
-  MovieCate({this.sizeInfo});
+  MovieCate({required this.sizeInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +30,23 @@ class MovieCate extends StatelessWidget {
       builder: (context, _, model) {
         var jsonResult = model.getMovieCat;
         if (jsonResult.status == ApiStatus.COMPLETED)
-          return getCate(context, jsonResult.data.genres, sizeInfo);
+          return getCate(context, jsonResult.data!.genres!, sizeInfo);
         else
           return apiHandler(
               loading: ShimmerView(
-                  sizeInfo,
-                  viewType: ShimmerView.VIEW_HORI_PERSON,
-                  parentHeight: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:150.0,
-                  height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:100,
-                  width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?200:110,
-                ),
+                sizeInfo,
+                viewType: ShimmerView.VIEW_HORI_PERSON,
+                parentHeight:
+                    sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                        ? 250
+                        : 150.0,
+                height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                    ? 250
+                    : 100,
+                width: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                    ? 200
+                    : 110,
+              ),
               response: jsonResult);
         // return ShimmerView(
         //   sizeInfo,
@@ -59,36 +66,42 @@ class MovieCate extends StatelessWidget {
         SizedBox(height: 10),
         getHeading(context: context, apiName: ApiConstant.GENRES_LIST),
         SizedBox(height: 10),
-            Container(
-            height: sizeInfo.deviceScreenType == DeviceScreenType.desktop?300:150.0,
-            child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: genres.length,
-                itemBuilder: (BuildContext context, int index) {
-                  var item = genres[index];
-                  return  Container(
-                      padding: EdgeInsets.only(top: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:10.0),
-                  width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:100.0,
-                  child: castCrewItem(
-                      id: item.id,
-                      tag: 'Generic Item' + index.toString(),
-                      name: item.name,
-                      image: getCategoryMovie()[index],
-                      sizeInfo: sizeInfo,
+        Container(
+          height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+              ? 300
+              : 150.0,
+          child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: genres.length,
+              itemBuilder: (BuildContext context, int index) {
+                var item = genres[index];
+                return Container(
+                    padding: EdgeInsets.only(
+                        top: sizeInfo.deviceScreenType ==
+                                DeviceScreenType.desktop
+                            ? 20
+                            : 10.0),
+                    width: sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                        ? 250
+                        : 100.0,
+                    child: castCrewItem(
+                        id: item.id!,
+                        tag: 'Generic Item' + index.toString(),
+                        name: item.name!,
+                        image: getCategoryMovie()[index],
+                        sizeInfo: sizeInfo,
+                        onTap: (int id) => navigationPush(
+                            context,
+                            MovieListScreen(
+                                apiName: StringConst.MOVIE_CATEGORY,
+                                dynamicList: item.name!,
+                                movieId: item.id!))));
 
-                      onTap: (int id) => navigationPush(
-                          context,
-                          MovieListScreen(
-                              apiName: StringConst.MOVIE_CATEGORY,
-                              dynamicList: item.name,
-                              movieId: item.id))));
-
-                  // return getCatRow(context,index, genres[index], sizeInfo);
-                }),
-          ),
-
+                // return getCatRow(context,index, genres[index], sizeInfo);
+              }),
+        ),
       ],
     );
   }
@@ -125,13 +138,13 @@ Widget getCatRow(
                                   context,
                                   MovieListScreen(
                                       apiName: StringConst.MOVIE_CATEGORY,
-                                      dynamicList: item.name,
-                                      movieId: item.id));
+                                      dynamicList: item.name!,
+                                      movieId: item.id!));
                             }))),
               ],
             ),
           ),
-          getTxtBlackColor(msg: item.name, fontWeight: FontWeight.w700)
+          getTxtBlackColor(msg: item.name!, fontWeight: FontWeight.w700)
         ],
       ),
     ),

@@ -1,15 +1,15 @@
 import 'dart:convert' show json;
 
 class ItemLike {
-  String name;
+  String? name;
   dynamic value;
-  ItemLike.fromParams({this.name, this.value});
+  ItemLike.fromParams({required this.name, this.value});
 
-  factory ItemLike(jsonStr) => jsonStr == null
-      ? null
-      : jsonStr is String
-          ? new ItemLike.fromJson(json.decode(jsonStr))
-          : new ItemLike.fromJson(jsonStr);
+  // factory ItemLike(jsonStr) => jsonStr == null
+  //     ? null
+  //     : jsonStr is String
+  //         ? new ItemLike.fromJson(json.decode(jsonStr))
+  //         : new ItemLike.fromJson(jsonStr);
 
   ItemLike.fromJson(jsonRes) {
     name = jsonRes['name'];

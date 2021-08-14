@@ -3,8 +3,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
   final YoutubePlayerController controller;
-  VideoPlayerScreen({Key key, @required this.controller})
-      : super(key: key);
+  VideoPlayerScreen({required this.controller});
   @override
   _VideoPlayerScreenState createState() => _VideoPlayerScreenState(controller);
 }

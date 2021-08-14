@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MovieList extends StatelessWidget {
   final List<NowPlayResult> movieList;
 
-  const MovieList({Key key, this.movieList}) : super(key: key);
+  const MovieList({required this.movieList});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MovieList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: Image.network(
-                'https://image.tmdb.org/t/p/w342${movieList[index].poster_path}',
+                'https://image.tmdb.org/t/p/w342${movieList[index].posterPath}',
                 fit: BoxFit.fill,
               ),
             ),

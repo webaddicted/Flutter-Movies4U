@@ -1,29 +1,36 @@
 import 'package:movies4u/constant/api_constant.dart';
 
-class SearchMovieReq {
-  String apiKey = ApiConstant.API_KEY;
-  String query = "";
-  String page = "1";
+/// api_key : ""
+/// query : ""
+/// page : ""
 
+class SearchMovieReq {
+  String? apiKey = ApiConstant.API_KEY;
+  String? query = "";
+  String? page = "";
   SearchMovieReq.empty(String query, String page) {
     this.apiKey = ApiConstant.API_KEY;
     this.query = query;
     this.page = page;
   }
 
-  SearchMovieReq({this.apiKey, this.page});
+  SearchMovieReq({
+      this.apiKey = ApiConstant.API_KEY,
+      this.query = "",
+      this.page = "1"});
 
-  SearchMovieReq.fromJson(Map<String, String> json) {
+  SearchMovieReq.fromJson(Map<String, dynamic> json) {
     apiKey = json['api_key'];
     query = json['query'];
     page = json['page'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, String> data = new Map<String, String>();
-    data['api_key'] = this.apiKey;
-    data['query'] = this.query;
-    data['page'] = this.page;
-    return data;
+    var map = <String, dynamic>{};
+    map['api_key'] = apiKey;
+    map['query'] = query;
+    map['page'] = page;
+    return map;
   }
+
 }

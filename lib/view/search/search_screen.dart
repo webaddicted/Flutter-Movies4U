@@ -21,18 +21,18 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  MovieModel model;
+  late MovieModel model;
   String query = ' ';
 
-  BuildContext ctx;
-  List<NowPlayResult> dataResult = new List();
-  ScrollController _scrollController = new ScrollController();
+  late BuildContext ctx;
+  List<NowPlayResult> dataResult = [];
+  ScrollController _scrollController = ScrollController();
   bool isLoading = false;
   final TextEditingController searchController = TextEditingController();
   int total_pages = 1;
   int pageSize = 1;
 
-  SizingInformation sizeInfo;
+ late SizingInformation sizeInfo;
   @override
   void initState() {
     model = MovieModel();
@@ -108,8 +108,8 @@ class _SearchScreenState extends State<SearchScreen> {
       builder: (context, _, model) {
         var jsonResult = model.searchMovieRespo;
         if (jsonResult.status == ApiStatus.COMPLETED) {
-          return jsonResult.data.total_results > 0 || dataResult.length > 0
-              ? _createUi(jsonResult.data)
+          return jsonResult.data!.totalResults! > 0 || dataResult.length > 0
+              ? _createUi(jsonResult.data!)
               : Column(children: [
                   SizedBox(height: 50),
                   Container(
@@ -132,8 +132,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _createUi(NowPlayingRespo data) {
     pageSize++;
-    total_pages = data.total_pages;
-    dataResult.addAll(data.results);
+    total_pages = data.totalPages!;
+    dataResult.addAll(data.results!);
     return Expanded(
       child: ListView.separated(
           physics: BouncingScrollPhysics(),
@@ -150,23 +150,23 @@ class _SearchScreenState extends State<SearchScreen> {
             return getMovieItemRow(
                 context: ctx,
                 index: index,
-                id: data.id,
-                img: data.poster_path.toString(),
+                id: data.id!,
+                img: data.posterPath.toString(),
                 //"/yGSxMiF0cYuAiyuve5DA6bnWEOI.jpg",
-                name: data.original_title,
-                desc: data.overview,
-                vote: data.vote_average);
+                name: data.originalTitle!,
+                desc: data.overview!,
+                vote: data.voteAverage);
           }),
     );
   }
 
   Widget getMovieItemRow(
-      {BuildContext context,
-      int index,
-      int id,
-      String img,
-      String name,
-      String desc,
+      {required BuildContext context,
+      int index = 0,
+      int id = 0,
+      String img = "",
+      String name ="",
+      String desc ="",
       var vote}) {
     String tag = StringConst.SEARCH_MOVIE + img + index.toString();
     return InkWell(
@@ -236,7 +236,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         SizedBox(width: 5),
                         RatingBar.builder(
                           itemSize: 12.0,
-                          initialRating: vote / 2,
+                          initialRating: double.parse((vote / 2).toString()),
                           minRating: 1,
                           direction: Axis.horizontal,
                           allowHalfRating: true,
@@ -244,7 +244,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                           itemBuilder: (context, _) => Icon(
                             Icons.star,
-                            color: getBackgrountRate(vote),
+                            color: getBackgrountRate(double.parse(vote.toString())),
                           ),
                           onRatingUpdate: (rating) {
                             print(rating);

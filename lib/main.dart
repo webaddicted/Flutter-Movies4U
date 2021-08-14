@@ -3,7 +3,6 @@ import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/constant/assets_const.dart';
 import 'package:movies4u/constant/color_const.dart';
-import 'package:movies4u/view/home/home_screen.dart';
 import 'package:movies4u/view/splash/splash_page.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // SPManager.getThemeDark()
-    return getView();
+    return getView(context);
     // return
     //   ScopedModel(
     //   model: ThemeModel(),
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
     // );
   }
 
-  Widget getView() {
+  Widget getView(BuildContext context) {
     return
       // ScopedModelDescendant<ThemeModel>(
       //   builder: (context, _, model) =>
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(brightness: isDarkMode() ?Brightness.dark:Brightness.light,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               fontFamily: AssetsConst.ZILLASLAB_FONT,
-                  accentColor: ColorConst.APP_COLOR,
+                  // accentColor: ColorConst.APP_COLOR,
                   // accentColorBrightness: Brightness.light,
                   primarySwatch: ColorConst.APP_COLOR,),
               // darkTheme: model.getTheme != null ? ThemeData(brightness: Brightness.dark):ThemeData(brightness: Brightness.light),

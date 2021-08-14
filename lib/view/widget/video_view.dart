@@ -29,8 +29,8 @@ class VideoView extends StatelessWidget {
       builder: (context, _, model) {
         var jsonResult = model.getMovieVideo;
         if (jsonResult.status == ApiStatus.COMPLETED)
-          return jsonResult.data.results.length > 0
-              ? getVideoTrailor(context, jsonResult.data.results)
+          return jsonResult.data!.results!.length > 0
+              ? getVideoTrailor(context, jsonResult.data!.results!)
               : Container();
         else
           return apiHandler(loading: ShimmerView(
@@ -96,7 +96,7 @@ class VideoView extends StatelessWidget {
                                                 VideoPlayerScreen(
                                                   controller:
                                                   YoutubePlayerController(
-                                                    initialVideoId: item.key,
+                                                    initialVideoId: item.key!,
                                                     flags: YoutubePlayerFlags(
                                                       autoPlay: true,
 //                  mute: true,
@@ -111,7 +111,7 @@ class VideoView extends StatelessWidget {
                       Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: getTxtBlackColor(
-                              msg: item.name,
+                              msg: item.name!,
                               fontSize: 15,
                               maxLines: 1,
                               fontWeight: FontWeight.w700)),

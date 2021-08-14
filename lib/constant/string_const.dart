@@ -50,5 +50,9 @@ class StringConst {
 
   static var SEARCH_MOVIE = 'Search Movie';
 
+  static var SOMETHING_WENT_WRONG = "Somethig went wrong";
+
+  static String? NO_INTERNET_CONNECTION = "No Internet Connection";
+
 //  {END TITLE}
 }

@@ -24,11 +24,11 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieListScreen extends StatefulWidget {
-  String apiName, dynamicList, titleTag;
+  String? apiName, dynamicList, titleTag;
   int movieId;
 
   MovieListScreen(
-      {this.apiName, this.dynamicList, this.movieId, this.titleTag});
+      {this.apiName , this.dynamicList , this.movieId = 0, this.titleTag = ""});
 
   @override
   _MovieListScreenState createState() =>
@@ -36,28 +36,29 @@ class MovieListScreen extends StatefulWidget {
 }
 
 class _MovieListScreenState extends State<MovieListScreen> {
-  SizingInformation sizeInfo;
+  late SizingInformation sizeInfo;
 
-  BuildContext ctx;
+  late BuildContext ctx;
+
+  late MovieModel model;
+
+  late List<NowPlayResult> dataResult = [];
+  late List<Results> dataPersonResult = [];
+  late ScrollController _scrollController = new ScrollController();
+  late int total_pages = 1;
+  late int pageSize = 1;
 
   _MovieListScreenState(
       this.apiName, this.dynamicList, this.movieId, this.titleTag);
-
-  int movieId;
-  String castCrewTitle, titleTag;
-  MovieModel model;
-  String apiName, dynamicList;
-  List<NowPlayResult> dataResult = new List();
-  List<Results> dataPersonResult = new List();
-  ScrollController _scrollController = new ScrollController();
-  int total_pages = 1;
-  int pageSize = 1;
+  late String? apiName, dynamicList;
+  late int movieId;
+  late String? castCrewTitle, titleTag;
 
   @override
   void initState() {
     super.initState();
     model = MovieModel();
-    callMovieApi(apiName, model, movieId: movieId, page: pageSize);
+    callMovieApi(apiName!, model, movieId: movieId, page: pageSize);
     _scrollController.addListener(() {
       // debugPrint(
       //     "pixels : ${_scrollController.position
@@ -67,7 +68,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
           _scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent) {
         if (pageSize <= total_pages)
-          callMovieApi(apiName, model, movieId: movieId, page: pageSize);
+          callMovieApi(apiName!, model, movieId: movieId, page: pageSize);
       }
     });
   }
@@ -81,12 +82,12 @@ class _MovieListScreenState extends State<MovieListScreen> {
           color: ColorConst.BLACK_COLOR,
         ),
         onPressed: () => Navigator.pop(context));
+    // print("List title : $dynamicList -- $apiName  ${getTitle(dynamicList != null ? dynamicList! : apiName)}");
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            ctx: context,
-            title: getTitle(dynamicList != null ? dynamicList : apiName),
+            title: getTitle(dynamicList != null ? dynamicList! : apiName!),
             bgColor: ColorConst.WHITE_BG_COLOR,
-            titleTag: titleTag,
+            titleTag: titleTag!,
             icon: homeIcon),
         body: ResponsiveBuilder(builder: (context, sizeInf) {
           sizeInfo = sizeInf;
@@ -99,7 +100,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
   Widget apiresponse(Orientation orientation) {
     return ScopedModelDescendant<MovieModel>(
       builder: (context, _, model) {
-        var jsonResult = getData(apiName, model);
+        var jsonResult = getData(apiName!, model);
         if (jsonResult.status == ApiStatus.COMPLETED) {
           return getCount(jsonResult.data) > 0
               ? _createUi(jsonResult.data, orientation)
@@ -108,7 +109,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
           return apiHandler(
               loading: ShimmerView(
                 sizeInfo,
-                apiName: apiName,
+                apiName: apiName!,
                 viewType: ShimmerView.VIEW_CATEGORY,
               ),
               response: jsonResult);
@@ -123,8 +124,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
     int columnCount = 0;
     if (data is NowPlayingRespo) {
       pageSize++;
-      total_pages = data.total_pages;
-      dataResult.addAll(data.results);
+      total_pages = data.totalPages!;
+      dataResult.addAll(data.results!);
       columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
           ? 6
           : orientation == Orientation.portrait
@@ -132,8 +133,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
               : 4;
     } else if (data is TrandingPersonRespo) {
       pageSize++;
-      total_pages = data.total_pages;
-      dataPersonResult.addAll(data.results);
+      total_pages = data.totalPages!;
+      dataPersonResult.addAll(data.results!);
       columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
           ? 5
           : orientation == Orientation.portrait
@@ -184,7 +185,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
               itemCount: getCount(data),
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                return Container(height: 180, child: getItemView(data, index));
+                return Container(height: 180, child: getItemView(data, index, ));
                 // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
               })
           : StaggeredGridView.countBuilder(
@@ -212,47 +213,47 @@ class _MovieListScreenState extends State<MovieListScreen> {
 
   int getCount(result) {
     if (apiName == StringConst.MOVIE_CAST && result is CreditsCrewRespo)
-      return result.cast.length;
+      return result.cast!.length;
     else if (apiName == StringConst.MOVIE_CREW && result is CreditsCrewRespo)
-      return result.crew.length;
+      return result.crew!.length;
     else if (result is TrandingPersonRespo)
-      return result.results.length;
-    else if (result is NowPlayingRespo) return result.results.length;
+      return result.results!.length;
+    else if (result is NowPlayingRespo) return result.results!.length;
     if (apiName == StringConst.PERSON_MOVIE_CAST && result is PersonMovieRespo)
-      return result.cast.length;
+      return result.cast!.length;
     else if (apiName == StringConst.PERSON_MOVIE_CREW &&
         result is PersonMovieRespo)
-      return result.crew.length;
+      return result.crew!.length;
     else if (result is MovieCatRespo)
-      return result.genres.length;
+      return result.genres!.length;
     else
       return 1;
   }
 
   Widget getItemView(data, int index,
-      {List<NowPlayResult> dataResult, List<Results> dataPersonResult}) {
+      { List<NowPlayResult>? dataResult,  List<Results>? dataPersonResult}) {
     try {
       if (data is CreditsCrewRespo) return getPersonDetails(data, index);
       if (data is TrandingPersonRespo) {
-        var result = dataPersonResult[index];
-        var tag = apiName + 'tranding' + index.toString();
+        var result = dataPersonResult![index];
+        var tag = apiName! + 'tranding' + index.toString();
         return castCrewItem(
-            id: result.id,
-            name: result.name,
+            id: result.id!,
+            name: result.name!,
             tag: tag,
-            image: result.profilePath,
+            image: result.profilePath!,
             sizeInfo: sizeInfo,
-            job: result.knownForDepartment,
+            job: result.knownForDepartment!,
             onTap: (int id) => navigationPush(
                 context,
                 PersonDetail(
                     id: id,
                     name: result.name,
-                    imgPath: ApiConstant.IMAGE_POSTER + result.profilePath,
+                    imgPath: ApiConstant.IMAGE_POSTER + result.profilePath!,
                     tag: tag)));
       } else if (data is NowPlayingRespo) {
         // NowPlayResult item = data.results[index];
-        NowPlayResult item = dataResult[index];
+        NowPlayResult item = dataResult![index];
 
         return getMovieItemRow(
             context: context,
@@ -262,13 +263,13 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 ? 310
                 : 250,
             width: 135,
-            id: item.id,
-            img: item.poster_path,
-            name: item.original_title,
-            vote: item.vote_average);
+            id: item.id!,
+            img: item.posterPath!,
+            name: item.originalTitle!,
+            vote: item.voteAverage!);
       } else if (apiName == StringConst.PERSON_MOVIE_CAST &&
           data is PersonMovieRespo) {
-        PersonCast item = data.cast[index];
+        PersonCast item = data.cast![index];
         return getMovieItemRow(
             context: context,
             apiName: apiName,
@@ -277,13 +278,13 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 ? 310
                 : 240,
             width: 135,
-            id: item.id,
-            img: item.posterPath,
-            name: item.originalTitle,
+            id: item.id!,
+            img: item.posterPath!,
+            name: item.originalTitle!,
             vote: item.voteAverage);
       } else if (apiName == StringConst.PERSON_MOVIE_CREW &&
           data is PersonMovieRespo) {
-        PersonCrew item = data.crew[index];
+        PersonCrew item = data.crew![index];
         return getMovieItemRow(
             context: context,
             apiName: apiName,
@@ -292,19 +293,19 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 ? 310
                 : 240,
             width: 135,
-            id: item.id,
-            img: item.posterPath,
-            name: item.originalTitle,
+            id: item.id!,
+            img: item.posterPath!,
+            name: item.originalTitle!,
             vote: item.voteAverage);
       } else if (apiName == ApiConstant.GENRES_LIST && data is MovieCatRespo) {
-        Genres item = data.genres[index];
-        String tag = getTitle(apiName) + item.name + index.toString();
+        Genres item = data.genres![index];
+        String tag = getTitle(apiName!) + item.name! + index.toString();
         final size = MediaQuery.of(ctx).size;
         if (sizeInfo.deviceScreenType == DeviceScreenType.desktop)
           return getCatRow(context, index, item, sizeInfo);
         else
           return fullListImage(
-              name: item.name,
+              name: item.name!,
               image: getCategoryMovie()[index],
               tag: tag,
               size: size,
@@ -313,38 +314,39 @@ class _MovieListScreenState extends State<MovieListScreen> {
                     context,
                     MovieListScreen(
                         apiName: StringConst.MOVIE_CATEGORY,
-                        dynamicList: item.name,
-                        movieId: item.id));
+                        dynamicList: item.name!,
+                        movieId: item.id!));
               });
       } else
-        Container(
+        return Container(
           child: getTxt(msg: 'Data not found'),
         );
     } catch (ex) {
       return Card(clipBehavior: Clip.antiAlias, color: ColorConst.GREY_SHADE);
     }
+    return  Card(clipBehavior: Clip.antiAlias, color: ColorConst.GREY_SHADE);
   }
 
   Widget getPersonDetails(CreditsCrewRespo results, int index) {
-    String image = apiName == StringConst.MOVIE_CAST
-        ? results.cast[index].profilePath
-        : results.crew[index].profilePath;
-    String name = apiName == StringConst.MOVIE_CAST
-        ? results.cast[index].name
-        : results.crew[index].name;
-    String chatactor = apiName == StringConst.MOVIE_CAST
-        ? results.cast[index].character
-        : results.crew[index].job;
-    int id = apiName == StringConst.MOVIE_CAST
-        ? results.cast[index].id
-        : results.crew[index].id;
-    var tag = apiName + 'cast_crew list' + index.toString();
+    String? image = apiName == StringConst.MOVIE_CAST
+        ? results.cast![index].profilePath
+        : results.crew![index].profilePath;
+    String? name = apiName == StringConst.MOVIE_CAST
+        ? results.cast![index].name
+        : results.crew![index].name;
+    String? chatactor = apiName == StringConst.MOVIE_CAST
+        ? results.cast![index].character
+        : results.crew![index].job;
+    int? id = apiName == StringConst.MOVIE_CAST
+        ? results.cast![index].id
+        : results.crew![index].id;
+    var tag = apiName! + 'cast_crew list' + index.toString();
     return castCrewItem(
-        id: id,
-        name: name,
+        id: id!,
+        name: name!,
         tag: tag,
-        image: image,
-        job: chatactor,
+        image: image!,
+        job: chatactor!,
         sizeInfo: sizeInfo,
         onTap: (int id) => navigationPush(
             context,

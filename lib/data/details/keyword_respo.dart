@@ -1,34 +1,45 @@
-class KeywordRespo {
-  int id;
-  List<Keywords> keywords;
+/// id : 527774
+/// keywords : [{"id":780,"name":"kung fu"},{"id":1820,"name":"trip"},{"id":1938,"name":"sword"},{"id":3389,"name":"warrior woman"},{"id":12554,"name":"dragon"},{"id":167234,"name":"vietnamese"},{"id":192494,"name":"south asian"},{"id":192913,"name":"warrior"}]
 
-  KeywordRespo({this.id, this.keywords});
+class KeywordRespo {
+  int? id;
+  List<Keywords>? keywords;
+
+  KeywordRespo({
+      this.id, 
+      this.keywords});
 
   KeywordRespo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['keywords'] != null) {
-      keywords = new List<Keywords>();
+      keywords = [];
       json['keywords'].forEach((v) {
-        keywords.add(new Keywords.fromJson(v));
+        keywords?.add(Keywords.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.keywords != null) {
-      data['keywords'] = this.keywords.map((v) => v.toJson()).toList();
+    var map = <String, dynamic>{};
+    map['id'] = id;
+    if (keywords != null) {
+      map['keywords'] = keywords?.map((v) => v.toJson()).toList();
     }
-    return data;
+    return map;
   }
+
 }
 
-class Keywords {
-  int id;
-  String name;
+/// id : 780
+/// name : "kung fu"
 
-  Keywords({this.id, this.name});
+class Keywords {
+  int? id;
+  String? name;
+
+  Keywords({
+      this.id, 
+      this.name});
 
   Keywords.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -36,9 +47,10 @@ class Keywords {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
+    var map = <String, dynamic>{};
+    map['id'] = id;
+    map['name'] = name;
+    return map;
   }
+
 }

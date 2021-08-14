@@ -27,8 +27,8 @@ class MovieKeyword extends StatelessWidget {
       builder: (context, _, model) {
         var jsonResult = model.getMovieKeyword;
         if (jsonResult.status == ApiStatus.COMPLETED)
-          return jsonResult.data.keywords.length > 0
-              ? movieKeyword(context, jsonResult.data)
+          return jsonResult.data!.keywords!.length > 0
+              ? movieKeyword(context, jsonResult.data!)
               : Container();
         else
           return apiHandler(loading:ShimmerView.movieDetailsTag(),response: jsonResult);
@@ -51,12 +51,12 @@ class MovieKeyword extends StatelessWidget {
     return SizedBox(
       child:  Wrap(
           direction: Axis.horizontal,
-          children: getKeywordListings(context, data.keywords),
+          children: getKeywordListings(context, data.keywords!)!,
       ),
     );
   }
 
-  List<Widget> getKeywordListings(
+  getKeywordListings(
       BuildContext context, List<Keywords> keywords) {
     List listings = <Widget>[];
     for (int i = 0; i < keywords.length; i++) {
@@ -68,12 +68,12 @@ class MovieKeyword extends StatelessWidget {
                 context,
                 MovieListScreen(
                     apiName: StringConst.MOVIES_KEYWORDS,
-                    dynamicList: keywords[i].name,
-                    movieId: keywords[i].id)),
+                    dynamicList: keywords[i].name!,
+                    movieId: keywords[i].id!)),
             child: Chip(
               elevation: 3.0,
               backgroundColor: ColorConst.WHITE_COLOR,
-              label: Text(keywords[i].name),
+              label: Text(keywords[i].name!),
             ),
           ),
         ),

@@ -14,7 +14,6 @@ import 'package:movies4u/view/widget/full_image.dart';
 import 'package:movies4u/view/widget/shimmer_view.dart';
 import 'package:movies4u/view/widget/tranding_movie_row.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:responsive_builder/src/sizing_information.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SifiMovieRow extends StatelessWidget {
@@ -79,11 +78,11 @@ class SifiMovieRow extends StatelessWidget {
 
   int getCount(results) {
     if (results is NowPlayingRespo)
-      return results.results.length;
+      return results.results!.length;
     else if (apiName == StringConst.IMAGES && results is MovieImgRespo)
-      return results.profiles.length;
+      return results.profiles!.length;
     else if (results is MovieImgRespo)
-      return results.backdrops.length;
+      return results.backdrops!.length;
     else
       return 0;
   }
@@ -102,12 +101,12 @@ class SifiMovieRow extends StatelessWidget {
   Widget getView(BuildContext context, int index, jsonResult) {
     if (jsonResult is MovieImgRespo) {
       Backdrops item;
-      if (jsonResult.profiles != null && jsonResult.profiles.length > 0)
-        item = jsonResult.profiles[index];
+      if (jsonResult.profiles != null && jsonResult.profiles!.length > 0)
+        item = jsonResult.profiles![index];
       else
-        item = jsonResult.backdrops[index];
-      String tag = getTitle(apiName) + item.filePath != null
-          ? item.filePath
+        item = jsonResult.backdrops![index];
+      String tag = getTitle(apiName) + item.filePath! != null
+          ? item.filePath!
           : '' + index.toString();
 
      return Padding(
@@ -119,47 +118,47 @@ class SifiMovieRow extends StatelessWidget {
              height:  sizeInfo.deviceScreenType == DeviceScreenType.desktop?335:180,
              width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?240:125,
             id: 256,
-            img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) +  item.filePath,
+            img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) +  item.filePath!,
            onTap: ()=> navigationPush(
                context,
                FullImage(
-                   jsonResult.profiles != null && jsonResult.profiles.length > 0
-                       ? jsonResult.profiles
-                       : jsonResult.backdrops,
+                   jsonResult.profiles! != null && jsonResult.profiles!.length > 0
+                       ? jsonResult.profiles!
+                       : jsonResult.backdrops!,
                    index,
                    tag))),
      );
-      return getLargeItem(
-          context: context,
-          img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) +  item.filePath,
-          screenSpace: 80,
-          sizeInfo:sizeInfo,
-          tag: tag,
-          onTap: () => navigationPush(
-              context,
-              FullImage(
-                  jsonResult.profiles != null && jsonResult.profiles.length > 0
-                      ? jsonResult.profiles
-                      : jsonResult.backdrops,
-                  index,
-                  tag)));
+      // return getLargeItem(
+      //     context: context,
+      //     img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER) +  item.filePath,
+      //     screenSpace: 80,
+      //     sizeInfo:sizeInfo,
+      //     tag: tag,
+      //     onTap: () => navigationPush(
+      //         context,
+      //         FullImage(
+      //             jsonResult.profiles != null && jsonResult.profiles.length > 0
+      //                 ? jsonResult.profiles
+      //                 : jsonResult.backdrops,
+      //             index,
+      //             tag)));
     } else if (jsonResult is NowPlayingRespo) {
-      NowPlayResult item = jsonResult.results[index];
-      String tag = getTitle(apiName) + item.poster_path + index.toString();
-      String img = ApiConstant.IMAGE_POSTER + item.poster_path;
+      NowPlayResult item = jsonResult.results![index];
+      String tag = getTitle(apiName) + item.posterPath! + index.toString();
+      String img = ApiConstant.IMAGE_POSTER + item.posterPath!;
       return getLargeItem(
           context: context,
-          img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER)  + item.backdrop_path,
-          name: item.original_title,
+          img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.IMAGE_ORIG_POSTER:ApiConstant.IMAGE_POSTER)  + item.backdropPath!,
+          name: item.originalTitle!,
           screenSpace: 80,
           sizeInfo:sizeInfo,
           tag: tag,
           onTap: () => navigationPush(
               context,
               DetailsMovieScreen(
-                  item.original_title, img, apiName, index, item.id, tag)));
+                  item.originalTitle, img, apiName, index, item.id, tag)));
     } else
-      Container(child: getTxt(msg: StringConst.NO_DATA_FOUND));
+      return Container(child: getTxt(msg: StringConst.NO_DATA_FOUND));
   }
 
 //  getMovieImage(BuildContext context, MovieImgRespo results) {
@@ -192,12 +191,12 @@ class SifiMovieRow extends StatelessWidget {
 }
 
 Widget getLargeItem(
-    {@required BuildContext context,
-    String img,
-    String name,
-    String tag,
-    double screenSpace,
-    Function onTap, sizeInfo}) {
+    {required BuildContext context,
+    String img="",
+    String name = "",
+    String tag = "",
+    double screenSpace = 0,
+    required Function onTap, sizeInfo}) {
   final size = MediaQuery.of(context).size;
   return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),

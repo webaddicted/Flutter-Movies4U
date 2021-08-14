@@ -18,16 +18,16 @@ class _SettingScreenState extends State<SettingScreen> {
   var emailNoti = true;
   var darkMode = false;
 
-  BuildContext ctx;
+  late BuildContext ctx;
 
   @override
   void initState() {
     super.initState();
-    darkMode = isDarkMode(context);
   }
 
   @override
   Widget build(BuildContext context) {
+    darkMode = isDarkMode();
     var homeIcon = IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -36,7 +36,6 @@ class _SettingScreenState extends State<SettingScreen> {
         onPressed: () => Navigator.pop(context));
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            ctx: context,
             title: StringConst.SETTING_TITLE,
             bgColor: ColorConst.WHITE_BG_COLOR,
             icon: homeIcon),

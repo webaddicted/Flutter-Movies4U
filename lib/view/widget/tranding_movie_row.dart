@@ -21,7 +21,7 @@ class TrandingMovieRow extends StatelessWidget {
   final apiName;
   final movieId;
   final sizeInfo;
-  TrandingMovieRow({@required this.apiName,@required this.sizeInfo, this.movieId});
+  TrandingMovieRow({required this.apiName,required this.sizeInfo, this.movieId = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +29,7 @@ class TrandingMovieRow extends StatelessWidget {
   }
 
   Widget apiresponse(BuildContext context) {
+    print("MovieId : $movieId");
     return ScopedModelDescendant<MovieModel>(
       builder: (context, _, model) {
         var jsonResult = getData(apiName, model);
@@ -90,12 +91,12 @@ class TrandingMovieRow extends StatelessWidget {
 
   int getCount(jsonResult) {
     if (jsonResult is NowPlayingRespo)
-      return jsonResult.results.length;
+      return jsonResult.results!.length;
     else if (apiName == StringConst.PERSON_MOVIE_CAST &&
         jsonResult is PersonMovieRespo)
-      return jsonResult.cast.length;
+      return jsonResult.cast!.length;
     else if (apiName == StringConst.PERSON_MOVIE_CREW &&
-        jsonResult is PersonMovieRespo) return jsonResult.crew.length;
+        jsonResult is PersonMovieRespo) return jsonResult.crew!.length;
     return 0;
   }
 
@@ -114,42 +115,42 @@ class TrandingMovieRow extends StatelessWidget {
 
   Widget getView(BuildContext context, String apiName, jsonResult, SizingInformation sizeInfo, int index) {
     if (jsonResult is NowPlayingRespo) {
-      NowPlayResult item = jsonResult.results[index];
+      NowPlayResult item = jsonResult.results![index];
       return getMovieItemRow(
           context: context,
           apiName: apiName,
           index: index,
           height:  sizeInfo.deviceScreenType == DeviceScreenType.desktop?335:185,
           width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?240:125,
-          id: item.id,
-          img: item.poster_path == null ? "" : item.poster_path,
-          name: item.original_title,
-          vote: item.vote_average);
+          id: item.id!,
+          img: item.posterPath == null ? "" : item.posterPath!,
+          name: item.originalTitle!,
+          vote: item.voteAverage);
     } else if (apiName == StringConst.PERSON_MOVIE_CAST &&
         jsonResult is PersonMovieRespo) {
-      PersonCast item = jsonResult.cast[index];
+      PersonCast item = jsonResult.cast![index];
       return getMovieItemRow(
           context: context,
           apiName: apiName,
           index: index,
           height:  sizeInfo.deviceScreenType == DeviceScreenType.desktop?335:185,
           width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?240:125,
-          id: item.id,
-          img: item.posterPath == null ? "" : item.posterPath,
-          name: item.originalTitle,
+          id: item.id!,
+          img: item.posterPath == null ? "" : item.posterPath!,
+          name: item.originalTitle!,
           vote: item.voteAverage);
     } else if (apiName == StringConst.PERSON_MOVIE_CREW &&
         jsonResult is PersonMovieRespo) {
-      PersonCrew item = jsonResult.crew[index];
+      PersonCrew item = jsonResult.crew![index];
       return getMovieItemRow(
           context: context,
           apiName: apiName,
           index: index,
           height:  sizeInfo.deviceScreenType == DeviceScreenType.desktop?335:185,
           width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?240:125,
-          id: item.id,
-          img: item.posterPath == null ? "" : item.posterPath,
-          name: item.originalTitle,
+          id: item.id!,
+          img: item.posterPath == null ? "" : item.posterPath!,
+          name: item.originalTitle!,
           vote: item.voteAverage);
     } else
       return Container();
@@ -157,17 +158,17 @@ class TrandingMovieRow extends StatelessWidget {
 }
 
 Widget getMovieItemRow(
-    {BuildContext context,
-    String apiName,
-    int index,
-    double height,
-    double width,
-    int id,
-    String img,
-    String name,
+    {required BuildContext context,
+    String? apiName ,
+    int? index ,
+    double? height,
+    double? width,
+    int? id ,
+    String? img ,
+    String? name,
     var vote,
-    Function onTap}) {
-  String tag = getTitle(apiName) + img + index.toString();
+    Function? onTap}) {
+  String tag = getTitle(apiName!) + img! + index.toString();
   return  Hero(
         tag: tag,
         child: Container(
@@ -180,7 +181,7 @@ Widget getMovieItemRow(
                       child: Stack(
                         children: [
                           getCacheImage(
-                              url:img.contains("http") ? img : ApiConstant.IMAGE_POSTER + img.toString(), height: height),
+                              url:img.contains("http") ? img : ApiConstant.IMAGE_POSTER + img.toString(), height: height!),
                           Positioned.fill(
                               child: Material(
                                   color: Colors.transparent,
@@ -221,7 +222,7 @@ Widget getMovieItemRow(
                   SizedBox(width: 5),
                   RatingBar.builder(
                     itemSize: 12.0,
-                    initialRating: vote / 2,
+                    initialRating: double.parse((vote / 2).toString()),
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
@@ -229,7 +230,7 @@ Widget getMovieItemRow(
                     itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                     itemBuilder: (context, _) => Icon(
                       Icons.star,
-                      color: getBackgrountRate(vote),
+                      color: getBackgrountRate(double.parse(vote.toString())),
                     ),
                     onRatingUpdate: (rating) {
                       print(rating);
@@ -256,9 +257,9 @@ Color getBackgrountRate(double rate) {
 }
 
 Widget getHeading(
-    {BuildContext context,
-    String apiName,
-    int movieId,
+    {required BuildContext context,
+    String apiName = "",
+    int movieId = 0,
     bool isShowViewAll = true}) {
   String titleTag = getTitle(apiName) + "_Heading_" + apiName;
   return Padding(

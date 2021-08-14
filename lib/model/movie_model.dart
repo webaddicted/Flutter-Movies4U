@@ -15,41 +15,41 @@ import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MovieModel extends Model {
-  MovieRepository _movieRepo;
-  ApiResponse<MovieRespo> _movieListRespo;
+  late MovieRepository _movieRepo;
+  // ApiResponse<MovieRespo> _movieListRespo;
 
 //    {START HOME PAGE API}
-  ApiResponse<NowPlayingRespo> _nowPlayingRespo;
-  ApiResponse<NowPlayingRespo> _popularMovieRespo;
-  ApiResponse<MovieCatRespo> _movieCatRespo;
-  ApiResponse<NowPlayingRespo> _trandingMovieRespo;
-  ApiResponse<NowPlayingRespo> _discoverMovieRespo;
-  ApiResponse<NowPlayingRespo> _upcommingMovieRespo;
-  ApiResponse<NowPlayingRespo> _topRatedMovieRespo;
+  late ApiResponse<NowPlayingRespo> _nowPlayingRespo;
+  late ApiResponse<NowPlayingRespo> _popularMovieRespo;
+  late ApiResponse<MovieCatRespo> _movieCatRespo;
+  late ApiResponse<NowPlayingRespo> _trandingMovieRespo;
+  late ApiResponse<NowPlayingRespo> _discoverMovieRespo;
+  late ApiResponse<NowPlayingRespo> _upcommingMovieRespo;
+  late ApiResponse<NowPlayingRespo> _topRatedMovieRespo;
 
-//    {END HOME PAGE API}
-//    {START MOVIE DETAILS PAGE API}
-  ApiResponse<MovieDetailsRespo> _movieDetailRespo;
-  ApiResponse<CreditsCrewRespo> _movieCrewRespo;
-  ApiResponse<KeywordRespo> _keywordListRespo;
-  ApiResponse<MovieImgRespo> _movieImgRespo;
-  ApiResponse<VideoRespo> _movieVideoRespo;
-  ApiResponse<NowPlayingRespo> _recommendMovieRespo;
-  ApiResponse<NowPlayingRespo> _similarMovieRespo;
-  ApiResponse<NowPlayingRespo> _keywordMovieListRespo;
+//     {END HOME PAGE API}
+//     {START MOVIE DETAILS PAGE API}
+  late ApiResponse<MovieDetailsRespo> _movieDetailRespo;
+  late ApiResponse<CreditsCrewRespo> _movieCrewRespo;
+  late ApiResponse<KeywordRespo> _keywordListRespo;
+  late ApiResponse<MovieImgRespo> _movieImgRespo;
+  late ApiResponse<VideoRespo> _movieVideoRespo;
+  late ApiResponse<NowPlayingRespo> _recommendMovieRespo;
+  late ApiResponse<NowPlayingRespo> _similarMovieRespo;
+  late ApiResponse<NowPlayingRespo> _keywordMovieListRespo;
 
   //    {END MOVIE DETAILS PAGE API}
-  ApiResponse<TrandingPersonRespo> _trandingPersonRespo;
-  ApiResponse<PersonDetailRespo> _personDetailRespo;
-  ApiResponse<PersonMovieRespo> _personMovieRespo;
-  ApiResponse<MovieImgRespo> _personImageRespo;
-  ApiResponse<NowPlayingRespo> _catMovieRespo;
-  ApiResponse<NowPlayingRespo> _searchMovieRespo;
+  late ApiResponse<TrandingPersonRespo> _trandingPersonRespo;
+  late ApiResponse<PersonDetailRespo> _personDetailRespo;
+  late ApiResponse<PersonMovieRespo> _personMovieRespo;
+  late ApiResponse<MovieImgRespo> _personImageRespo;
+  late ApiResponse<NowPlayingRespo> _catMovieRespo;
+  late ApiResponse<NowPlayingRespo> _searchMovieRespo;
 
   MovieModel() {
 //    {START HOME PAGE API}
     _movieRepo = MovieRepository();
-    _movieListRespo = ApiResponse();
+    // _movieListRespo = ApiResponse();
     _nowPlayingRespo = ApiResponse();
     _popularMovieRespo = ApiResponse.loading();
     _movieCatRespo = ApiResponse();
@@ -75,13 +75,13 @@ class MovieModel extends Model {
     _personImageRespo = ApiResponse();
   }
 
-  ApiResponse<MovieRespo> get getJsonResonse => _movieListRespo;
+  // ApiResponse<MovieRespo> get getJsonResonse => _movieListRespo;
 
-  fetchMovieList() async {
-    _movieListRespo = ApiResponse.loading();
-    _movieListRespo = await _movieRepo.fetchMovieList();
-    notifyListeners();
-  }
+  // fetchMovieList() async {
+  //   _movieListRespo = ApiResponse.loading();
+  //   _movieListRespo = await _movieRepo.fetchMovieList();
+  //   notifyListeners();
+  // }
 
   ApiResponse<NowPlayingRespo> get nowPlayingRespo => _nowPlayingRespo;
 

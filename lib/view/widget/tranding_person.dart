@@ -26,8 +26,8 @@ class TrandingPerson extends StatelessWidget {
       builder: (context, _, model) {
         var jsonResult = model.trandingPersonRespo;
         if (jsonResult.status == ApiStatus.COMPLETED)
-          return jsonResult.data.results.length > 0
-              ? trandingPerson(context, jsonResult.data.results)
+          return jsonResult.data!.results!.length > 0
+              ? trandingPerson(context, jsonResult.data!.results!)
               : Container();
         else
           return apiHandler(
@@ -69,18 +69,18 @@ class TrandingPerson extends StatelessWidget {
               padding: EdgeInsets.only(top: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:10.0),
               width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?250:100.0,
               child: castCrewItem(
-                  id: item.id,
+                  id: item.id!,
                   tag: 'tranding person' + index.toString(),
-                  name: item.name,
-                  image: item.profilePath,
+                  name: item.name!,
+                  image: item.profilePath!,
                   sizeInfo:sizeInfo,
-                  job: item.knownForDepartment,
+                  job: item.knownForDepartment!,
                   onTap: (int id) => navigationPush(
                       context,
                       PersonDetail(
                           id: item.id,
                           name: item.name,
-                          imgPath: ApiConstant.IMAGE_POSTER + item.profilePath,
+                          imgPath: ApiConstant.IMAGE_POSTER + item.profilePath!,
                           tag: 'tranding person' + index.toString()))));
         },
       ),
