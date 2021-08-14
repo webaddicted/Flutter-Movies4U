@@ -182,7 +182,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
           ? ListView.builder(
               physics: BouncingScrollPhysics(),
               itemCount: getCount(data),
-          shrinkWrap: true,
+              shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
                 return Container(height: 180, child: getItemView(data, index));
                 // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
