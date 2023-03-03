@@ -153,6 +153,8 @@ This release cover following feature :
 * flutter build web
 * firebase deploy
 * firebase deploy --only hosting
+* flutter pub upgrade --major-versions
+
  
 ## LICENSE
 ```
