@@ -9,7 +9,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d71713560374c938dba8a476ce8debf)](https://www.codacy.com/app/webaddicted/Flutter-Movies4U)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/9d71713560374c938dba8a476ce8debf)](https://www.codacy.com/app/webaddicted/Flutter-Movies4U)
 
-This is simple repository, that help in fetch latest, upcomming movies.
+Movies4U is a great way to watch movies on your phone. You can enjoy your favorite films without any hassel!
 
 ## Website
 
