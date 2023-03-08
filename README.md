@@ -117,6 +117,9 @@ This release cover following feature :
 * [Shared preferences](https://flutter.dev/docs/cookbook/persistence/key-value)
 * [Custom fonts](https://flutter.dev/docs/cookbook/design/fonts)
       
+## Onboarding
+
+<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
 
 ## Home
 
@@ -130,9 +133,6 @@ This release cover following feature :
 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home_dark.jpg"> 
 
-## Onboarding
-<img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"> 
-
 
 ## User Profile
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/profile.jpg"> 
@@ -141,7 +141,23 @@ This release cover following feature :
 ## Web App
 
 <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/web_home.jpg" width="400">  <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/web_details.jpg" width="400">  
-      
+ 
+ 
+ ### Screenshots
+
+<table>
+  <tr>
+    <td> <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/onboarding.jpg"  title="1"></td>
+    <td> <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/home.jpg"  title="2"></td>
+    <td> <img src="https://github.com/webaddicted/LocalFiles/blob/main/movies4u/pics/details.jpg"  title="3"></td>
+ </tr>
+ <tr>
+    <td> <img src="screenshots/04.jpeg"  title="4"></td>
+    <td> <img src="screenshots/05.jpeg"  title="4"></td>
+    <td> <img src="screenshots/06.jpeg"  title="4"></td>
+  </tr>
+</table>
+ 
 
 ## Command
 
