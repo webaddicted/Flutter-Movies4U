@@ -170,7 +170,7 @@ This release cover following feature :
 * firebase deploy
 * firebase deploy --only hosting
 * flutter pub upgrade --major-versions
-
+https://www.app-privacy-policy.com/download.php?lang=en&token=E2fkEGz8Oo7CoGxgBwF0QfNRJIYyiR23
  
 ## LICENSE
 ```
