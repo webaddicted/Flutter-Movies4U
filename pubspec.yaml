@@ -1,0 +1,70 @@
+name: movies4u
+description: Movies4U is a great way to watch movies on your phone. You can enjoy your favorite films without any hassel!
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+##version: version name+version code
+#version: 1.9.0+9
+version: 2.0.0+11
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.5
+  dio: ^5.2.1
+  provider: ^6.0.5
+  shimmer: ^3.0.0
+  # scoped model
+  #  scoped_model: ^1.1.0
+  scoped_model: ^2.0.0
+  get: ^4.6.5
+  # dependency injection
+  get_it: ^7.6.0
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.2.3
+  flutter_rating_bar: ^4.0.1
+  #  eva_icons_flutter: ^2.0.0
+  flutter_staggered_grid_view: ^0.6.2
+  #  flutter_tags: ^0.4.9
+  flutter_tags: ^1.0.0-nullsafety.1 # Not Supported
+  photo_view: ^0.14.0
+  shared_preferences: ^2.2.0
+  #  font_awesome_flutter: ^8.8.1
+  share_plus: ^7.0.2
+  responsive_builder: ^0.7.0
+  intl: ^0.18.1
+  youtube_player_flutter: ^8.1.2
+  in_app_review: ^2.0.6
+  in_app_update: ^4.1.4
+  webview_flutter: ^4.2.2
+  logger: ^1.4.0
+#  webview_dart: ^1.0.1
+#  upgrader: ^6.0.1
+#  app_version_update: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Zillaslab
+      fonts:
+        - asset: assets/fonts/Zillaslab-bold.ttf
+        - asset: assets/fonts/Zillaslab-light.ttf
+        - asset: assets/fonts/Zillaslab-medium.ttf
+        - asset: assets/fonts/Zillaslab-regular.ttf
+    - family: PT
+      fonts:
+        - asset: assets/fonts/PT-bold.ttf
+        - asset: assets/fonts/PT-italic.ttf
+        - asset: assets/fonts/PT-regular.ttf
