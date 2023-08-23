@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:movies4u/constant/api_constant.dart';
@@ -11,6 +12,7 @@ import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/home/nav_drawer.dart';
+import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/search/search_screen.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cate.dart';
@@ -36,10 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
   final InAppReview _inAppReview = InAppReview.instance;
   late AppUpdateInfo _updateInfo;
   final ScrollController scrollController = ScrollController();
+  BannerAd? _bannerAd;
+
   @override
   void initState() {
     super.initState();
     checkForUpdate();
+    getBannerAds();
     model = MovieModel();
     model.fetchNowPlaying();
     // StringConst.TRANDING_PERSON_OF_WEEK
@@ -90,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Icons.search_rounded,
                       color: ColorConst.blackColor,
                     ),
-                    onPressed: () => navigationPush(context, SearchScreen()))
+                    onPressed: () => navigationPush(context, const SearchScreen()))
               ],
               icon: homeIcon),
           drawer: NavDrawer(),
@@ -143,6 +148,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     apiName: ApiConstant.trendingMovieList,
                     sizeInfo: sizeInfo,
                   ),
+                  if (_bannerAd != null)
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: SizedBox(
+                        width: _bannerAd!.size.width.toDouble(),
+                        height: _bannerAd!.size.height.toDouble(),
+                        child: AdWidget(ad: _bannerAd!),
+                      ),
+                    ),
                   MovieCate(sizeInfo: sizeInfo),
                   TrandingMovieRow(
                       apiName: ApiConstant.popularMovies, sizeInfo: sizeInfo),
@@ -193,6 +207,31 @@ class _HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       printLog(tag: "HomePage",status: ApiStatus.error,msg: "$e");
     }
+  }
+
+  void getBannerAds() {
+    BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          printLog(msg: 'Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
   }
 }
 

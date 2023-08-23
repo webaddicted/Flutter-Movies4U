@@ -12,6 +12,7 @@ import 'package:movies4u/view/other/help_screen.dart';
 import 'package:movies4u/view/other/invite_friend_screen.dart';
 import 'package:movies4u/view/other/privacy_policy.dart';
 import 'package:movies4u/view/other/terms_condition.dart';
+import 'package:movies4u/view/other/test_ads.dart';
 import 'package:movies4u/view/profile_screen.dart';
 import 'package:movies4u/view/setting/settings_screen.dart';
 import 'package:share_plus/share_plus.dart';
@@ -82,6 +83,8 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.local_movies_outlined, "Tranding Movie",
                       showBadge: true),
+                  _buildDivider(),
+                  _buildRow(Icons.local_movies_outlined, "Ads", showBadge: true),
                   _buildDivider(),
                   _buildRow(Icons.movie_filter_outlined, "Popular Movie",
                       showBadge: false),
@@ -182,6 +185,9 @@ class NavDrawer extends StatelessWidget {
       case "Tranding Movie":
         navigationPush(
             _context, MovieListScreen(apiName: ApiConstant.trendingMovieList));
+        break;
+      case "Ads":
+        navigationPush(_context, const TestAdsScreen());
         break;
       case "Popular Movie":
         navigationPush(

@@ -7,8 +7,14 @@ import 'package:movies4u/view/splash/splash_page.dart';
 
 void main() {
   // SPManager.getThemeDark();
+  WidgetsFlutterBinding.ensureInitialized();
+  // _initGoogleMobileAds();
   runApp(const MyApp());
 }
+// Future<InitializationStatus> _initGoogleMobileAds() {
+//   // TODO: Initialize Google Mobile Ads SDK
+//   return MobileAds.instance.initialize();
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

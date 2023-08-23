@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
@@ -13,6 +14,7 @@ import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/home/home_screen.dart';
+import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/person/person_detail.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cast_crew.dart';
@@ -25,7 +27,14 @@ import 'package:scoped_model/scoped_model.dart';
 class MovieListScreen extends StatefulWidget {
   String? apiName, dynamicList, titleTag;
   int movieId;
-  MovieListScreen({super.key, this.apiName , this.dynamicList , this.movieId = 0, this.titleTag = ""});
+
+  MovieListScreen(
+      {super.key,
+      this.apiName,
+      this.dynamicList,
+      this.movieId = 0,
+      this.titleTag = ""});
+
   @override
   State<MovieListScreen> createState() => _MovieListScreenState();
 }
@@ -46,11 +55,15 @@ class _MovieListScreenState extends State<MovieListScreen> {
   // late int movieId;
   late String? castCrewTitle;
 
+  InterstitialAd? _interstitialAd;
+
   @override
   void initState() {
     super.initState();
     model = MovieModel();
-    callMovieApi(widget.apiName!, model, movieId: widget.movieId, page: pageSize);
+    loadFullScreenAds();
+    callMovieApi(widget.apiName!, model,
+        movieId: widget.movieId, page: pageSize);
     _scrollController.addListener(() {
       // debugPrint(
       //     "pixels : ${_scrollController.position
@@ -60,7 +73,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
           _scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent) {
         if (pageSize <= totalPages) {
-          callMovieApi(widget.apiName!, model, movieId: widget.movieId, page: pageSize);
+          callMovieApi(widget.apiName!, model,
+              movieId: widget.movieId, page: pageSize);
         }
       }
     });
@@ -78,7 +92,9 @@ class _MovieListScreenState extends State<MovieListScreen> {
     // print("List title : $dynamicList -- $apiName  ${getTitle(dynamicList != null ? dynamicList! : apiName)}");
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            title: getTitle(widget.dynamicList != null ? widget.dynamicList! : widget.apiName!),
+            title: getTitle(widget.dynamicList != null
+                ? widget.dynamicList!
+                : widget.apiName!),
             bgColor: ColorConst.whiteBgColor,
             titleTag: widget.titleTag!,
             icon: homeIcon),
@@ -96,13 +112,17 @@ class _MovieListScreenState extends State<MovieListScreen> {
         var jsonResult = getData(widget.apiName!, model);
         if (jsonResult.status == ApiStatus.success) {
           return getCount(jsonResult.data) > 0
-              ?  Scrollbar(
-            controller: _scrollController,
-            thumbVisibility: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
-            radius: const Radius.circular(5),
-            thickness: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:0,
-                child:_createUi(jsonResult.data, orientation),
-              )
+              ? Scrollbar(
+                  controller: _scrollController,
+                  thumbVisibility:
+                      sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+                  radius: const Radius.circular(5),
+                  thickness:
+                      sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                          ? 20
+                          : 0,
+                  child: _createUi(jsonResult.data, orientation),
+                )
               : Container();
         } else {
           return apiHandler(
@@ -169,30 +189,43 @@ class _MovieListScreenState extends State<MovieListScreen> {
             : 128;
     if ((widget.apiName == StringConst.personMovieCast &&
             data is PersonMovieRespo) ||
-        (widget.apiName == StringConst.personMovieCrew && data is PersonMovieRespo)) {
+        (widget.apiName == StringConst.personMovieCrew &&
+            data is PersonMovieRespo)) {
       screenSize =
           (sizeInfo.deviceScreenType == DeviceScreenType.desktop) ? 350 : 290;
     }
     // print("screenSize   : $screenSize");
-    columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop?5:(orientation == Orientation.portrait ? (data is NowPlayingRespo?2:3 ): (data is NowPlayingRespo?4:4));
+    columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
+        ? 5
+        : (orientation == Orientation.portrait
+            ? (data is NowPlayingRespo ? 2 : 3)
+            : (data is NowPlayingRespo ? 4 : 4));
     return Container(
-      alignment: Alignment.center,
-      child: (data is MovieCatRespo &&
-          sizeInfo.deviceScreenType != DeviceScreenType.desktop)
-      ? ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: getCount(data),
-          shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) {
-            return SizedBox(height: 180, child: getItemView(data, index, ));
-            // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
-          }) : MasonryGridView.count(
+        alignment: Alignment.center,
+        child: (data is MovieCatRespo &&
+                sizeInfo.deviceScreenType != DeviceScreenType.desktop)
+            ? ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: getCount(data),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                      height: 180,
+                      child: getItemView(
+                        data,
+                        index,
+                      ));
+                  // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
+                })
+            : MasonryGridView.count(
                 crossAxisCount: columnCount,
                 mainAxisSpacing: 2,
                 crossAxisSpacing: 2,
                 itemCount: data is NowPlayingRespo
                     ? dataResult.length
-                    : (data is TrandingPersonRespo ? dataPersonResult.length : getCount(data)),
+                    : (data is TrandingPersonRespo
+                        ? dataPersonResult.length
+                        : getCount(data)),
                 itemBuilder: (BuildContext context, int index) => Padding(
                   padding: const EdgeInsets.only(left: 5, right: 5),
                   child: getItemView(data, index,
@@ -201,58 +234,51 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 ),
               )
         // GridView.count(
-      //         crossAxisCount: columnCount,
-      //         mainAxisSpacing: 1.0,
-      //         crossAxisSpacing: 1.0,
-      //         shrinkWrap: true,
-      //         // staggeredTileBuilder: (int index) =>
-      //         //     StaggeredTile.extent(1, screenSize),
-      //         physics: const BouncingScrollPhysics(),
-      //         controller: _scrollController,
-      //   children: List.generate(data is NowPlayingRespo
-      //       ? dataResult.length
-      //       : (data is TrandingPersonRespo
-      //       ? dataPersonResult.length
-      //       : getCount(data)), (index) { return Padding(
-      //     padding: const EdgeInsets.only(left: 5, right: 5),
-      //     child: getItemView(data, index,
-      //         dataResult: dataResult, dataPersonResult: dataPersonResult),
-      //   ); }),
-      //   // itemCount: data is NowPlayingRespo
-      //   //           ? dataResult.length
-      //   //           : (data is TrandingPersonRespo
-      //   //               ? dataPersonResult.length
-      //   //               : getCount(data)),
-      //   //       itemBuilder: (BuildContext context, int index) => Padding(
-      //   //         padding: const EdgeInsets.only(left: 5, right: 5),
-      //   //         child: getItemView(data, index,
-      //   //             dataResult: dataResult, dataPersonResult: dataPersonResult),
-      //   //       ),
-      //       ),
+        //         crossAxisCount: columnCount,
+        //         mainAxisSpacing: 1.0,
+        //         crossAxisSpacing: 1.0,
+        //         shrinkWrap: true,
+        //         // staggeredTileBuilder: (int index) =>
+        //         //     StaggeredTile.extent(1, screenSize),
+        //         physics: const BouncingScrollPhysics(),
+        //         controller: _scrollController,
+        //   children: List.generate(data is NowPlayingRespo
+        //       ? dataResult.length
+        //       : (data is TrandingPersonRespo
+        //       ? dataPersonResult.length
+        //       : getCount(data)), (index) { return Padding(
+        //     padding: const EdgeInsets.only(left: 5, right: 5),
+        //     child: getItemView(data, index,
+        //         dataResult: dataResult, dataPersonResult: dataPersonResult),
+        //   ); }),
+        //   // itemCount: data is NowPlayingRespo
+        //   //           ? dataResult.length
+        //   //           : (data is TrandingPersonRespo
+        //   //               ? dataPersonResult.length
+        //   //               : getCount(data)),
+        //   //       itemBuilder: (BuildContext context, int index) => Padding(
+        //   //         padding: const EdgeInsets.only(left: 5, right: 5),
+        //   //         child: getItemView(data, index,
+        //   //             dataResult: dataResult, dataPersonResult: dataPersonResult),
+        //   //       ),
+        //       ),
 
-
-
-
-
-
-
-
-
-
-    );
+        );
   }
 
   int getCount(result) {
     if (widget.apiName == StringConst.movieCast && result is CreditsCrewRespo) {
       return result.cast!.length;
-    } else if (widget.apiName == StringConst.movieCrew && result is CreditsCrewRespo) {
+    } else if (widget.apiName == StringConst.movieCrew &&
+        result is CreditsCrewRespo) {
       return result.crew!.length;
     } else if (result is TrandingPersonRespo) {
       return result.results!.length;
     } else if (result is NowPlayingRespo) {
       return result.results!.length;
     }
-    if (widget.apiName == StringConst.personMovieCast && result is PersonMovieRespo) {
+    if (widget.apiName == StringConst.personMovieCast &&
+        result is PersonMovieRespo) {
       return result.cast!.length;
     } else if (widget.apiName == StringConst.personMovieCrew &&
         result is PersonMovieRespo) {
@@ -265,7 +291,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
   }
 
   Widget getItemView(data, int index,
-      { List<NowPlayResult>? dataResult,  List<Results>? dataPersonResult}) {
+      {List<NowPlayResult>? dataResult, List<Results>? dataPersonResult}) {
     try {
       if (data is CreditsCrewRespo) return getPersonDetails(data, index);
       if (data is TrandingPersonRespo) {
@@ -331,7 +357,8 @@ class _MovieListScreenState extends State<MovieListScreen> {
             img: item.posterPath!,
             name: item.originalTitle!,
             vote: item.voteAverage);
-      } else if (widget.apiName == ApiConstant.genresList && data is MovieCatRespo) {
+      } else if (widget.apiName == ApiConstant.genresList &&
+          data is MovieCatRespo) {
         Genres item = data.genres![index];
         String tag = getTitle(widget.apiName!) + item.name! + index.toString();
         final size = MediaQuery.of(ctx).size;
@@ -390,5 +417,31 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 name: name,
                 imgPath: ApiConstant.imagePoster + image,
                 tag: tag)));
+  }
+
+  loadFullScreenAds() {
+    if(_interstitialAd!=null) _interstitialAd?.show();
+    InterstitialAd.load(
+      adUnitId: AdHelper.interstitialAdUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {},
+          );
+          _interstitialAd = ad;
+          _interstitialAd?.show();
+        },
+        onAdFailedToLoad: (err) {
+          printLog(msg: 'Failed to load an interstitial ad: ${err.message}');
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _interstitialAd?.dispose();
+    super.dispose();
   }
 }

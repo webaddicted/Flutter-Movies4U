@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/constant/assets_const.dart';
@@ -10,6 +11,7 @@ import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/widget/movie_cast_crew.dart';
 import 'package:movies4u/view/widget/movie_keyword.dart';
 import 'package:movies4u/view/widget/movie_tag.dart';
@@ -41,6 +43,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   late SizingInformation sizeInfo;
   late Size size;
   final ScrollController scrollController = ScrollController();
+  RewardedAd? _rewardedAd;
+  InterstitialAd? _interstitialAd;
   // final image, movieName;
   //  final apiName;
   //  final index;
@@ -53,6 +57,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   @override
   void initState() {
     super.initState();
+    loadRewardedAd();
     model = MovieModel();
     model.movieDetails(widget.movieId);
     model.movieCrewCast(widget.movieId);
@@ -183,6 +188,27 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               height: sizeInfo.deviceScreenType == DeviceScreenType.desktop
                   ? 30
                   : 5),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: MaterialButton(
+                color: ColorConst.appColor,
+                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8.0)),
+                elevation: 0,
+                minWidth: double.infinity,
+                child: getTxtWhiteColor(msg: "Download", fontWeight: FontWeight.w600),
+                onPressed: () {
+                  if(_rewardedAd!=null){
+                    _rewardedAd?.show(
+                      onUserEarnedReward: (test, reward) {
+                        printLog(msg: "Reward Details : $test == $reward ");
+                        showSnackBar(context, "This feature coming soon");
+                      },
+                    );
+                  }else{
+                    showSnackBar(context, "Please wait sometime");
+                  }
+                }),
+          ),
           Center(
             child: SizedBox(
                 width: sizeInfo.deviceScreenType == DeviceScreenType.desktop
@@ -276,6 +302,15 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           const SizedBox(height: 10),
           _contentAbout(movie),
           const SizedBox(height: 10),
+          if (_bannerAd != null)
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: _bannerAd!.size.width.toDouble(),
+                height: _bannerAd!.size.height.toDouble(),
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            ),
           getTxtBlackColor(
               msg: 'Overview', fontSize: 18, fontWeight: FontWeight.bold),
           const SizedBox(height: 7),
@@ -380,5 +415,55 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
         )
       ],
     );
+  }
+
+  void loadRewardedAd() {
+    RewardedAd.load(
+      adUnitId: AdHelper.rewardedAdUnitId,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              setState(() {
+                _rewardedAd = ad;
+              });
+              loadRewardedAd();
+            },
+          );
+          setState(() {
+            _rewardedAd = ad;
+          });
+        },
+        onAdFailedToLoad: (err) {
+          printLog(msg: 'Failed to load a rewarded ad: ${err.message}');
+        },
+      ),
+    );
+  }
+  BannerAd? _bannerAd;
+  void getBannerAds() {
+    BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          printLog(msg: 'Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    _rewardedAd?.dispose();
+    super.dispose();
   }
 }
