@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:movies4u/utils/global_utility.dart';
+import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/other/ads/anchored_adaptive_example.dart';
 import 'package:movies4u/view/other/ads/fluid_example.dart';
 import 'package:movies4u/view/other/ads/inline_adaptive_example.dart';
@@ -162,9 +163,7 @@ class _TestAdsScreenState extends State<TestAdsScreen> {
 
   void _createInterstitialAd() {
     InterstitialAd.load(
-        adUnitId: Platform.isAndroid
-            ? 'ca-app-pub-3837612779084011/3399781509'
-            : 'ca-app-pub-3837612779084011/3399781509',
+        adUnitId: AdHelper.interstitialAdUnitId,
         request: request,
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (InterstitialAd ad) {
@@ -209,9 +208,7 @@ class _TestAdsScreenState extends State<TestAdsScreen> {
 
   void _createRewardedAd() {
     RewardedAd.load(
-        adUnitId: Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/5224354917'
-            : 'ca-app-pub-3940256099942544/1712485313',
+        adUnitId: AdHelper.rewardedAdUnitId,
         request: request,
         rewardedAdLoadCallback: RewardedAdLoadCallback(
           onAdLoaded: (RewardedAd ad) {
@@ -260,9 +257,7 @@ class _TestAdsScreenState extends State<TestAdsScreen> {
 
   void _createRewardedInterstitialAd() {
     RewardedInterstitialAd.load(
-        adUnitId: Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/5354046379'
-            : 'ca-app-pub-3940256099942544/6978759866',
+        adUnitId: AdHelper.rewardedInterstitialAdUnitId,
         request: request,
         rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
           onAdLoaded: (RewardedInterstitialAd ad) {

@@ -16,6 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'constants.dart';
 
 /// This example demonstrates native templates.
@@ -72,7 +73,7 @@ class _NativeTemplateExampleExampleState extends State<NativeTemplateExample> {
     super.didChangeDependencies();
     // Create the ad objects and load ads.
     _nativeAd = NativeAd(
-      adUnitId: '/6499/example/native',
+      adUnitId: AdHelper.nativeAdvanceAdUnitId,
       request: AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (Ad ad) {

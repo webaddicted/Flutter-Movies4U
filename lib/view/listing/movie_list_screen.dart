@@ -62,6 +62,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
     super.initState();
     model = MovieModel();
     loadFullScreenAds();
+    getListBannerAds();
     callMovieApi(widget.apiName!, model,
         movieId: widget.movieId, page: pageSize);
     _scrollController.addListener(() {
@@ -209,12 +210,12 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 itemCount: getCount(data),
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                      height: 180,
-                      child: getItemView(
-                        data,
-                        index,
-                      ));
+                  if (index != 0 && index % 7 == 0) {
+                    return getListBannerAds();
+                  } else {
+                    return SizedBox(
+                        height: 180, child: getItemView(data, index));
+                  }
                   // return Container(margin:EdgeInsets.all(50),height: 50,color: Colors.amber,);
                 })
             : MasonryGridView.count(
@@ -226,13 +227,18 @@ class _MovieListScreenState extends State<MovieListScreen> {
                     : (data is TrandingPersonRespo
                         ? dataPersonResult.length
                         : getCount(data)),
-                itemBuilder: (BuildContext context, int index) => Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
-                  child: getItemView(data, index,
-                      dataResult: dataResult,
-                      dataPersonResult: dataPersonResult),
-                ),
-              )
+                itemBuilder: (BuildContext context, int index) {
+                  if (index != 0 && index % 7 == 0) {
+                    return getGridBannerAds();
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: getItemView(data, index,
+                          dataResult: dataResult,
+                          dataPersonResult: dataPersonResult),
+                    );
+                  }
+                })
         // GridView.count(
         //         crossAxisCount: columnCount,
         //         mainAxisSpacing: 1.0,
@@ -420,7 +426,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
   }
 
   loadFullScreenAds() {
-    if(_interstitialAd!=null) _interstitialAd?.show();
+    if (_interstitialAd != null) _interstitialAd?.show();
     InterstitialAd.load(
       adUnitId: AdHelper.interstitialAdUnitId,
       request: const AdRequest(),
@@ -437,6 +443,47 @@ class _MovieListScreenState extends State<MovieListScreen> {
         },
       ),
     );
+  }
+
+  Widget getGridBannerAds() {
+    var banner = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: const AdRequest(),
+      size: AdSize.fluid,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+        },
+        onAdFailedToLoad: (ad, err) {
+          printLog(msg: 'Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    );
+    banner.load();
+    return SizedBox(
+        //You Can Set Container Height
+        height: 250,
+        child: AdWidget(ad: banner));
+  }
+
+  Widget getListBannerAds() {
+    var bannerAd = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          // _bannerAd = ad as BannerAd;
+          // bannerInit.value = 1;
+        },
+        onAdFailedToLoad: (ad, err) {
+          printLog(msg: 'Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    );
+    bannerAd.load();
+    return SizedBox(height: 70, child: AdWidget(ad: bannerAd));
   }
 
   @override

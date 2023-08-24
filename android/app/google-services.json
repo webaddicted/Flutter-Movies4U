@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "730491271566",
-    "project_id": "movies4u-ef56f",
-    "storage_bucket": "movies4u-ef56f.appspot.com"
+    "project_number": "67977657210",
+    "project_id": "movies4u0",
+    "storage_bucket": "movies4u0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:730491271566:android:91d9a042ea0882b0e10cdf",
+        "mobilesdk_app_id": "1:67977657210:android:2c2ac91bc24c5b7d73b4c3",
         "android_client_info": {
           "package_name": "com.webaddicted.movies4u"
         }
       },
       "oauth_client": [
         {
-          "client_id": "730491271566-3iu6bus07selff9p40pn7121fpd74i3h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.webaddicted.movies4u",
-            "certificate_hash": "c0d5119f4330f56e20ef9597812db283bfa07d67"
-          }
-        },
-        {
-          "client_id": "730491271566-p7c6lghviqsjaddvnbl32l0mf2kqnemd.apps.googleusercontent.com",
+          "client_id": "67977657210-23td0116b04a5ppmhfeup8fv0h0e2nq8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDcozkK8BJPNe44ByTniJHYgbrZUzt5ZBQ"
+          "current_key": "AIzaSyAk-cqNTsmaSc-E2DsAocpo6x7mJuz6dX0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "730491271566-p7c6lghviqsjaddvnbl32l0mf2kqnemd.apps.googleusercontent.com",
+              "client_id": "67977657210-23td0116b04a5ppmhfeup8fv0h0e2nq8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

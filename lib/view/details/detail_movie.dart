@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:movies4u/constant/api_constant.dart';
@@ -43,21 +44,12 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   late SizingInformation sizeInfo;
   late Size size;
   final ScrollController scrollController = ScrollController();
-  RewardedAd? _rewardedAd;
-  InterstitialAd? _interstitialAd;
-  // final image, movieName;
-  //  final apiName;
-  //  final index;
-  //  final movieId;
-  //  final tag;
-
-  // _DetailsMovieScreenState(this.movieName, this.image, this.apiName, this.index,
-  //     this.movieId, this.tag);
 
   @override
   void initState() {
     super.initState();
     loadRewardedAd();
+    getBannerAds();
     model = MovieModel();
     model.movieDetails(widget.movieId);
     model.movieCrewCast(widget.movieId);
@@ -201,7 +193,6 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                     _rewardedAd?.show(
                       onUserEarnedReward: (test, reward) {
                         printLog(msg: "Reward Details : $test == $reward ");
-                        showSnackBar(context, "This feature coming soon");
                       },
                     );
                   }else{
@@ -417,6 +408,30 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     );
   }
 
+  void rewardInit(){
+    var rewardsAd = RewardedInterstitialAd.load(
+        adUnitId: AdHelper.rewardedInterstitialAdUnitId,
+        request: AdRequest(),
+        rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
+          onAdLoaded: (RewardedInterstitialAd ad) {
+            printLog(msg: '$ad loaded.');
+            // _rewardedInterstitialAd = ad;
+            // _numRewardedInterstitialLoadAttempts = 0;
+          },
+          onAdFailedToLoad: (LoadAdError error) {
+            printLog(msg: 'RewardedInterstitialAd failed to load: $error');
+            // _rewardedInterstitialAd = null;
+            // _numRewardedInterstitialLoadAttempts += 1;
+            // if (_numRewardedInterstitialLoadAttempts < maxFailedLoadAttempts) {
+            //   _createRewardedInterstitialAd();
+            // }
+          },
+        ));
+  }
+  RxInt bannerAdsInit = 0.obs;
+  RxInt rewardsAdsInit = 0.obs;
+  BannerAd? _bannerAd;
+  RewardedAd? _rewardedAd;
   void loadRewardedAd() {
     RewardedAd.load(
       adUnitId: AdHelper.rewardedAdUnitId,
@@ -425,10 +440,13 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
         onAdLoaded: (ad) {
           ad.fullScreenContentCallback = FullScreenContentCallback(
             onAdDismissedFullScreenContent: (ad) {
-              setState(() {
-                _rewardedAd = ad;
-              });
+              printLog(msg: 'onAdDismissedFullScreenContent : Add Dismiss');
+              // setState(() {
+              //   _rewardedAd = ad;
+              // });
+              // Load again for ads
               loadRewardedAd();
+              loadFullScreenAds();
             },
           );
           setState(() {
@@ -441,7 +459,29 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
       ),
     );
   }
-  BannerAd? _bannerAd;
+  InterstitialAd? _interstitialAd;
+  loadFullScreenAds() {
+    if(_interstitialAd!=null) _interstitialAd?.show();
+    InterstitialAd.load(
+      adUnitId: AdHelper.interstitialAdUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              showSnackBar(context, "This feature coming soon");
+            },
+          );
+          _interstitialAd = ad;
+          _interstitialAd?.show();
+        },
+        onAdFailedToLoad: (err) {
+          printLog(msg: 'Failed to load an interstitial ad: ${err.message}');
+        },
+      ),
+    );
+  }
+
   void getBannerAds() {
     BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
@@ -449,9 +489,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
       size: AdSize.banner,
       listener: BannerAdListener(
         onAdLoaded: (ad) {
-          setState(() {
+          bannerAdsInit.value =1;
             _bannerAd = ad as BannerAd;
-          });
         },
         onAdFailedToLoad: (ad, err) {
           printLog(msg: 'Failed to load a banner ad: ${err.message}');
@@ -464,6 +503,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   void dispose() {
     _bannerAd?.dispose();
     _rewardedAd?.dispose();
+    _interstitialAd?.dispose();
     super.dispose();
   }
 }

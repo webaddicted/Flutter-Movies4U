@@ -57,7 +57,7 @@ class _InlineAdaptiveExampleState extends State<InlineAdaptiveExample> {
     _inlineAdaptiveAd = AdManagerBannerAd(
       adUnitId: 'ca-app-pub-3940256099942544/9214589741',
       sizes: [size],
-      request: AdManagerAdRequest(),
+      request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(
         onAdLoaded: (Ad ad) async {
           print('Inline adaptive banner loaded: ${ad.responseInfo}');
@@ -120,7 +120,7 @@ class _InlineAdaptiveExampleState extends State<InlineAdaptiveExample> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: Text('Inline adaptive banner example'),
+        title: const Text('Inline adaptive banner example'),
       ),
       body: Center(
         child: Padding(
@@ -136,7 +136,7 @@ class _InlineAdaptiveExampleState extends State<InlineAdaptiveExample> {
               if (index == 1) {
                 return _getAdWidget();
               }
-              return Text(
+              return const Text(
                 Constants.placeholderText,
                 style: TextStyle(fontSize: 24),
               );

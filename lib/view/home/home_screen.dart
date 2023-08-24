@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:in_app_update/in_app_update.dart';
@@ -38,13 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final InAppReview _inAppReview = InAppReview.instance;
   late AppUpdateInfo _updateInfo;
   final ScrollController scrollController = ScrollController();
-  BannerAd? _bannerAd;
 
   @override
   void initState() {
     super.initState();
     checkForUpdate();
-    getBannerAds();
     model = MovieModel();
     model.fetchNowPlaying();
     // StringConst.TRANDING_PERSON_OF_WEEK
@@ -95,7 +94,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Icons.search_rounded,
                       color: ColorConst.blackColor,
                     ),
-                    onPressed: () => navigationPush(context, const SearchScreen()))
+                    onPressed: () =>
+                        navigationPush(context, const SearchScreen()))
               ],
               icon: homeIcon),
           drawer: NavDrawer(),
@@ -108,11 +108,13 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ResponsiveBuilder(builder: (context, sizeInfo) {
         return Scrollbar(
           controller: scrollController,
-          thumbVisibility: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+          thumbVisibility:
+              sizeInfo.deviceScreenType == DeviceScreenType.desktop,
           radius: const Radius.circular(5),
-          thickness: sizeInfo.deviceScreenType == DeviceScreenType.desktop ?20:0,
+          thickness:
+              sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
           child: SingleChildScrollView(
-            controller: scrollController,
+              controller: scrollController,
               physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,15 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     apiName: ApiConstant.trendingMovieList,
                     sizeInfo: sizeInfo,
                   ),
-                  if (_bannerAd != null)
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: SizedBox(
-                        width: _bannerAd!.size.width.toDouble(),
-                        height: _bannerAd!.size.height.toDouble(),
-                        child: AdWidget(ad: _bannerAd!),
-                      ),
-                    ),
+                  getBannerAds(),
                   MovieCate(sizeInfo: sizeInfo),
                   TrandingMovieRow(
                       apiName: ApiConstant.popularMovies, sizeInfo: sizeInfo),
@@ -187,14 +181,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> checkForUpdate() async {
     InAppUpdate.checkForUpdate().then((info) {
-      printLog(tag: runtimeType.toString(),msg:'checkForUpdate - $info');
+      printLog(tag: runtimeType.toString(), msg: 'checkForUpdate - $info');
       _updateInfo = info;
-      if (_updateInfo.updateAvailability == UpdateAvailability.updateAvailable) {
-        InAppUpdate.performImmediateUpdate()
-            .catchError((e) => printLog(tag: runtimeType.toString(),status: ApiStatus.error,msg:'checkForUpdate - $e'));
+      if (_updateInfo.updateAvailability ==
+          UpdateAvailability.updateAvailable) {
+        InAppUpdate.performImmediateUpdate().catchError((e) => printLog(
+            tag: runtimeType.toString(),
+            status: ApiStatus.error,
+            msg: 'checkForUpdate - $e'));
       }
-    }).catchError((e) => printLog(tag: runtimeType.toString(),status: ApiStatus.error,msg:'checkForUpdate - $e'));
-
+    }).catchError((e) => printLog(
+        tag: runtimeType.toString(),
+        status: ApiStatus.error,
+        msg: 'checkForUpdate - $e'));
   }
 
   void inAppReview() async {
@@ -202,35 +201,38 @@ class _HomeScreenState extends State<HomeScreen> {
       final isAvailable = await _inAppReview.isAvailable();
       if (isAvailable) {
         await _inAppReview.requestReview();
-      } else {
-      }
+      } else {}
     } catch (e) {
-      printLog(tag: "HomePage",status: ApiStatus.error,msg: "$e");
+      printLog(tag: "HomePage", status: ApiStatus.error, msg: "$e");
     }
   }
 
-  void getBannerAds() {
-    BannerAd(
+  Widget getBannerAds() {
+    var banner = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
       request: const AdRequest(),
       size: AdSize.banner,
       listener: BannerAdListener(
         onAdLoaded: (ad) {
-          setState(() {
-            _bannerAd = ad as BannerAd;
-          });
         },
         onAdFailedToLoad: (ad, err) {
           printLog(msg: 'Failed to load a banner ad: ${err.message}');
           ad.dispose();
         },
       ),
-    ).load();
+    );
+    banner.load();
+   return Align(
+        alignment: Alignment.topCenter,
+        child: SizedBox(
+          width: banner!.size.width.toDouble(),
+          height: banner!.size.height.toDouble(),
+          child: AdWidget(ad: banner!),
+        ));
   }
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
     super.dispose();
   }
 }
