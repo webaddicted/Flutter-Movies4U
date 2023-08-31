@@ -1,3 +1,4 @@
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,13 @@ import 'package:movies4u/view/splash/splash_page.dart';
 void main() {
   // SPManager.getThemeDark();
   WidgetsFlutterBinding.ensureInitialized();
-  // _initGoogleMobileAds();
+  _initGoogleMobileAds();
   runApp(const MyApp());
 }
-// Future<InitializationStatus> _initGoogleMobileAds() {
-//   // TODO: Initialize Google Mobile Ads SDK
-//   return MobileAds.instance.initialize();
-// }
+Future<InitializationStatus> _initGoogleMobileAds() {
+  // TODO: Initialize Google Mobile Ads SDK
+  return MobileAds.instance.initialize();
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
