@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:movies4u/constant/api_constant.dart';
@@ -12,8 +10,8 @@ import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:movies4u/view/home/nav_drawer.dart';
-import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/search/search_screen.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cate.dart';
@@ -150,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     apiName: ApiConstant.trendingMovieList,
                     sizeInfo: sizeInfo,
                   ),
-                  getBannerAds(),
+                  BannerWidget(),
                   MovieCate(sizeInfo: sizeInfo),
                   TrandingMovieRow(
                       apiName: ApiConstant.popularMovies, sizeInfo: sizeInfo),
@@ -205,30 +203,6 @@ class _HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       printLog(tag: "HomePage", status: ApiStatus.error, msg: "$e");
     }
-  }
-
-  Widget getBannerAds() {
-    var banner = BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-        },
-        onAdFailedToLoad: (ad, err) {
-          printLog(msg: 'Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    );
-    banner.load();
-   return Align(
-        alignment: Alignment.topCenter,
-        child: SizedBox(
-          width: banner!.size.width.toDouble(),
-          height: banner!.size.height.toDouble(),
-          child: AdWidget(ad: banner!),
-        ));
   }
 
   @override

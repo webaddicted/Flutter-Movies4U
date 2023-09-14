@@ -13,7 +13,6 @@ void main() {
   runApp(const MyApp());
 }
 Future<InitializationStatus> _initGoogleMobileAds() {
-  // TODO: Initialize Google Mobile Ads SDK
   return MobileAds.instance.initialize();
 }
 
@@ -32,10 +31,7 @@ class MyApp extends StatelessWidget {
   }
 
   Widget getView(BuildContext context) {
-    return
-      // ScopedModelDescendant<ThemeModel>(
-      //   builder: (context, _, model) =>
-        MaterialApp(
+    return MaterialApp(
               title: StringConst.appName,
               debugShowCheckedModeBanner: false,
               // darkTheme: ThemeData(brightness: Brightness.dark),

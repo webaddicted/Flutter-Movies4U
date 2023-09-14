@@ -12,6 +12,7 @@ import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/widget/movie_cast_crew.dart';
 import 'package:movies4u/view/widget/movie_keyword.dart';
@@ -49,7 +50,6 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   void initState() {
     super.initState();
     loadRewardedAd();
-    getBannerAds();
     model = MovieModel();
     model.movieDetails(widget.movieId);
     model.movieCrewCast(widget.movieId);
@@ -293,15 +293,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           const SizedBox(height: 10),
           _contentAbout(movie),
           const SizedBox(height: 10),
-          if (_bannerAd != null)
-            Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                width: _bannerAd!.size.width.toDouble(),
-                height: _bannerAd!.size.height.toDouble(),
-                child: AdWidget(ad: _bannerAd!),
-              ),
-            ),
+          BannerWidget(),
           getTxtBlackColor(
               msg: 'Overview', fontSize: 18, fontWeight: FontWeight.bold),
           const SizedBox(height: 7),
@@ -411,7 +403,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   void rewardInit(){
     var rewardsAd = RewardedInterstitialAd.load(
         adUnitId: AdHelper.rewardedInterstitialAdUnitId,
-        request: AdRequest(),
+        request: const AdRequest(),
         rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
           onAdLoaded: (RewardedInterstitialAd ad) {
             printLog(msg: '$ad loaded.');
@@ -430,7 +422,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
   }
   RxInt bannerAdsInit = 0.obs;
   RxInt rewardsAdsInit = 0.obs;
-  BannerAd? _bannerAd;
+  // BannerAd? _bannerAd;
   RewardedAd? _rewardedAd;
   void loadRewardedAd() {
     RewardedAd.load(
@@ -482,26 +474,27 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     );
   }
 
-  void getBannerAds() {
-    BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          bannerAdsInit.value =1;
-            _bannerAd = ad as BannerAd;
-        },
-        onAdFailedToLoad: (ad, err) {
-          printLog(msg: 'Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    ).load();
-  }
+  // void getBannerAds() {
+  //   BannerAd(
+  //     adUnitId: AdHelper.bannerAdUnitId,
+  //     request: const AdRequest(),
+  //     size: AdSize.banner,
+  //     listener: BannerAdListener(
+  //       onAdLoaded: (ad) {
+  //         bannerAdsInit.value =1;
+  //           _bannerAd = ad as BannerAd;
+  //       },
+  //       onAdFailedToLoad: (ad, err) {
+  //         printLog(msg: 'Failed to load a banner ad: ${err.message}');
+  //         ad.dispose();
+  //       },
+  //     ),
+  //   ).load();
+  // }
+
   @override
   void dispose() {
-    _bannerAd?.dispose();
+    // _bannerAd?.dispose();
     _rewardedAd?.dispose();
     _interstitialAd?.dispose();
     super.dispose();
