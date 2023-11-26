@@ -6,14 +6,14 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 2.0.0+11
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   firebase_core: ^2.15.1
   firebase_analytics: ^10.4.5
-  firebase_crashlytics: ^3.3.5
+  firebase_crashlytics: ^3.4.5
   firebase_remote_config: ^4.2.5
   google_mobile_ads: ^3.0.0
 
@@ -31,7 +31,7 @@ dependencies:
   cached_network_image: ^3.2.3
   flutter_rating_bar: ^4.0.1
   #  eva_icons_flutter: ^2.0.0
-  flutter_staggered_grid_view: ^0.6.2
+  flutter_staggered_grid_view: ^0.7.0
   #  flutter_tags: ^0.4.9
   flutter_tags: ^1.0.0-nullsafety.1 # Not Supported
   photo_view: ^0.14.0
@@ -44,7 +44,7 @@ dependencies:
   in_app_review: ^2.0.6
   in_app_update: ^4.1.4
   webview_flutter: ^4.2.2
-  logger: ^1.4.0
+  logger: ^2.0.2
 #  webview_dart: ^1.0.1
 #  upgrader: ^6.0.1
 #  app_version_update: ^3.0.0
@@ -53,7 +53,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.2
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true

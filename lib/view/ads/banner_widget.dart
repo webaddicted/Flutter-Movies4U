@@ -3,17 +3,17 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/view/other/ads/ad_helper.dart';
 
-class BannerWidget extends StatefulWidget {
-  int height = -1;
-  int weight = -1;
+class BannerAdsWidget extends StatefulWidget {
+  double height = -1;
+  double weight = -1;
 
-   BannerWidget({super.key, int height = -1, int weight = -1});
+   BannerAdsWidget({super.key, double height = -1, double weight = -1});
 
   @override
-  State<BannerWidget> createState() => _BannerWidgetState();
+  State<BannerAdsWidget> createState() => _BannerAdsWidgetState();
 }
 
-class _BannerWidgetState extends State<BannerWidget> {
+class _BannerAdsWidgetState extends State<BannerAdsWidget> {
   @override
   Widget build(BuildContext context) {
     return getBannerAds();
@@ -36,8 +36,8 @@ class _BannerWidgetState extends State<BannerWidget> {
     return Align(
         alignment: Alignment.topCenter,
         child: SizedBox(
-          width: banner.size.width.toDouble(),
-          height: banner.size.height.toDouble(),
+          width: widget.weight>0?widget.weight:banner.size.width.toDouble(),
+          height: widget.height>0?widget.height:banner.size.height.toDouble(),
           child: AdWidget(ad: banner),
         ));
   }

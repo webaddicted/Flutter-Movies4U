@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies4u/data/details/movie_img_respo.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -42,16 +43,17 @@ class _FullImageState extends State<FullImage> {
 
           child: Stack(
             children: <Widget>[
+              Center(child: BannerAdsWidget()),
               getImageView(),
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  "Image ${widget.index + 1}",
-                  style: const TextStyle(
-                      color: Colors.white, fontSize: 17.0, decoration: null),
-                ),
-              ),
+              // Container(
+              //   alignment: Alignment.bottomRight,
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Text(
+              //     "Image ${widget.index + 1}",
+              //     style: const TextStyle(
+              //         color: Colors.white, fontSize: 17.0, decoration: null),
+              //   ),
+              // ),
               Positioned(
                 top: 40.0,
                 right: 20.0,

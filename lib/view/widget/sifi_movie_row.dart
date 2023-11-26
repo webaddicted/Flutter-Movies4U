@@ -6,6 +6,7 @@ import 'package:movies4u/data/details/movie_img_respo.dart';
 import 'package:movies4u/data/home/now_playing_respo.dart';
 import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
+import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
 import 'package:movies4u/view/details/detail_movie.dart';
 import 'package:movies4u/view/home/home_screen.dart';
@@ -122,14 +123,16 @@ class SifiMovieRow extends StatelessWidget {
              width: sizeInfo.deviceScreenType == DeviceScreenType.desktop?240:125,
             id: 256,
             img:(sizeInfo.deviceScreenType == DeviceScreenType.desktop?ApiConstant.imageOrigPoster:ApiConstant.imagePoster) +  item.filePath!,
-           onTap: ()=> navigationPush(
+             onTapMovie: () {
+              printLog(msg: "nbnbmbmnbmnbmbm");
+           navigationPush(
                context,
                FullImage(
-                   jsonResult.profiles!.isNotEmpty
+                   jsonResult.profiles!=null
                        ? jsonResult.profiles!
                        : jsonResult.backdrops!,
                    index,
-                   tag))),
+                   tag));}),
      );
       // return getLargeItem(
       //     context: context,

@@ -4,6 +4,7 @@ import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
 import 'package:movies4u/utils/widgethelper/oval-right-clipper.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:movies4u/view/home/home_screen.dart';
 import 'package:movies4u/view/listing/movie_list_screen.dart';
 import 'package:movies4u/view/other/about_us_screen.dart';
@@ -76,6 +77,8 @@ class NavDrawer extends StatelessWidget {
                       msg: StringConst.webaddicted,
                       fontSize: 16,
                       txtColor: ColorConst.blackColor),
+                  const SizedBox(height: 10.0),
+                  BannerAdsWidget(),
                   const SizedBox(height: 30.0),
                   _buildRow(Icons.home_outlined, "Home"),
                   _buildDivider(),
@@ -111,6 +114,7 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.exit_to_app, "Exit"),
                   _buildDivider(),
+                  BannerAdsWidget(),
                   const SizedBox(height: 80),
                 ],
               ),

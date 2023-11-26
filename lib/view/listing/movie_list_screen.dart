@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:movies4u/constant/api_constant.dart';
 import 'package:movies4u/constant/color_const.dart';
 import 'package:movies4u/constant/string_const.dart';
@@ -13,8 +12,8 @@ import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/global_utility.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:movies4u/view/home/home_screen.dart';
-import 'package:movies4u/view/other/ads/ad_helper.dart';
 import 'package:movies4u/view/person/person_detail.dart';
 import 'package:movies4u/view/widget/carousel_view.dart';
 import 'package:movies4u/view/widget/movie_cast_crew.dart';
@@ -55,14 +54,10 @@ class _MovieListScreenState extends State<MovieListScreen> {
   // late int movieId;
   late String? castCrewTitle;
 
-  InterstitialAd? _interstitialAd;
-
   @override
   void initState() {
     super.initState();
     model = MovieModel();
-    loadFullScreenAds();
-    getListBannerAds();
     callMovieApi(widget.apiName!, model,
         movieId: widget.movieId, page: pageSize);
     _scrollController.addListener(() {
@@ -199,7 +194,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
     columnCount = sizeInfo.deviceScreenType == DeviceScreenType.desktop
         ? 5
         : (orientation == Orientation.portrait
-            ? (data is NowPlayingRespo ? 2 : 3)
+            ? (data is NowPlayingRespo ? 2 : 2)
             : (data is NowPlayingRespo ? 4 : 4));
     return Container(
         alignment: Alignment.center,
@@ -211,7 +206,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
                   if (index != 0 && index % 7 == 0) {
-                    return getListBannerAds();
+                    return BannerAdsWidget(height: 70);
                   } else {
                     return SizedBox(
                         height: 180, child: getItemView(data, index));
@@ -229,7 +224,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
                         : getCount(data)),
                 itemBuilder: (BuildContext context, int index) {
                   if (index != 0 && index % 7 == 0) {
-                    return getGridBannerAds();
+                    return BannerAdsWidget(height: 250);
                   } else {
                     return Padding(
                       padding: const EdgeInsets.only(left: 5, right: 5),
@@ -423,72 +418,5 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 name: name,
                 imgPath: ApiConstant.imagePoster + image,
                 tag: tag)));
-  }
-
-  loadFullScreenAds() {
-    if (_interstitialAd != null) _interstitialAd?.show();
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: const AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {},
-          );
-          _interstitialAd = ad;
-          _interstitialAd?.show();
-        },
-        onAdFailedToLoad: (err) {
-          printLog(msg: 'Failed to load an interstitial ad: ${err.message}');
-        },
-      ),
-    );
-  }
-
-  Widget getGridBannerAds() {
-    var banner = BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.fluid,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-        },
-        onAdFailedToLoad: (ad, err) {
-          printLog(msg: 'Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    );
-    banner.load();
-    return SizedBox(
-        //You Can Set Container Height
-        height: 250,
-        child: AdWidget(ad: banner));
-  }
-
-  Widget getListBannerAds() {
-    var bannerAd = BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          // _bannerAd = ad as BannerAd;
-          // bannerInit.value = 1;
-        },
-        onAdFailedToLoad: (ad, err) {
-          printLog(msg: 'Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    );
-    bannerAd.load();
-    return SizedBox(height: 70, child: AdWidget(ad: bannerAd));
-  }
-
-  @override
-  void dispose() {
-    _interstitialAd?.dispose();
-    super.dispose();
   }
 }

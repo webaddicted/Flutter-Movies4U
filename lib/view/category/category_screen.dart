@@ -13,12 +13,12 @@ class CategoryMovie extends StatefulWidget {
 
 class _CategoryMovieState extends State<CategoryMovie> {
   late SizingInformation sizeInfo;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            title: StringConst.homeTitle,
-            bgColor: ColorConst.whiteBgColor),
+            title: StringConst.homeTitle, bgColor: ColorConst.whiteBgColor),
         body: _createUi());
   }
 
@@ -26,66 +26,61 @@ class _CategoryMovieState extends State<CategoryMovie> {
     return ResponsiveBuilder(builder: (context, sizeInf) {
       sizeInfo = sizeInf;
       return Scrollbar(
-        thumbVisibility: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
-        radius: const Radius.circular(5),
-        thickness: sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
-        child: SingleChildScrollView(
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemCount: imgList.length,
-            itemBuilder: (context, pos) {
-              return Container(
-                  margin: const EdgeInsets.only(bottom: 16.0),
-                  height: 148,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                imgList[pos],
+          thumbVisibility:
+              sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+          radius: const Radius.circular(5),
+          thickness:
+              sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
+          child: SingleChildScrollView(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: imgList.length,
+                  itemBuilder: (context, pos) {
+                    return Container(
+                        margin: const EdgeInsets.only(bottom: 16.0),
+                        height: 148,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Stack(children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                      imgList[pos],
+                                    ),
+                                  ),
+                                ),
+                                height: 350.0,
                               ),
-                            ),
-                          ),
-                          height: 350.0,
-                        ),
-                        Container(
-                          height: 350.0,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              gradient: LinearGradient(
-                                  begin: FractionalOffset.topCenter,
-                                  end: FractionalOffset.bottomCenter,
-                                  colors: [
-                                    Colors.black26,
-                                    Colors.black26,
-                                  ],
-                                  stops: [
-                                    0.0,
-                                    1.0
-                                  ])),
-                        ),
-                        const Center(
-                          child: Text(
-                            "Kampanya",
-                            style: TextStyle(
-                                fontSize: 26,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                  ));
-            },
-          ),
-        ),
-      );
+                              Container(
+                                height: 350.0,
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    gradient: LinearGradient(
+                                        begin: FractionalOffset.topCenter,
+                                        end: FractionalOffset.bottomCenter,
+                                        colors: [
+                                          Colors.black26,
+                                          Colors.black26,
+                                        ],
+                                        stops: [
+                                          0.0,
+                                          1.0
+                                        ])),
+                              ),
+                              const Center(
+                                  child: Text(
+                                "Kampanya",
+                                style: TextStyle(
+                                    fontSize: 26,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ))
+                            ])));
+                  })));
     });
   }
 }

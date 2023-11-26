@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     apiName: ApiConstant.trendingMovieList,
                     sizeInfo: sizeInfo,
                   ),
-                  BannerWidget(),
+                  BannerAdsWidget(),
                   MovieCate(sizeInfo: sizeInfo),
                   TrandingMovieRow(
                       apiName: ApiConstant.popularMovies, sizeInfo: sizeInfo),
@@ -170,6 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   TrandingPerson(sizeInfo: sizeInfo),
                   TrandingMovieRow(
                       apiName: ApiConstant.topRated, sizeInfo: sizeInfo),
+                  BannerAdsWidget()
                 ],
               )),
         );

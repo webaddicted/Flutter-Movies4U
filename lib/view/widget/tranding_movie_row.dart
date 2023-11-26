@@ -171,7 +171,7 @@ Widget getMovieItemRow(
     String? img ,
     String? name,
     var vote,
-    Function? onTap}) {
+    Function? onTapMovie}) {
   String tag = getTitle(apiName!) + img! + index.toString();
   return  Hero(
         tag: tag,
@@ -193,8 +193,8 @@ Widget getMovieItemRow(
                                   child: InkWell(
                                       splashColor: ColorConst.splashColor,
                                       onTap: () {
-                                        if (onTap != null) {
-                                          onTap();
+                                        if (onTapMovie != null) {
+                                          onTapMovie();
                                         } else {
                                           navigationPush(
                                               context,

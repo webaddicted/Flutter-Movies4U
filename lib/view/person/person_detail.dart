@@ -5,6 +5,7 @@ import 'package:movies4u/data/person/person_detail_respo.dart';
 import 'package:movies4u/model/movie_model.dart';
 import 'package:movies4u/utils/apiutils/api_response.dart';
 import 'package:movies4u/utils/widgethelper/widget_helper.dart';
+import 'package:movies4u/view/ads/banner_widget.dart';
 import 'package:movies4u/view/widget/shimmer_view.dart';
 import 'package:movies4u/view/widget/sifi_movie_row.dart';
 import 'package:movies4u/view/widget/tranding_movie_row.dart';
@@ -18,7 +19,8 @@ class PersonDetail extends StatefulWidget {
   final tag;
   final name;
 
-  const PersonDetail({super.key, @required this.personId, this.name, this.imgPath, this.tag});
+  const PersonDetail(
+      {super.key, @required this.personId, this.name, this.imgPath, this.tag});
 
   @override
   State<PersonDetail> createState() => _PersonDetailState();
@@ -33,6 +35,7 @@ class _PersonDetailState extends State<PersonDetail> {
 
   late SizingInformation sizeInfo;
   late final ScrollController scrollController = ScrollController();
+
   // _PersonDetailState(this.personId, this.name, this.imgPath, this.tag);
 
   @override
@@ -74,11 +77,12 @@ class _PersonDetailState extends State<PersonDetail> {
         });
     return ResponsiveBuilder(builder: (context, sizeInf) {
       sizeInfo = sizeInf;
-      return  Scrollbar(
+      return Scrollbar(
         controller: scrollController,
         thumbVisibility: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
         radius: const Radius.circular(5),
-        thickness: sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
+        thickness:
+            sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
         child: CustomScrollView(
           controller: scrollController,
           slivers: <Widget>[
@@ -95,7 +99,9 @@ class _PersonDetailState extends State<PersonDetail> {
                         // model.fetchPersonMovie(personId);
                       },
                       child: getTxtBlackColor(
-                          msg: widget.name, fontWeight: FontWeight.bold, fontSize: 16)),
+                          msg: widget.name,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16)),
                   background: Hero(
                       tag: widget.tag,
                       child: getCacheImage(
@@ -126,7 +132,8 @@ class _PersonDetailState extends State<PersonDetail> {
         TrandingMovieRow(
             apiName: StringConst.personMovieCast,
             sizeInfo: sizeInfo,
-            movieId: widget.personId)
+            movieId: widget.personId),
+        BannerAdsWidget()
       ],
     );
   }
@@ -141,88 +148,78 @@ class _PersonDetailState extends State<PersonDetail> {
       yearOld = now - DateTime.parse(data.birthday!).year;
     }
     return Container(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 5),
-          getTxtBlackColor(
-              msg: StringConst.biography,
-              fontSize: 23,
-              fontWeight: FontWeight.w700,
-              textAlign: TextAlign.start),
-          const SizedBox(height: 15),
-          if (data != null)
-            getTxtGreyColor(
-                msg: data.biography != null ? data.biography! : '',
-                fontSize: 15,
-                fontWeight: FontWeight.w400)
-          else
-            sizeInfo.deviceScreenType == DeviceScreenType.desktop
-                ? Container()
-                : ShimmerView.getOverView(context),
-          const SizedBox(height: 15),
-          getTxtBlackColor(
-              msg: StringConst.personalInfo,
-              fontSize: 23,
-              fontWeight: FontWeight.w700,
-              textAlign: TextAlign.start),
-          const SizedBox(height: 5),
-          Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              width: size.width - 20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  getPIDetail('Gender',
-                      data != null && data.gender == 2 ? 'Male' : 'Female'),
-                  getPIDetail('Age', '$yearOld years old'),
-                  getPIDetail('Known For',
-                      data?.knownForDepartment??"NA"),
-                  getPIDetail(
-                      'Date of Birth', data?.birthday??"NA"),
-                  getPIDetail(
-                      'Birth Place', data?.placeOfBirth??"NA"),
-                  getPIDetail(
-                      'Official Site', data?.homepage??"NA"),
-                  getPIDetail('Also Known As', data != null ? data.alsoKnownAs?.join(' , ') : null),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+        padding: const EdgeInsets.all(8),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 5),
+              getTxtBlackColor(
+                  msg: StringConst.biography,
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                  textAlign: TextAlign.start),
+              const SizedBox(height: 15),
+              if (data != null)
+                getTxtGreyColor(
+                    msg: data.biography != null ? data.biography! : '',
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400)
+              else
+                sizeInfo.deviceScreenType == DeviceScreenType.desktop
+                    ? Container()
+                    : ShimmerView.getOverView(context),
+              const SizedBox(height: 15),
+              BannerAdsWidget(),
+              getTxtBlackColor(
+                  msg: StringConst.personalInfo,
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                  textAlign: TextAlign.start),
+              const SizedBox(height: 5),
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Container(
+                      padding: const EdgeInsets.all(10),
+                      width: size.width - 20,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            getPIDetail(
+                                'Gender',
+                                data != null && data.gender == 2
+                                    ? 'Male'
+                                    : 'Female'),
+                            getPIDetail('Age', '$yearOld years old'),
+                            getPIDetail(
+                                'Known For', data?.knownForDepartment ?? "NA"),
+                            getPIDetail(
+                                'Date of Birth', data?.birthday ?? "NA"),
+                            getPIDetail(
+                                'Birth Place', data?.placeOfBirth ?? "NA"),
+                            getPIDetail(
+                                'Official Site', data?.homepage ?? "NA"),
+                            getPIDetail(
+                                'Also Known As',
+                                data != null ? data.alsoKnownAs?.join(' , ') : null)
+                          ])))
+            ]));
   }
 
   Widget getPIDetail(String hint, String? detail) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        getTxtGreyColor(
-            msg: hint ?? 'NA',
-            fontSize: 13,
-            textAlign: TextAlign.start),
-        const SizedBox(height: 3),
-        if (detail == null)
-          Container(
-            width: 150,
-            height: 10,
-            color: Colors.grey[300],
-          )
-        else
-          getTxtBlackColor(
-              msg: detail ?? '-',
-              fontSize: 16,
-              textAlign: TextAlign.start),
-        const SizedBox(height: 8),
-        const Divider(height: 2),
-        const SizedBox(height: 8),
-      ],
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      getTxtGreyColor(
+          msg: hint ?? 'NA', fontSize: 13, textAlign: TextAlign.start),
+      const SizedBox(height: 3),
+      if (detail == null)
+        Container(width: 150, height: 10, color: Colors.grey[300])
+      else
+        getTxtBlackColor(
+            msg: detail ?? '-', fontSize: 16, textAlign: TextAlign.start),
+      const SizedBox(height: 8),
+      const Divider(height: 2),
+      const SizedBox(height: 8)
+    ]);
   }
 }

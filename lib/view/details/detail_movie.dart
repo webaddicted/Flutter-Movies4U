@@ -33,7 +33,8 @@ class DetailsMovieScreen extends StatefulWidget {
   final image, movieName;
 
   const DetailsMovieScreen(this.movieName, this.image, this.apiName, this.index,
-      this.movieId, this.tag, {super.key});
+      this.movieId, this.tag,
+      {super.key});
 
   @override
   State<DetailsMovieScreen> createState() => _DetailsMovieScreenState();
@@ -95,9 +96,11 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           ),
           Scrollbar(
             controller: scrollController,
-            thumbVisibility: sizeInfo.deviceScreenType == DeviceScreenType.desktop,
+            thumbVisibility:
+                sizeInfo.deviceScreenType == DeviceScreenType.desktop,
             radius: const Radius.circular(5),
-            thickness: sizeInfo.deviceScreenType == DeviceScreenType.desktop?20:0,
+            thickness:
+                sizeInfo.deviceScreenType == DeviceScreenType.desktop ? 20 : 0,
             child: CustomScrollView(
               controller: scrollController,
               slivers: <Widget>[
@@ -118,7 +121,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
       child: Hero(
           tag: widget.tag,
           child: Container(
-              child: getCacheImage(url: widget.image, height: expandedHeight + 50)
+              child:
+                  getCacheImage(url: widget.image, height: expandedHeight + 50)
               // ApiConstant.IMAGE_ORIG_POSTER + data.posterPath.toString()),
               )),
     );
@@ -184,18 +188,20 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
             padding: const EdgeInsets.only(left: 8.0, right: 8),
             child: MaterialButton(
                 color: ColorConst.appColor,
-                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
                 elevation: 0,
                 minWidth: double.infinity,
-                child: getTxtWhiteColor(msg: "Download", fontWeight: FontWeight.w600),
+                child: getTxtWhiteColor(
+                    msg: "Download", fontWeight: FontWeight.w600),
                 onPressed: () {
-                  if(_rewardedAd!=null){
+                  if (_rewardedAd != null) {
                     _rewardedAd?.show(
                       onUserEarnedReward: (test, reward) {
                         printLog(msg: "Reward Details : $test == $reward ");
                       },
                     );
-                  }else{
+                  } else {
                     showSnackBar(context, "Please wait sometime");
                   }
                 }),
@@ -243,6 +249,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               apiName: ApiConstant.similarMovies,
               sizeInfo: sizeInfo,
               movieId: widget.movieId),
+          BannerAdsWidget()
         ],
       ),
     );
@@ -265,7 +272,9 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
             children: <Widget>[
               Expanded(
                 child: getTxtBlackColor(
-                    msg: widget.movieName, fontSize: 24, fontWeight: FontWeight.bold),
+                    msg: widget.movieName,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
               RatingResult(movie == null ? 0 : movie.voteAverage, 12.0),
               const SizedBox(width: 5),
@@ -283,7 +292,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                       getBackgroundRate(movie == null ? 0 : movie.voteAverage!),
                 ),
                 onRatingUpdate: (rating) {
-                  printLog(tag: runtimeType.toString(),msg:"Rating : $rating");
+                  printLog(
+                      tag: runtimeType.toString(), msg: "Rating : $rating");
                 },
               )
             ],
@@ -293,7 +303,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           const SizedBox(height: 10),
           _contentAbout(movie),
           const SizedBox(height: 10),
-          BannerWidget(),
+          BannerAdsWidget(),
           getTxtBlackColor(
               msg: 'Overview', fontSize: 18, fontWeight: FontWeight.bold),
           const SizedBox(height: 7),
@@ -323,7 +333,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
         budget = NumberFormat.simpleCurrency().format(dataMovie.budget);
         revenue = NumberFormat.simpleCurrency().format(dataMovie.revenue);
       } catch (exp) {
-        printLog(tag: runtimeType.toString(),status: ApiStatus.error,msg:exp);
+        printLog(
+            tag: runtimeType.toString(), status: ApiStatus.error, msg: exp);
       }
     }
     return Padding(
@@ -336,10 +347,8 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _contentDescriptionAbout(
-                  'Status', dataMovie?.status),
-              _contentDescriptionAbout('Duration',
-                  '${dataMovie?.runtime} min'),
+              _contentDescriptionAbout('Status', dataMovie?.status),
+              _contentDescriptionAbout('Duration', '${dataMovie?.runtime} min'),
               _contentDescriptionAbout(
                   'Release Date', dataMovie != null ? relDate : null),
               _contentDescriptionAbout(
@@ -400,7 +409,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     );
   }
 
-  void rewardInit(){
+  void rewardInit() {
     var rewardsAd = RewardedInterstitialAd.load(
         adUnitId: AdHelper.rewardedInterstitialAdUnitId,
         request: const AdRequest(),
@@ -420,10 +429,13 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           },
         ));
   }
+
   RxInt bannerAdsInit = 0.obs;
   RxInt rewardsAdsInit = 0.obs;
+
   // BannerAd? _bannerAd;
   RewardedAd? _rewardedAd;
+
   void loadRewardedAd() {
     RewardedAd.load(
       adUnitId: AdHelper.rewardedAdUnitId,
@@ -451,9 +463,11 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
       ),
     );
   }
+
   InterstitialAd? _interstitialAd;
+
   loadFullScreenAds() {
-    if(_interstitialAd!=null) _interstitialAd?.show();
+    if (_interstitialAd != null) _interstitialAd?.show();
     InterstitialAd.load(
       adUnitId: AdHelper.interstitialAdUnitId,
       request: const AdRequest(),
