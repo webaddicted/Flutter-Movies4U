@@ -11,15 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.15.1
-  firebase_analytics: ^10.4.5
-  firebase_crashlytics: ^3.4.5
-  firebase_remote_config: ^4.2.5
-  google_mobile_ads: ^3.0.0
+  firebase_core: ^2.25.5
+  firebase_analytics: ^10.8.7
+  firebase_crashlytics: ^3.4.16
+  firebase_remote_config: ^4.3.15
+  google_mobile_ads: ^4.0.0
 
-  cupertino_icons: ^1.0.5
-  dio: ^5.2.1
-  provider: ^6.0.5
+  cupertino_icons: ^1.0.6
+  dio: ^5.4.1
+  provider: ^6.1.2
   shimmer: ^3.0.0
   # scoped model
   #  scoped_model: ^1.1.0

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAa4RRBD1t2KiiwqaedVRYdkg6a7DIt_hM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>67977657210</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.webaddicted.movies4ubox</string>
+	<key>PROJECT_ID</key>
+	<string>movies4u0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>movies4u0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:67977657210:ios:bb579c91ee6ae77b73b4c3</string>
+	<key>DATABASE_URL</key>
+	<string>https://movies4u0-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
