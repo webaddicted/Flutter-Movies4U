@@ -1,0 +1,78 @@
+name: movies4u
+description: "A new Flutter project."
+publish_to: 1.0.0+1
+#  versionName + versionCode
+#  The version name is 2.0.0
+#  The version code is 8
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  firebase_core: ^2.25.5
+  firebase_analytics: ^10.8.7
+  firebase_crashlytics: ^3.4.16
+  firebase_remote_config: ^4.3.15
+  google_mobile_ads: ^4.0.0 #// need some dependency on ios_platform
+  dio: ^5.4.1
+  provider: ^6.1.2
+  shimmer: ^3.0.0
+  # scoped model
+  #  scoped_model: ^1.1.0
+  scoped_model: ^2.0.0
+  get: ^4.6.5
+  # dependency injection
+  get_it: ^7.6.0
+
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.2.3
+  flutter_rating_bar: ^4.0.1
+  #  eva_icons_flutter: ^2.0.0
+  flutter_staggered_grid_view: ^0.7.0
+  #  flutter_tags: ^0.4.9
+  flutter_tags: ^1.0.0-nullsafety.1 # Not Supported
+  photo_view: ^0.14.0
+  shared_preferences: ^2.2.0
+  #  font_awesome_flutter: ^8.8.1
+  share_plus: ^7.0.2
+  responsive_builder: ^0.7.0
+  intl: ^0.19.0
+
+  youtube_player_flutter: ^9.0.0
+  in_app_review: ^2.0.6
+  in_app_update: ^4.1.4
+  webview_flutter: ^4.2.2
+  logger: ^2.0.2
+
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Zillaslab
+      fonts:
+        - asset: assets/fonts/Zillaslab-bold.ttf
+        - asset: assets/fonts/Zillaslab-light.ttf
+        - asset: assets/fonts/Zillaslab-medium.ttf
+        - asset: assets/fonts/Zillaslab-regular.ttf
+    - family: PT
+      fonts:
+        - asset: assets/fonts/PT-bold.ttf
+        - asset: assets/fonts/PT-italic.ttf
+        - asset: assets/fonts/PT-regular.ttf
+
+
