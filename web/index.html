@@ -25,11 +25,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="movies4u">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>movies4u</title>
+  <title>Movies4u</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -38,6 +38,11 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <script
+          type="application/javascript"
+          src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js"
+          defer
+  ></script>
 </head>
 <body>
   <script>
